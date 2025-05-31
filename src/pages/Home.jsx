@@ -8,8 +8,8 @@ export default function Home() {
         <div className="hero-overlay">
           <div className="hero-content">
             <h1 className="hero-title">
-              महाराष्ट्र मंडळ
-              <span className="hero-subtitle">Maharashtra Mandal</span>
+              स्वराज्य
+              <span className="hero-subtitle">SWRAJYA</span>
             </h1>
             <p className="hero-description">
               Preserving our rich culture, fostering community bonds, and celebrating the spirit of Maharashtra
