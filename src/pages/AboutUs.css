@@ -1,0 +1,842 @@
+/* AboutUs.css - Maharashtrian Club About Page Styles */
+
+.about-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  padding-top: 80px; /* Account for fixed header */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.about-hero {
+  height: 60vh;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 100,0 50,100" fill="rgba(255,255,255,0.03)"/><polygon points="0,100 100,100 50,0" fill="rgba(255,255,255,0.02)"/></svg>') repeat;
+  animation: float 30s infinite linear;
+}
+
+@keyframes float {
+  0% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(-50px) rotate(360deg); }
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: slideInUp 1s ease-out;
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  animation: slideInUp 1s ease-out 0.2s both;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Introduction Section */
+.intro-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.intro-text h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.intro-text h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FF6B35;
+  margin: 1rem 0;
+  border-radius: 2px;
+}
+
+.intro-lead {
+  font-size: 1.3rem;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.intro-text p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.intro-image {
+  display: flex;
+  justify-content: center;
+}
+
+.image-placeholder {
+  background: linear-gradient(135deg, #FF6B35, #D62424);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+}
+
+.placeholder-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.image-placeholder p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Mission Vision Values Section */
+.mvv-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.mvv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.mvv-card {
+  background: #f8f9fa;
+  padding: 2.5rem;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mvv-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35, #D62424);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.mvv-card:hover::before {
+  transform: scaleX(1);
+}
+
+.mvv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mvv-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.mvv-card h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.mvv-card p {
+  color: #666;
+  line-height: 1.7;
+}
+
+.mvv-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.mvv-card li {
+  color: #666;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.mvv-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #FF6B35;
+  font-weight: bold;
+}
+
+/* History Timeline Section */
+.history-section {
+  padding: 80px 0;
+  background: #f8f9fa;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  color: #333;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #FF6B35;
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #FF6B35, #D62424);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timeline-year {
+  background: linear-gradient(135deg, #D62424, #FF6B35);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-width: 80px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(214, 36, 36, 0.3);
+}
+
+.timeline-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  margin: 0 2rem;
+  border-left: 4px solid #FF6B35;
+}
+
+.timeline-content h4 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-content p {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Team Section */
+.team-section {
+  padding: 80px 0;
+  background: white;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.team-member {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.member-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #FF6B35, #D62424);
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+}
+
+.avatar-placeholder {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.team-member h4 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.member-role {
+  color: #FF6B35;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.member-bio {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Achievements Section */
+.achievements-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #FF6B35 0%, #D62424 100%);
+  color: white;
+}
+
+.achievements-section .section-title {
+  color: white;
+}
+
+.achievements-section .section-title::after {
+  background: white;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.achievement-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.achievement-card h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.achievement-card p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item {
+    flex-direction: row !important;
+    padding-left: 60px;
+  }
+
+  .timeline-year {
+    position: absolute;
+    left: 0;
+    min-width: 60px;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .timeline-content {
+    margin-left: 2rem;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding-top: 70px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .intro-text h2 {
+    font-size: 2rem;
+  }
+
+  .intro-lead {
+    font-size: 1.1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .mvv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    padding-left: 50px;
+  }
+
+  .timeline-year {
+    min-width: 50px;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .timeline-content {
+    margin-left: 1rem;
+    padding: 1.5rem;
+  }
+}
+/* Core Committee 2025-26 Styles */
+
+.core-committee-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #fff5f0, #ffffff);
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.committee-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.header-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.club-title {
+  margin-bottom: 1.5rem;
+}
+
+.marathi-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ea580c;
+  margin-bottom: 0.5rem;
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+.english-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #9a3412;
+  margin-bottom: 0;
+}
+
+.committee-badge {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  border-left: 4px solid #ea580c;
+}
+
+.committee-badge h3 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #374151;
+  margin: 0;
+}
+
+/* Section Styles */
+.executive-board-section,
+.department-leads-section {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-top: 4px solid #ea580c;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  color: #ea580c;
+}
+
+/* President Section */
+.president-section {
+  margin-bottom: 2rem;
+}
+
+.president-card {
+  background: linear-gradient(135deg, #fed7aa, #fef3c7);
+  border: 2px solid #fb923c;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Subsection Styles */
+.subsection-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+.vice-presidents-section,
+.general-secretaries-section {
+  margin-bottom: 2rem;
+}
+
+/* Department Styles */
+.department-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.department-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.department-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #374151;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.department-icon {
+  font-size: 1.25rem;
+}
+
+/* Member Grid */
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+/* Member Card */
+.member-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  max-width: 220px;
+  width: 100%;
+}
+
+.member-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Member Image */
+.member-image-container {
+  margin-bottom: 1rem;
+}
+
+.member-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+  background: #f3f4f6;
+  display: block;
+  margin: 0 auto;
+}
+
+.member-image:hover {
+  border-color: #ea580c;
+}
+
+/* Member Name */
+.member-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Footer */
+.footer-section {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.footer-message {
+  background: #fff7ed;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #fed7aa;
+}
+
+.footer-message p {
+  color: #9a3412;
+  font-weight: 500;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .core-committee-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .marathi-title {
+    font-size: 2rem;
+  }
+  
+  .english-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .executive-board-section,
+  .department-leads-section {
+    padding: 1.5rem;
+  }
+  
+  .members-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .member-card {
+    padding: 1rem;
+    max-width: 200px;
+  }
+  
+  .member-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marathi-title {
+    font-size: 1.75rem;
+  }
+  
+  .english-title {
+    font-size: 1.25rem;
+  }
+  
+  .members-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  
+  .member-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .member-name {
+    font-size: 1rem;
+  }
+}

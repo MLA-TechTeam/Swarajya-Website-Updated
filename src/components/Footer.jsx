@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '../assets/logo.png';
 
@@ -46,12 +47,12 @@ export default function Footer() {
             <div className="footer-section">
               <h3 className="footer-title">Quick Links</h3>
               <ul className="footer-links">
-                <li><a href="#about" className="footer-link">About Us</a></li>
-                <li><a href="#membership" className="footer-link">Membership</a></li>
-                <li><a href="#events" className="footer-link">Events</a></li>
-                <li><a href="#gallery" className="footer-link">Photo Gallery</a></li>
-                <li><a href="#news" className="footer-link">News & Updates</a></li>
-                <li><a href="#volunteer" className="footer-link">Volunteer</a></li>
+                <li><Link to="/about" className="footer-link">About Us</Link></li>
+                <li><Link to="/membership" className="footer-link">Membership</Link></li>
+                <li><Link to="/events" className="footer-link">Events</Link></li>
+                <li><Link to="/gallery" className="footer-link">Photo Gallery</Link></li>
+                <li><Link to="/blogs" className="footer-link">News & Updates</Link></li>
+                <li><Link to="/volunteer" className="footer-link">Volunteer</Link></li>
               </ul>
             </div>
 
@@ -59,12 +60,12 @@ export default function Footer() {
             <div className="footer-section">
               <h3 className="footer-title">Our Services</h3>
               <ul className="footer-links">
-                <li><a href="#cultural-events" className="footer-link">Cultural Events</a></li>
-                <li><a href="#language-classes" className="footer-link">Marathi Classes</a></li>
-                <li><a href="#community-support" className="footer-link">Community Support</a></li>
-                <li><a href="#workshops" className="footer-link">Art & Craft Workshops</a></li>
-                <li><a href="#food-festivals" className="footer-link">Food Festivals</a></li>
-                <li><a href="#youth-programs" className="footer-link">Youth Programs</a></li>
+                <li><Link to="/cultural-events" className="footer-link">Cultural Events</Link></li>
+                <li><Link to="/language-classes" className="footer-link">Marathi Classes</Link></li>
+                <li><Link to="/community-support" className="footer-link">Community Support</Link></li>
+                <li><Link to="/workshops" className="footer-link">Art & Craft Workshops</Link></li>
+                <li><Link to="/food-festivals" className="footer-link">Food Festivals</Link></li>
+                <li><Link to="/youth-programs" className="footer-link">Youth Programs</Link></li>
               </ul>
             </div>
 
@@ -107,26 +108,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Newsletter Section */}
-      <div className="newsletter-section">
-        <div className="footer-container">
-          <div className="newsletter-content">
-            <div className="newsletter-text">
-              <h3>Stay Connected</h3>
-              <p>Subscribe to our newsletter for updates on events, cultural programs, and community news.</p>
-            </div>
-            <div className="newsletter-form">
-              <input 
-                type="email" 
-                placeholder="Enter your email address"
-                className="newsletter-input"
-              />
-              <button className="newsletter-btn">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Footer Bottom */}
       <div className="footer-bottom">
         <div className="footer-container">
@@ -136,11 +117,11 @@ export default function Footer() {
               <p className="footer-tagline">जय महाराष्ट्र | Jai Maharashtra</p>
             </div>
             <div className="footer-legal">
-              <a href="#privacy" className="legal-link">Privacy Policy</a>
+              <Link to="/privacy" className="legal-link">Privacy Policy</Link>
               <span className="separator">|</span>
-              <a href="#terms" className="legal-link">Terms of Service</a>
+              <Link to="/terms" className="legal-link">Terms of Service</Link>
               <span className="separator">|</span>
-              <a href="#sitemap" className="legal-link">Sitemap</a>
+              <Link to="/sitemap" className="legal-link">Sitemap</Link>
             </div>
           </div>
         </div>

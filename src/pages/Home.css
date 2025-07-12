@@ -21,7 +21,7 @@
 /* Hero Section */
 .hero-section {
   height: 100vh;
-  background: linear-gradient(135deg, #FF6B35 0%, #FF8E3C 50%, #D62424 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
   position: relative;
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@
   animation: slideInUp 1s ease-out 0.2s both;
 }
 
-.hero-buttons {
+.hero-buttons1 {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -133,13 +133,13 @@
   box-shadow: 0 6px 20px rgba(214, 36, 36, 0.4);
 }
 
-.btn-secondary {
+.btn-secondary1 {
   background: transparent;
   color: white;
   border: 2px solid white;
 }
 
-.btn-secondary:hover {
+.btn-secondary1:hover {
   background: white;
   color: #D62424;
   transform: translateY(-2px);
@@ -284,35 +284,6 @@
   font-weight: 600;
 }
 
-/* Call to Action Section */
-.cta-section {
-  background: linear-gradient(135deg, #D62424 0%, #FF6B35 100%);
-  color: white;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.cta-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.cta-section p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
-.cta-section .btn-primary {
-  background: white;
-  color: #D62424;
-}
-
-.cta-section .btn-primary:hover {
-  background: #f8f9fa;
-  transform: translateY(-2px);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
@@ -327,7 +298,7 @@
     font-size: 1rem;
   }
   
-  .hero-buttons {
+  .hero-buttons1 {
     flex-direction: column;
     align-items: center;
   }
