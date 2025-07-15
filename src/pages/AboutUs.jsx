@@ -1,21 +1,23 @@
 import './AboutUs.css';
 import logo from '../assets/logo.png';
+import shreya from '../assets/shreya.jpg';
+import shivam from '../assets/shivam.jpg';
 
 export default function AboutUs() {
   return (
     <div className="about-page">
       {/* Hero Section */}
-      <section className="about-hero">
-        <div className="hero-overlay">
-          <div className="container">
-            <div className="hero-content">
-              <h1 className="hero-title">
+      <section className="about-hero5">
+        <div className="hero-overlay5">
+          <div className="container5">
+            <div className="hero-content5">
+              <h1 className="hero-title5">
                 आमच्याबद्दल
-                <span className="hero-subtitle">About Our Heritage</span>
+                {/* <span className="hero-subtitle5">About Our Heritage</span> */}
               </h1>
-              <p className="hero-description">
+              {/* <p className="hero-description5">
                 Celebrating the rich cultural legacy of Maharashtra while building bridges for future generations
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -140,252 +142,307 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <div className="core-committee-container">
-      <div className="committee-wrapper">
-        {/* Header */}
-        <div className="header-section">
-          <div className="committee-badge">
-            <h3>Core Committee 2025-26</h3>
-          </div>
-        </div>
-
-        {/* Executive Board */}
-        <div className="executive-board-section">
-          <h3 className="section-title">
-            <span className="section-icon">🏛️</span> Executive Board
-          </h3>
-          
-          {/* President */}
-          <div className="president-section">
-            <h4 className="subsection-title">President</h4>
-            <div className="member-card president-card">
-              <div className="member-image-container">
-                <img src="/api/placeholder/150/150" alt="Akhilesh Deshmukh" className="member-image" />
-              </div>
-              <h5 className="member-name">Akhilesh Deshmukh</h5>
+      <section className="faculty-coordinators-section">
+  <div className="faculty-coordinators-wrapper">
+    <h2 className="faculty-section-title">Faculty Coordinators</h2>
+    <p className="faculty-subtitle">
+      Guiding our community with wisdom and dedication
+    </p>
+    
+    <div className="faculty-grid">
+      {/* First Faculty Coordinator */}
+      <div className="faculty-card">
+        <div className="faculty-content">
+          <div className="faculty-image-container">
+            <div className="faculty-image-wrapper">
+              <img 
+                src="/api/placeholder/300/300" 
+                alt="Dr. Priya Sharma" 
+                className="faculty-image" 
+              />
             </div>
           </div>
-
-          {/* Vice Presidents */}
-          <div className="vice-presidents-section">
-            <h4 className="subsection-title">Vice Presidents</h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Vedant Deshpande" className="member-image" />
-                </div>
-                <h5 className="member-name">Vedant Deshpande</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Rajat Murhe" className="member-image" />
-                </div>
-                <h5 className="member-name">Rajat Murhe</h5>
-              </div>
+          <div className="faculty-text">
+            <h3 className="faculty-name">Dr. Priya Sharma</h3>
+            <p className="faculty-title">Senior Faculty Coordinator</p>
+            <p className="faculty-description">
+              With over 15 years of experience in cultural preservation and community 
+              development, Dr. Sharma has been instrumental in shaping the educational 
+              initiatives of Maharashtra Mandal. Her expertise in Marathi literature 
+              and performing arts has enriched countless lives in our community.
+            </p>
+            <div className="faculty-quote">
+              Culture is not just about preserving the past, but about creating a 
+              bridge that connects our heritage to the aspirations of future generations.
             </div>
-          </div>
-
-          {/* General Secretaries */}
-          <div className="general-secretaries-section">
-            <h4 className="subsection-title">General Secretaries</h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Meghraj Gaikwad" className="member-image" />
-                </div>
-                <h5 className="member-name">Meghraj Gaikwad</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Shivam Chavan" className="member-image" />
-                </div>
-                <h5 className="member-name">Shivam Chavan</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Department Leads */}
-        <div className="department-leads-section">
-          <h3 className="section-title">
-            <span className="section-icon">🏢</span> Department Leads
-          </h3>
-
-          {/* Design and Content */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">🎨</span> Design and Content
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Sakhi Telang" className="member-image" />
-                </div>
-                <h5 className="member-name">Sakhi Telang</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Sanskruti Gole" className="member-image" />
-                </div>
-                <h5 className="member-name">Sanskruti Gole</h5>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Media and Photography */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">📸</span> Social Media & Photography
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Anay Patil" className="member-image" />
-                </div>
-                <h5 className="member-name">Anay Patil</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Ranvir Deshmukh" className="member-image" />
-                </div>
-                <h5 className="member-name">Ranvir Deshmukh</h5>
-              </div>
-            </div>
-          </div>
-
-          {/* Technical */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">💻</span> Technical
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Omkar Pawar" className="member-image" />
-                </div>
-                <h5 className="member-name">Omkar Pawar</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Ritesh Choudhary" className="member-image" />
-                </div>
-                <h5 className="member-name">Ritesh Choudhary</h5>
-              </div>
-            </div>
-          </div>
-
-          {/* Cultural */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">🎭</span> Cultural
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Janhavi Dessai" className="member-image" />
-                </div>
-                <h5 className="member-name">Janhavi Dessai</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Varun V" className="member-image" />
-                </div>
-                <h5 className="member-name">Varun V</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Sai Tandel" className="member-image" />
-                </div>
-                <h5 className="member-name">Sai Tandel</h5>
-              </div>
-            </div>
-          </div>
-
-          {/* Operations */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">⚙️</span> Operations
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Vinayak Rathod" className="member-image" />
-                </div>
-                <h5 className="member-name">Vinayak Rathod</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Shreya Mahajan" className="member-image" />
-                </div>
-                <h5 className="member-name">Shreya Mahajan</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Sarang Ingavle" className="member-image" />
-                </div>
-                <h5 className="member-name">Sarang Ingavle</h5>
-              </div>
-            </div>
-          </div>
-
-          {/* Pathak and Lezim */}
-          <div className="department-section">
-            <h4 className="department-title">
-              <span className="department-icon">🥁</span> Pathak and Lezim
-            </h4>
-            <div className="members-grid">
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Swaraj Tekale" className="member-image" />
-                </div>
-                <h5 className="member-name">Swaraj Tekale</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Anish Sadvilkar" className="member-image" />
-                </div>
-                <h5 className="member-name">Anish Sadvilkar</h5>
-              </div>
-              <div className="member-card">
-                <div className="member-image-container">
-                  <img src="/api/placeholder/150/150" alt="Nikhil Parker" className="member-image" />
-                </div>
-                <h5 className="member-name">Nikhil Parker</h5>
+            <div className="faculty-achievements">
+              <h4>Key Contributions:</h4>
+              <div className="achievements-list">
+                <div className="achievement-item">Marathi Language Program Development</div>
+                <div className="achievement-item">Youth Cultural Mentorship</div>
+                <div className="achievement-item">Community Research Initiatives</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-      {/* Achievements */}
-      <section className="achievements-section">
-        <div className="container">
-          <h2 className="section-title">Our Achievements</h2>
-          <div className="achievements-grid">
-            <div className="achievement-card">
-              <div className="achievement-number">500+</div>
-              <h4>Active Members</h4>
-              <p>Growing community of passionate Maharashtrians</p>
+      {/* Second Faculty Coordinator */}
+      <div className="faculty-card">
+        <div className="faculty-content reverse">
+          <div className="faculty-text">
+            <h3 className="faculty-name">Prof. Rajesh Patil</h3>
+            <p className="faculty-title">Cultural Affairs Coordinator</p>
+            <p className="faculty-description">
+              A renowned scholar in Maharashtrian history and traditions, Prof. Patil 
+              brings deep academic insight to our cultural programs. His passion for 
+              folk arts and traditional music has helped preserve and promote various 
+              art forms within our community.
+            </p>
+            <div className="faculty-quote">
+              Every tradition carries within it the wisdom of generations. Our role is 
+              to ensure this wisdom finds its voice in the contemporary world.
             </div>
-            <div className="achievement-card">
-              <div className="achievement-number">150+</div>
-              <h4>Cultural Events</h4>
-              <p>Successfully organized festivals and programs</p>
+            <div className="faculty-achievements">
+              <h4>Key Contributions:</h4>
+              <div className="achievements-list">
+                <div className="achievement-item">Traditional Arts Documentation</div>
+                <div className="achievement-item">Festival Organization & Planning</div>
+                <div className="achievement-item">Inter-community Cultural Exchange</div>
+              </div>
             </div>
-            <div className="achievement-card">
-              <div className="achievement-number">25+</div>
-              <h4>Awards Received</h4>
-              <p>Recognition for cultural preservation efforts</p>
-            </div>
-            <div className="achievement-card">
-              <div className="achievement-number">1000+</div>
-              <h4>Youth Participants</h4>
-              <p>Young people engaged in cultural activities</p>
+          </div>
+          <div className="faculty-image-container">
+            <div className="faculty-image-wrapper">
+              <img 
+                src="/api/placeholder/300/300" 
+                alt="Prof. Rajesh Patil" 
+                className="faculty-image" 
+              />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+      <div className="core-committee-container">
+        <div className="committee-wrapper">
+          {/* Header */}
+          <div className="header-section">
+            <div className="committee-badge">
+              <h3>Core Committee 2025-26</h3>
+            </div>
+          </div>
+
+          {/* Executive Board */}
+          <div className="executive-board-section">
+            <h3 className="section-title">
+              <span className="section-icon">🏛️</span> Executive Board
+            </h3>
+            
+            {/* President */}
+            <div className="president-section">
+              <h4 className="subsection-title">President</h4>
+              <div className="member-card president-card">
+                <div className="member-image-container">
+                  <img src="/api/placeholder/150/150" alt="Akhilesh Deshmukh" className="member-image" />
+                </div>
+                <h5 className="member-name">Akhilesh Deshmukh</h5>
+              </div>
+            </div>
+
+            {/* Vice Presidents */}
+            <div className="vice-presidents-section">
+              <h4 className="subsection-title">Vice Presidents</h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Vedant Deshpande" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Vedant Deshpande</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Rajat Murhe" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Rajat Murhe</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* General Secretaries */}
+            <div className="general-secretaries-section">
+              <h4 className="subsection-title">General Secretaries</h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Meghraj Gaikwad" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Meghraj Gaikwad</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src={shivam} alt="Shivam Chavan" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Shivam Chavan</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Department Leads */}
+          <div className="department-leads-section">
+            <h3 className="section-title">
+              <span className="section-icon">🏢</span> Department Leads
+            </h3>
+
+            {/* Design and Content */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">🎨</span> Design and Content
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Sakhi Telang" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Sakhi Telang</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Sanskruti Gole" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Sanskruti Gole</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media and Photography */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">📸</span> Social Media & Photography
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Anay Patil" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Anay Patil</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Ranvir Deshmukh" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Ranvir Deshmukh</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Technical */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">💻</span> Technical
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Omkar Pawar" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Omkar Pawar</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Ritesh Choudhary" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Ritesh Choudhary</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Cultural */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">🎭</span> Cultural
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Janhavi Dessai" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Janhavi Dessai</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Varun V" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Varun V</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Sai Tandel" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Sai Tandel</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Operations */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">⚙️</span> Operations
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Vinayak Rathod" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Vinayak Rathod</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src={shreya} className="member-image" />
+                  </div>
+                  <h5 className="member-name">Shreya Mahajan</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Sarang Ingavle" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Sarang Ingavle</h5>
+                </div>
+              </div>
+            </div>
+
+            {/* Pathak and Lezim */}
+            <div className="department-section">
+              <h4 className="department-title">
+                <span className="department-icon">🥁</span> Pathak and Lezim
+              </h4>
+              <div className="members-grid">
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Swaraj Tekale" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Swaraj Tekale</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Anish Sadvilkar" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Anish Sadvilkar</h5>
+                </div>
+                <div className="member-card">
+                  <div className="member-image-container">
+                    <img src="/api/placeholder/150/150" alt="Nikhil Parker" className="member-image" />
+                  </div>
+                  <h5 className="member-name">Nikhil Parker</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

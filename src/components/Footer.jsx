@@ -43,32 +43,6 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div className="footer-section">
-              <h3 className="footer-title">Quick Links</h3>
-              <ul className="footer-links">
-                <li><Link to="/about" className="footer-link">About Us</Link></li>
-                <li><Link to="/membership" className="footer-link">Membership</Link></li>
-                <li><Link to="/events" className="footer-link">Events</Link></li>
-                <li><Link to="/gallery" className="footer-link">Photo Gallery</Link></li>
-                <li><Link to="/blogs" className="footer-link">News & Updates</Link></li>
-                <li><Link to="/volunteer" className="footer-link">Volunteer</Link></li>
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="footer-section">
-              <h3 className="footer-title">Our Services</h3>
-              <ul className="footer-links">
-                <li><Link to="/cultural-events" className="footer-link">Cultural Events</Link></li>
-                <li><Link to="/language-classes" className="footer-link">Marathi Classes</Link></li>
-                <li><Link to="/community-support" className="footer-link">Community Support</Link></li>
-                <li><Link to="/workshops" className="footer-link">Art & Craft Workshops</Link></li>
-                <li><Link to="/food-festivals" className="footer-link">Food Festivals</Link></li>
-                <li><Link to="/youth-programs" className="footer-link">Youth Programs</Link></li>
-              </ul>
-            </div>
-
             {/* Contact Info */}
             <div className="footer-section">
               <h3 className="footer-title">Contact Us</h3>

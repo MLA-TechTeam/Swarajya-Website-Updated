@@ -1,29 +1,69 @@
-import { Link } from 'react-router-dom';
 import EventCard from '../components/EventCard';
 import { getUpcomingEvents } from './EventsData';
 import './Home.css';
+import heroVideo from '../assets/home-page-bg.mp4';
+import { useRef, useState } from 'react';
+import { VscUnmute } from "react-icons/vsc";
+import { VscMute } from "react-icons/vsc";
+import {ChevronDown } from "lucide-react";
 
 export default function Home() {
   const upcomingEvents = getUpcomingEvents().slice(0, 2);
+
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+    const handleScroll = () => {
+    const featuresSection = document.querySelector('.features-section');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <div className="home-container">
       {/* Hero Section */}
       <section className="hero-section">
+        <video
+          className="hero-video"
+          ref={videoRef}
+          autoPlay
+          loop
+          muted={isMuted}
+          playsInline
+        >
+          <source src={heroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Overlay & Content */}
         <div className="hero-overlay">
           <div className="hero-content">
             <h1 className="hero-title">
               स्वराज्य
-              <span className="hero-subtitle">SWRAJYA </span>
             </h1>
-            <p className="hero-description">
-              Preserving our rich culture, fostering community bonds, and celebrating the spirit of Maharashtra
-            </p>
-            <div className="hero-buttons1">
-              <Link to="/events" className="btn btn-secondary1">Explore Events</Link>
-            </div>
+                      <div className="scroll-indicator" onClick={handleScroll} role="button" tabIndex={0}>
+            <ChevronDown className="chevron-down" size={40} />
+            <ChevronDown className="chevron-down delayed" size={40} />
+          </div>
           </div>
         </div>
+        <button onClick={toggleMute} className="btn-mute-toggle">
+                {isMuted ? 
+                  <VscMute className="mute-icon" /> : 
+                  <VscUnmute className="mute-icon" />
+                }
+              </button>
       </section>
 
       {/* Features Section */}
