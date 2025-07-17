@@ -28,39 +28,6 @@ export default function SplashScreen({ onComplete }) {
     return pieces;
   };
 
-  // Play tutari-like sound
-  const playTutariSound = () => {
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    const frequencies = [523, 659, 784, 880, 659, 523];
-    let currentNote = 0;
-
-    const playNote = () => {
-      if (currentNote < frequencies.length) {
-        oscillator.frequency.setValueAtTime(frequencies[currentNote], audioContext.currentTime);
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-
-        setTimeout(() => {
-          currentNote++;
-          if (currentNote < frequencies.length) {
-            playNote();
-          } else {
-            oscillator.stop();
-            audioContext.close();
-          }
-        }, 300);
-      }
-    };
-
-    oscillator.start();
-    playNote();
-  };
 
   useEffect(() => {
     const progressInterval = setInterval(() => {
@@ -71,7 +38,6 @@ export default function SplashScreen({ onComplete }) {
           // Trigger blast
           setShowBlast(true);
           setConfetti(generateConfetti());
-          playTutariSound();
 
           // Start fade-out just before complete
           setTimeout(() => {
@@ -133,7 +99,7 @@ export default function SplashScreen({ onComplete }) {
 
         <div className="title-section">
           <h1 className="devanagari-title">स्वराज्य</h1>
-          <h2 className="english-title">SWRAJYA</h2>
+          <h2 className="english-title">SWARAJYA</h2>
         </div>
 
         <div className="loading-section">

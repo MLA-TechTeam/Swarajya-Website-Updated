@@ -4,7 +4,7 @@ import './LoadingSkeleton.css';
 
 // LoadingSkeleton component for event cards
 const LoadingSkeleton = ({ count }) => (
-  <div className="events-grid" aria-busy="true" aria-live="polite">
+  <div className="events-grid10" aria-busy="true" aria-live="polite">
     {[...Array(count)].map((_, index) => (
       <div key={index} className="event-card skeleton">
         <div className="skeleton-image"></div>

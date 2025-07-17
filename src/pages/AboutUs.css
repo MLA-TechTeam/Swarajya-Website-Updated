@@ -25,17 +25,6 @@
   overflow: hidden;
 }
 
-.about-hero5::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="0,0 100,0 50,100" fill="rgba(255,255,255,0.03)"/><polygon points="0,100 100,100 50,0" fill="rgba(255,255,255,0.02)"/></svg>') repeat;
-  animation: float 30s infinite linear;
-}
-
 @keyframes float {
   0% { transform: translateX(0) rotate(0deg); }
   100% { transform: translateX(-50px) rotate(360deg); }
@@ -59,68 +48,6 @@
   padding: 0 20px;
 }
 
-.hero-title5 {
-  font-family: 'Playfair Display', serif;
-  font-size: 5rem;
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  background: white;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: titleGlow 4s ease-in-out infinite alternate;
-}
-
-.hero-subtitle5 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  opacity: 0.95;
-  font-style: italic;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  background: white;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1rem;
-  animation: subtitlePulse 3s ease-in-out infinite;
-}
-
-@keyframes subtitlePulse {
-  0%, 100% { opacity: 0.95; }
-  50% { opacity: 1; }
-}
-
-.hero-description5 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  opacity: 0.9;
-  max-width: 1000px;
-  margin: 2rem auto 0;
-  line-height: 1.7;
-  font-weight: 300;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 1s ease-out 0.5s both;
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Introduction Section */
 .intro-section {
   padding: 80px 0;
@@ -139,6 +66,7 @@
   color: #333;
   margin-bottom: 1.5rem;
   position: relative;
+  margin-top:0px;
 }
 
 .intro-text h2::after {
@@ -160,7 +88,7 @@
 }
 
 .intro-text p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #666;
   margin-bottom: 1.5rem;
   line-height: 1.7;
@@ -178,15 +106,16 @@
   text-align: center;
   color: white;
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
 }
 
-.logo-icon {
-  width: 80px;
-  height: 80px;
+.logo-icon3 {
+  width: 200px;
+  height: 200px;
   object-fit: contain;
   margin-bottom: 1rem;
+
 }
 
 .placeholder-icon {
@@ -201,111 +130,11 @@
   margin: 0;
 }
 
-/* Mission Vision Values Section */
-.mvv-section {
-  padding: 80px 0;
-  background: white;
-}
-
-.mvv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.mvv-card {
-  background: #f8f9fa;
-  padding: 2.5rem;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid #f0f0f0;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.mvv-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #FF6B35, #D62424);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.mvv-card:hover::before {
-  transform: scaleX(1);
-}
-
-.mvv-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.mvv-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  display: block;
-}
-
-.mvv-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-}
-
-.mvv-card p {
-  color: #666;
-  line-height: 1.7;
-}
-
-.mvv-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.mvv-card li {
-  color: #666;
-  margin-bottom: 0.8rem;
-  position: relative;
-  padding-left: 1.5rem;
-}
-
-.mvv-card li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #FF6B35;
-  font-weight: bold;
-}
-
 /* History Timeline Section */
 .history-section {
   padding: 80px 0;
+  padding-top: 40px;
   background: #f8f9fa;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 4rem;
-  color: #333;
-  position: relative;
-}
-
-.section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #FF6B35;
-  margin: 1rem auto;
-  border-radius: 2px;
 }
 
 .timeline {
@@ -362,16 +191,17 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   flex: 1;
   margin: 0 2rem;
-  border-left: 4px solid #FF6B35;
 }
 
 .timeline-content h4 {
   color: #333;
   font-size: 1.3rem;
+  margin-top:0;
   margin-bottom: 1rem;
 }
 
 .timeline-content p {
+  font-size: 1.1rem;
   color: #666;
   line-height: 1.6;
   margin: 0;
@@ -379,7 +209,7 @@
 
 /* Faculty Coordinators Section */
 .faculty-coordinators-section {
-  padding: 80px 0;
+  padding: 50px 0;
   background: linear-gradient(135deg, #fff8f3, #fef7f0);
   position: relative;
 }
@@ -401,33 +231,6 @@
   padding: 0 20px;
   position: relative;
   z-index: 1;
-}
-
-.faculty-section-title {
-  text-align: center;
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1rem;
-  position: relative;
-}
-
-.faculty-section-title::after {
-  content: '';
-  display: block;
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, #FF6B35, #D62424);
-  margin: 1rem auto;
-  border-radius: 2px;
-}
-
-.faculty-subtitle {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 4rem;
-  font-style: italic;
 }
 
 .faculty-grid {
@@ -488,6 +291,9 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  aspect-ratio: 4/5;
+  min-height: 400px;
 }
 
 .faculty-image-wrapper::before {
@@ -508,7 +314,7 @@
 
 .faculty-image {
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
@@ -523,6 +329,7 @@
 
 .faculty-name {
   font-size: 2rem;
+  margin-top: 0;
   font-weight: 700;
   color: #333;
   margin-bottom: 0.5rem;
@@ -545,91 +352,7 @@
   margin-bottom: 2rem;
 }
 
-.faculty-quote {
-  background: linear-gradient(135deg, #fff5f0, #fef3e7);
-  border-left: 4px solid #FF6B35;
-  padding: 1.5rem;
-  border-radius: 12px;
-  font-style: italic;
-  color: #555;
-  position: relative;
-  margin-top: 1.5rem;
-}
-
-.faculty-quote::before {
-  content: '"';
-  position: absolute;
-  top: -10px;
-  left: 15px;
-  font-size: 3rem;
-  color: #FF6B35;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.faculty-quote::after {
-  content: '"';
-  position: absolute;
-  bottom: -20px;
-  right: 15px;
-  font-size: 3rem;
-  color: #FF6B35;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.faculty-achievements {
-  margin-top: 2rem;
-}
-
-.faculty-achievements h4 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.achievements-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.achievement-item {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 10px;
-  border-left: 3px solid #FF6B35;
-  font-size: 0.95rem;
-  color: #555;
-  transition: all 0.3s ease;
-}
-
-.achievement-item:hover {
-  transform: translateX(5px);
-  background: #fff5f0;
-}
-
-/* Core Committee Container */
-.core-committee-container {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #fff5f0, #ffffff);
-  padding: 4rem 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.committee-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 /* Header Styles */
-.header-section {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
 .club-title {
   margin-bottom: 1.5rem;
 }
@@ -649,117 +372,7 @@
   margin-bottom: 0;
 }
 
-.committee-badge {
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1rem 1.5rem;
-  display: inline-block;
-  border-left: 4px solid #ea580c;
-}
-
-.committee-badge h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #374151;
-  margin: 0;
-}
-
-/* Section Styles */
-.executive-board-section,
-.department-leads-section {
-  background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border-top: 4px solid #ea580c;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #374151;
-  text-align: center;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.section-icon {
-  font-size: 1.5rem;
-  color: #ea580c;
-}
-
-/* President Section */
-.president-section {
-  margin-bottom: 2rem;
-}
-
-.president-card {
-  background: linear-gradient(135deg, #fed7aa, #fef3c7);
-  border: 2px solid #fb923c;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-/* Subsection Styles */
-.subsection-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #374151;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #f3f4f6;
-}
-
-.vice-presidents-section,
-.general-secretaries-section {
-  margin-bottom: 2rem;
-}
-
-/* Department Styles */
-.department-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.department-section:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-}
-
-.department-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #374151;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-align: center;
-  justify-content: center;
-}
-
-.department-icon {
-  font-size: 1.25rem;
-}
-
-/* Member Grid */
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  justify-items: center;
-}
-
-/* Member Card */
+/* Member Card - Fixed dimensions and spacing */
 .member-card {
   background: #f9fafb;
   border: 1px solid #e5e7eb;
@@ -767,33 +380,55 @@
   padding: 1.5rem;
   text-align: center;
   transition: all 0.3s ease;
-  max-width: 220px;
   width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.member-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35, #D62424);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.member-card:hover::before {
+  transform: scaleX(1);
 }
 
 .member-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
 }
 
-/* Member Image */
+/* Member Image - Fixed gap */
 .member-image-container {
-  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .member-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 190px;
+  height: 230px;
+  border-radius: 0.75rem;
   object-fit: cover;
   border: 3px solid #e5e7eb;
   background: #f3f4f6;
   display: block;
   margin: 0 auto;
-}
-
-.member-image:hover {
-  border-color: #ea580c;
+  transition: border-color 0.3s ease;
 }
 
 /* Member Name */
@@ -802,10 +437,18 @@
   font-weight: 600;
   color: #374151;
   margin: 0;
-  line-height: 1.4;
+  display: grid;
+  place-items: center;
+  text-align: center;
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .member-card {
+    max-width: 250px;
+  }
+}
+
 @media (max-width: 1024px) {
   .intro-grid {
     grid-template-columns: 1fr;
@@ -847,27 +490,17 @@
     order: 1;
   }
 
+  .faculty-image-wrapper {
+    aspect-ratio: 4/5;
+    min-height: 250px;
+  }
+
   .faculty-text {
     order: 2;
   }
 }
 
 @media (max-width: 768px) {
-  .about-page {
-    padding-top: 0;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle5 {
-    font-size: 1.4rem;
-  }
-
-  .hero-description5 {
-    font-size: 1rem;
-  }
 
   .intro-text h2 {
     font-size: 2rem;
@@ -875,10 +508,6 @@
 
   .intro-lead {
     font-size: 1.1rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
   }
 
   .faculty-section-title {
@@ -893,12 +522,9 @@
     padding: 2rem;
   }
 
-  .faculty-image {
-    height: 250px;
-  }
-
-  .core-committee-container {
-    padding: 1rem 0.5rem;
+  .faculty-image-wrapper {
+    aspect-ratio: 4/5;
+    min-height: 220px;
   }
   
   .marathi-title {
@@ -909,28 +535,38 @@
     font-size: 1.5rem;
   }
   
-  .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .executive-board-section,
-  .department-leads-section {
-    padding: 1.5rem;
-  }
-  
-  .members-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-  }
-  
   .member-card {
-    padding: 1rem;
+    padding: 1.3rem;
     max-width: 200px;
+    min-height: 280px;
   }
   
   .member-image {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    max-width: 150px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .member-card {
+    max-width: 180px;
+    padding: 1rem;
+    min-height: 250px;
+  }
+  
+  .member-image {
+    max-width: 130px;
+    height: 140px;
+  }
+  
+  .member-name {
+    font-size: 1rem;
+  }
+
+  .faculty-image-wrapper {
+    aspect-ratio: 1/1;
+    min-height: 200px;
   }
 }
 
@@ -938,14 +574,6 @@
   .container,
   .container5 {
     padding: 0 15px;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle5 {
-    font-size: 1.2rem;
   }
 
   .timeline-item {
@@ -971,6 +599,11 @@
     padding: 1.5rem;
   }
 
+  .faculty-image-wrapper {
+    aspect-ratio: 1/1;
+    min-height: 180px;
+  }
+
   .faculty-name {
     font-size: 1.6rem;
   }
@@ -990,14 +623,283 @@
   .english-title {
     font-size: 1.25rem;
   }
-  
-  .members-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+  .member-card {
+    max-width: 200px;
+    padding: 1.2rem 0;
+    min-height: 260px;
   }
   
   .member-image {
-    width: 100px;
-    height: 100px;
+    max-width: 150px;
+    height: 130px;
+  }
+  
+  .member-name {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .member-card {
+    max-width: 180px;
+    padding: 1rem;
+    min-height: 240px;
+  }
+  
+  .member-image {
+    max-width: 110px;
+    height: 120px;
+  }
+  
+  .member-name {
+    font-size: 0.9rem;
+  }
+
+  .faculty-image-wrapper {
+    aspect-ratio: 1/1;
+    min-height: 160px;
+  }
+}
+
+
+
+
+
+
+
+
+/* Core Committee Section - Fixed and Improved */
+.core-committee-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #fff8f3, #fef7f0);
+  position: relative;
+}
+
+.core-committee-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.committee-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.header-section80 {
+  text-align: left;
+  margin-bottom: 4rem;
+}
+
+.committee-badge {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  border-left: 4px solid #FF6B35;
+}
+
+.committee-badge h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Section Styles */
+.executive-board-section,
+.department-leads-section {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border-top: 4px solid #FF6B35;
+  position: relative;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-top:0;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 0.75rem;
+}
+
+.section-icon {
+  font-size: 2rem;
+  color: #FF6B35;
+}
+
+/* President Section - Special Styling */
+.president-section {
+  margin-bottom: 3rem;
+}
+
+.president-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.president-card {
+  background: linear-gradient(135deg, #fff5f0, #fef3e7);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.2);
+  transform: scale(1.05);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+}
+
+/* Vice Presidents and General Secretaries */
+.vice-presidents-section,
+.general-secretaries-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f5f5f5;
+}
+
+.vice-presidents-section:last-child,.general-secretaries-section:last-child{
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Department Sections */
+.department-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f5f5f5;
+  position: relative;
+}
+
+.department-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.department-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.department-icon {
+  font-size: 1.5rem;
+  color: #FF6B35;
+}
+
+/* Grid System - Improved and Responsive */
+.members-grid {
+  display: grid;
+  gap: 9rem;
+  justify-items: center;
+  align-items: start;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Grid variations based on member count */
+.members-grid.single-member {
+  grid-template-columns: 1fr;
+  max-width: 280px;
+}
+
+.members-grid.two-members {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 600px;
+}
+
+.members-grid.three-members {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 975px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .member-card {
+    max-width: 230px;
+    min-height: 300px;
+  }
+  
+  .member-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .core-committee-section {
+    padding: 60px 0;
+  }
+  
+  .executive-board-section,
+  .department-leads-section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .committee-badge h3 {
+    font-size: 1.3rem;
+  }
+  
+  .members-grid.three-members{
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 500px;
+  }
+  
+  .member-card {
+    max-width: 220px;
+    min-height: 280px;
+    padding: 1.3rem;
+  }
+  
+  .member-image {
+    height: 180px;
   }
   
   .member-name {
@@ -1005,3 +907,103 @@
   }
 }
 
+@media (max-width: 600px) {
+  .core-committee-container {
+    padding: 0 15px;
+  }
+  
+  .executive-board-section,
+  .department-leads-section {
+    padding: 1.5rem;
+  }
+  
+  .members-grid.two-members,
+  .members-grid.three-members,
+  .members-grid.four-members {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 400px;
+    gap: 1.5rem;
+  }
+  
+  .member-card {
+    max-width: 180px;
+    min-height: 260px;
+    padding: 1rem;
+  }
+  
+  .member-image {
+    height: 160px;
+  }
+  
+  .member-name {
+    font-size: 0.95rem;
+  }
+  
+  .department-title {
+    font-size: 1.2rem;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .members-grid,
+  .members-grid.two-members,
+  .members-grid.three-members,
+  .members-grid.four-members {
+    grid-template-columns: 1fr;
+    max-width: 220px;
+    gap: 1.5rem;
+  }
+  
+  .member-card {
+    max-width: 200px;
+    min-height: 260px;
+    padding: 1.2rem;
+  }
+  
+  .member-image {
+    height: 180px;
+  }
+  
+  .member-name {
+    font-size: 1rem;
+  }
+  
+  .committee-badge {
+    padding: 1rem 1.5rem;
+  }
+  
+  .committee-badge h3 {
+    font-size: 1.2rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .department-title {
+    font-size: 1.1rem;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .member-card {
+    max-width: 180px;
+    min-height: 260px;
+  }
+  
+  .member-image {
+    height: 160px;
+  }
+  
+  .member-name {
+    font-size: 0.9rem;
+  }
+}

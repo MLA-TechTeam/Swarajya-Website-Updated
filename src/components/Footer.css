@@ -1,22 +1,26 @@
-/* Footer.css - Maharashtrian Club Footer Styles */
+/* Enhanced Footer.css - Maharashtrian Club Footer Styles */
 
 .footer {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: #fff;
   margin-top: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 2rem;
 }
 
 /* Main Footer Content */
 .footer-main {
-  padding: 60px 0 40px;
+  padding: 60px 0 15px;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
   position: relative;
+  width: 100%;
 }
 
 .footer-main::before {
@@ -31,21 +35,45 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 3rem;
-  margin-bottom: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 
 /* Footer Sections */
 .footer-section {
   display: flex;
   flex-direction: column;
+  animation: fadeInUp 0.6s ease-out;
+  padding: 0 1.5rem;
+  text-align: center;
+  align-items: center;
+  min-height: 300px;
+  justify-content: flex-start;
+}
+
+.footer-section:nth-child(1) { 
+  animation-delay: 0.1s; 
+  padding-left: 0;
+}
+
+.footer-section:nth-child(2) { 
+  animation-delay: 0.2s; 
+  border-left: 1px solid rgba(255, 107, 53, 0.2);
+  border-right: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.footer-section:nth-child(3) { 
+  animation-delay: 0.3s; 
+  padding-right: 0;
 }
 
 /* Footer Logo */
 .footer-logo {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 1.5rem;
 }
@@ -60,18 +88,18 @@
 .footer-logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .footer-logo-marathi {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #FF6B35;
   font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
 }
 
 .footer-logo-english {
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #ccc;
   font-weight: 500;
   text-transform: uppercase;
@@ -81,15 +109,19 @@
 .footer-description {
   color: #bbb;
   line-height: 1.6;
-  margin-bottom: 2rem;
-  font-size: 0.95rem;
+  margin-top: 0;
+  margin-bottom: 2.3rem;
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 300px;
 }
 
-/* Social Links */
+/* Enhanced Social Links */
 .social-links {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .social-link {
@@ -105,6 +137,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  color: #ccc;
 }
 
 .social-link::before {
@@ -126,16 +159,29 @@
   background: rgba(255, 107, 53, 0.2);
   border-color: #FF6B35;
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  color: var(--social-color, #FF6B35);
 }
 
-.social-icon {
-  font-size: 1.4rem;
-  transition: transform 0.3s ease;
+.social-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
 }
 
-.social-link:hover .social-icon {
-  transform: scale(1.1);
+.social-link:hover .social-tooltip {
+  opacity: 1;
 }
 
 /* Footer Titles */
@@ -146,14 +192,16 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+  text-align: center;
 }
 
 .footer-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
   height: 2px;
   background: linear-gradient(90deg, #FF6B35, #D62424);
   border-radius: 1px;
@@ -164,6 +212,9 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links li {
@@ -173,10 +224,11 @@
 .footer-link {
   color: #ccc;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   position: relative;
   padding-left: 0;
+  display: inline-block;
 }
 
 .footer-link::before {
@@ -205,28 +257,38 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  align-items: center;
+  width: 100%;
 }
 
 .contact-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  transition: transform 0.3s ease;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
 }
 
 .contact-icon {
-  font-size: 1.2rem;
+  color: #FF6B35;
   margin-top: 2px;
   flex-shrink: 0;
 }
 
 .contact-details {
   flex: 1;
+  text-align: left;
 }
 
 .contact-details p {
   margin: 0 0 0.3rem 0;
   color: #ccc;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   line-height: 1.4;
 }
 
@@ -235,12 +297,12 @@
   font-weight: 500;
 }
 
-
 /* Footer Bottom */
 .footer-bottom {
   background: #111;
-  padding: 25px 0;
+  padding: 5px 0;
   border-top: 1px solid rgba(255, 107, 53, 0.1);
+  width: 100%;
 }
 
 .footer-bottom-content {
@@ -249,6 +311,319 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  width: 100%;/* Enhanced Footer.css - Maharashtrian Club Footer Styles */
+
+.footer {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #fff;
+  margin-top: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 2rem;
+}
+
+/* Main Footer Content */
+.footer-main {
+  padding: 60px 0 40px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  position: relative;
+  width: 100%;
+}
+
+.footer-main::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FF6B35 0%, #D62424 50%, #FF6B35 100%);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+/* Footer Sections */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.6s ease-out;
+  padding: 0 1.5rem;
+  text-align: center;
+  align-items: center;
+  min-height: 300px;
+  justify-content: flex-start;
+}
+
+.footer-section:nth-child(1) { 
+  animation-delay: 0.1s; 
+  padding-left: 0;
+}
+
+.footer-section:nth-child(2) { 
+  animation-delay: 0.2s; 
+  border-left: 1px solid rgba(255, 107, 53, 0.2);
+  border-right: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.footer-section:nth-child(3) { 
+  animation-delay: 0.3s; 
+  padding-right: 0;
+}
+
+/* Footer Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.footer-logo-marathi {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #FF6B35;
+  font-family: 'Segoe UI', 'Noto Sans Devanagari', sans-serif;
+}
+
+.footer-logo-english {
+  font-size: 1.4rem;
+  color: #ccc;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-description {
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 300px;
+}
+
+/* Enhanced Social Links */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 107, 53, 0.1);
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  color: #ccc;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-link:hover::before {
+  left: 100%;
+}
+
+.social-link:hover {
+  background: rgba(255, 107, 53, 0.2);
+  border-color: #FF6B35;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  color: var(--social-color, #FF6B35);
+}
+
+.social-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.social-link:hover .social-tooltip {
+  opacity: 1;
+}
+
+/* Footer Titles */
+.footer-title {
+  color: #FF6B35;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF6B35, #D62424);
+  border-radius: 1px;
+}
+
+/* Footer Links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-link {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 0;
+  display: inline-block;
+}
+
+.footer-link::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background: #FF6B35;
+  transition: width 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #FF6B35;
+  padding-left: 15px;
+}
+
+.footer-link:hover::before {
+  width: 10px;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform 0.3s ease;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  color: #FF6B35;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.contact-details {
+  flex: 1;
+  text-align: left;
+}
+
+.contact-details p {
+  margin: 0 0 0.3rem 0;
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.contact-details p:first-child {
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  background: #111;
+  padding: 25px 0;
+  border-top: 1px solid rgba(255, 107, 53, 0.1);
+  width: 100%;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
 }
 
 .footer-copyright p {
@@ -257,104 +632,409 @@
   font-size: 0.9rem;
 }
 
+.footer-creators {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+}
+
 .footer-tagline {
   color: #FF6B35 !important;
   font-weight: 600;
   font-style: italic;
 }
 
-.footer-legal {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.legal-link {
-  color: #888;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
-}
-
-.legal-link:hover {
-  color: #FF6B35;
-}
-
-.separator {
-  color: #555;
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+  .footer-container {
+    padding: 0 1.5rem;
   }
-
-  .newsletter-content {
-    flex-direction: column;
-    text-align: center;
+  
+  .footer-section {
+    padding: 0 1rem;
   }
-
-  .newsletter-form {
-    justify-content: center;
+  
+  .footer-description {
+    font-size: 1rem;
+  }
+  
+  .footer-title {
+    font-size: 1.2rem;
+  }
+  
+  .footer-link {
+    font-size: 1rem;
+  }
+  
+  .contact-details p {
+    font-size: 1rem;
+  }
+  
+  .footer-copyright p {
+    font-size: 1rem;
+  }
+  
+  .footer-creators {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 768px) {
+  .footer-main {
+    padding: 40px 0 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-container {
+    padding: 0 1rem;
+  }
+
+  .footer-section {
+    padding: 0;
+    text-align: center;
+    border: none !important;
+    min-height: auto;
+  }
+
+  .footer-section:nth-child(2) {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    padding: 2rem 0;
+  }
+
+  .footer-bottom {
+    padding: 15px 0;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-copyright p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-creators {
+    font-size: 0.95rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 0 0.5rem;
+  }
+
+  .footer-logo-marathi {
+    font-size: 1.5rem;
+  }
+
+  .footer-logo-english {
+    font-size: 1.1rem;
+  }
+
+  .footer-title {
+    font-size: 1.1rem;
+  }
+
+  .footer-description {
+    font-size: 0.95rem;
+    max-width: 250px;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .contact-details {
+    text-align: center;
+  }
+
+  .contact-details p {
+    font-size: 0.95rem;
+  }
+
+  .social-links {
+    gap: 0.8rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-copyright p {
+    font-size: 0.85rem;
+  }
+
+  .footer-creators {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    padding: 10px 0;
+  }
+
+  .footer-bottom-content {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .footer-container {
+    padding: 0 0.25rem;
+  }
+  
+  .footer-logo-marathi {
+    font-size: 1.3rem;
+  }
+  
+  .footer-logo-english {
+    font-size: 1rem;
+  }
+  
+  .footer-description {
+    font-size: 0.9rem;
+    max-width: 200px;
+  }
+  
+  .footer-title {
+    font-size: 1rem;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.6rem;
+  }
+  
+  .footer-link {
+    font-size: 0.95rem;
+  }
+  
+  .contact-details p {
+    font-size: 0.9rem;
+  }
+  
+  .social-links {
+    gap: 0.6rem;
+  }
+  
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .footer-copyright p {
+    font-size: 0.8rem;
+  }
+  
+  .footer-creators {
+    font-size: 0.8rem;
+  }
+  
+  .footer-bottom {
+    padding: 8px 0;
+  }
+  
+  .footer-grid {
+    gap: 2rem;
+  }
+}
+
+/* Additional hover effects for better interactivity */
+.footer-section:hover .footer-title::after {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Accessibility improvements */
+.social-link:focus {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+}
+
+/* Ensure full width coverage */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.footer {
+  box-sizing: border-box;
+}
+
+.footer-container {
+  box-sizing: border-box;
+}
+
+.footer-section {
+  box-sizing: border-box;
+}
+}
+
+.footer-copyright p {
+  margin: 0 0 0.3rem 0;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.footer-creators {
+  font-size: 1.1rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.footer-tagline {
+  color: #FF6B35 !important;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-container {
+    padding: 0 1.5rem;
+  }
+  
+  .footer-section {
+    padding: 0 1rem;
+  }
+  
+  .footer-description {
+    font-size: 1rem;
+  }
+  
+  .footer-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .footer-copyright{
+    margin-top: 15px;;
+  }
+
   .footer-main {
     padding: 40px 0 30px;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
   }
 
   .footer-container {
-    padding: 0 15px;
+    padding: 0 1rem;
   }
 
-  .newsletter-section {
-    padding: 30px 0;
+  .footer-section {
+    padding: 0;
+    text-align: center;
+    border: none !important;
+    min-height: auto;
   }
 
-  .newsletter-form {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .newsletter-input {
-    min-width: 100%;
+  .footer-section:nth-child(2) {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+    padding: 2rem 0;
   }
 
   .footer-bottom-content {
     flex-direction: column;
     text-align: center;
-    gap: 1.5rem;
   }
 
   .social-links {
     justify-content: center;
   }
+
+  .contact-item {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {
+  .footer-container {
+    padding: 0 0.5rem;
+  }
+
   .footer-logo-marathi {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .footer-logo-english {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 
   .footer-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .footer-description {
+    font-size: 0.95rem;
+    max-width: 250px;
   }
 
   .contact-item {
     flex-direction: column;
     gap: 8px;
+    align-items: center;
+  }
+
+  .contact-details {
+    text-align: center;
   }
 
   .social-links {
@@ -367,30 +1047,67 @@
   }
 }
 
-/* Scroll to top animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@media (max-width: 320px) {
+  .footer-container {
+    padding: 0 0.25rem;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .footer-logo-marathi {
+    font-size: 1.3rem;
   }
+  
+  .footer-logo-english {
+    font-size: 1rem;
+  }
+  
+  .footer-description {
+    font-size: 0.9rem;
+    max-width: 200px;
+  }
+  
+  .social-links {
+    gap: 0.6rem;
+  }
+  
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Additional hover effects for better interactivity */
+.footer-section:hover .footer-title::after {
+  width: 60px;
+  transition: width 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+/* Accessibility improvements */
+.social-link:focus {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+}
+
+/* Ensure full width coverage */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.footer {
+  box-sizing: border-box;
+}
+
+.footer-container {
+  box-sizing: border-box;
 }
 
 .footer-section {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.footer-section:nth-child(2) {
-  animation-delay: 0.1s;
-}
-
-.footer-section:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.footer-section:nth-child(4) {
-  animation-delay: 0.3s;
+  box-sizing: border-box;
 }
