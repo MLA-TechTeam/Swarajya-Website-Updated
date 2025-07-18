@@ -23,7 +23,7 @@ export default function Home() {
   };
 
     const handleScroll = () => {
-    const featuresSection = document.querySelector('.features-section');
+    const featuresSection = document.querySelector('.mvv-section');
     if (featuresSection) {
       featuresSection.scrollIntoView({ 
         behavior: 'smooth',
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="hero-overlay">
           <div className="hero-content">
             <h1 className="hero-title">
-              स्वराज्य
+              ƂВvarajyaƓ
             </h1>
                       <div className="scroll-indicator" onClick={handleScroll} role="button" tabIndex={0}>
             <ChevronDown className="chevron-down" size={40} />

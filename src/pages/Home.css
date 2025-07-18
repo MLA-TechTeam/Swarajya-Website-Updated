@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
 
+@font-face {
+  font-family: 'Infinity';
+  src: url('../../public/Infinity-05.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .home-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -68,9 +76,10 @@
 }
 
 .hero-title {
-  font-family: 'Yatra One', 'Noto Sans Devanagari', sans-serif;
+  /* font-family: 'Yatra One', 'Infinity', 'Noto Sans Devanagari', sans-serif; */
+  font-family: 'Infinity', 'Yatra One', 'Noto Sans Devanagari', sans-serif;
   font-size: 150px;
-  font-weight: 700;
+  /* font-weight: 700; */
   color: #ffffff;
   margin: 0 0 8px 0;
   text-decoration: border solid red;
@@ -568,7 +577,7 @@
 .award-image {
   width: 100%;
   height: auto; /* Maintains aspect ratio */
-  min-height: 200px; /* Minimum height */
+  min-height: 250px; /* Minimum height */
   max-height: 400px; /* Maximum height to prevent overly tall images */
   object-fit: cover;
   object-position: center;

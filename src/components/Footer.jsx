@@ -88,7 +88,7 @@ export default function Footer() {
                   <Phone size={18} className="contact-icon" />
                   <div className="contact-details">
                     <p>+91 83065 78488</p>
-                    <p>+91 93034 38835</p>
+                    <p>+91 93094 38835</p>
                   </div>
                 </div>
                 <div className="contact-item">

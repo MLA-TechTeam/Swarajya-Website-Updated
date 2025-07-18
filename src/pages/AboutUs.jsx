@@ -10,7 +10,7 @@ import shivam from '../data/leads-images/shivam.jpg';
 import meghraj from '../data/leads-images/meghraj.jpg';
 
 import vedant from '../data/leads-images/vedant.png';
-import rajat from '../data/leads-images/rajat.jpg';
+import rajat from '../data/leads-images/rajat1.png';
 
 import sakhi from '../data/leads-images/sakhi.png';
 import sanskruti from '../data/leads-images/sanskruti.jpg';
@@ -371,7 +371,7 @@ export default function AboutUs() {
                     <div className="member-image-container">
                       <img src={sarang} alt="Sarang Ingavle" className="member-image" />
                     </div>
-                    <h5 className="member-name">Sarang Ingavle</h5>
+                    <h5 className="member-name">Sarang Ingavale</h5>
                   </div>
                 </div>
               </div>
@@ -396,9 +396,9 @@ export default function AboutUs() {
                   </div>
                   <div className="member-card">
                     <div className="member-image-container">
-                      <img src={nikhil} alt="Nikhil Parker" className="member-image" />
+                      <img src={nikhil} alt="Nikhil Parkar" className="member-image" />
                     </div>
-                    <h5 className="member-name">Nikhil Parker</h5>
+                    <h5 className="member-name">Nikhil Parkar</h5>
                   </div>
                 </div>
               </div>
