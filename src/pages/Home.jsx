@@ -94,8 +94,8 @@ export default function Home() {
               <p>Bringing stories to life. From posters and creatives to scripts and poetry – this team crafts the visual and verbal identity of Swarajya. Every color, every word, every detail reflects our cultural pride.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Handshake">📸</div>
-              <h3>Social Media & Photography</h3>
+              <div className="feature-icon" role="img" aria-label="Handshake">🌐</div>
+              <h3>Social Media & Outreach</h3>
               <p>Capturing moments, connecting people. This team handles all our social platforms, ensuring the energy of each event reaches every follower. From stunning event photos to interactive reels – they keep Swarajya alive online.</p>
             </div>
             <div className="feature-card">

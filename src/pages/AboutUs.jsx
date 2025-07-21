@@ -283,7 +283,7 @@ export default function AboutUs() {
               {/* Social Media and Photography */}
               <div className="department-section">
                 <h4 className="department-title">
-                  <span className="department-icon">📸</span> Social Media & Photography
+                  <span className="department-icon">🌐</span> Social Media & Outreach
                 </h4>
                 <div className="members-grid two-members">
                   <div className="member-card">
