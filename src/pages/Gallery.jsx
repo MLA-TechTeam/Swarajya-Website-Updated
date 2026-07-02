@@ -69,6 +69,7 @@ export default function Gallery() {
     };
 
     loadAllImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filteredItems = selectedCategory === 'all' 
