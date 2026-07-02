@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaTwitter, FaYoutube, FaWhatsapp, FaLinkedin, FaFacebookF} from 'react-icons/fa';
+import { FaInstagram, FaYoutube, FaWhatsapp, FaLinkedin, FaFacebookF} from 'react-icons/fa';
 import { MapPin, Phone, Mail} from 'lucide-react';
 import './Footer.css';
 import logo from '../assets/logo.png';
