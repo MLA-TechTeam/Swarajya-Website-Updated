@@ -108,6 +108,7 @@ export default function Gallery() {
   useEffect(() => {
     document.addEventListener('keydown', handleKeyPress);
     return () => document.removeEventListener('keydown', handleKeyPress);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lightboxImage, currentImageIndex]);
 
   if (isLoading) {
