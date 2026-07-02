@@ -89,39 +89,34 @@ export default function Home() {
           <h2 className="section-title3">Departments That Drive The Vision</h2>
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Performing Arts">🎨</div>
-              <h3>Design & Content</h3>
+              <div className="feature-icon" role="img" aria-label="Palette">🎨</div>
+              <h3>Design And Content</h3>
               <p>Bringing stories to life. From posters and creatives to scripts and poetry, this team crafts the visual and verbal identity of Swarajya. Every color, every word, every detail reflects our cultural pride.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Handshake">🌐</div>
+              <div className="feature-icon" role="img" aria-label="Globe">🌐</div>
               <h3>Social Media & Photography</h3>
               <p>Capturing moments, connecting people. This team handles all our social platforms, ensuring the energy of each event reaches every follower. From stunning event photos to interactive reels, they keep Swarajya alive online.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Artist Palette">💻</div>
+              <div className="feature-icon" role="img" aria-label="Laptop">💻</div>
               <h3>Technical</h3>
               <p>Powering the digital backbone. Behind every seamless registration form, event live stream, or website feature is our Technical Team. They bring innovation, efficiency, and functionality to the club’s operations.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Curry Rice">🎭</div>
-              <h3>Culture</h3>
+              <div className="feature-icon" role="img" aria-label="Theater">🎭</div>
+              <h3>Cultural</h3>
               <p>Preserving tradition, inspiring performance. This team curates and leads all cultural events, be it dance, drama, or traditional ceremonies keeping the rich essence of Marathi heritage alive at VIT Chennai.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Curry Rice">⚙️</div>
+              <div className="feature-icon" role="img" aria-label="Gear">⚙️</div>
               <h3>Operations</h3>
               <p>Managing chaos with calm. From logistics to execution, this team ensures every Swarajya event runs like clockwork. They’re the behind-the-scenes heroes who turn plans into action.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Curry Rice">🥁</div>
-              <h3>Finance</h3>
-              <p>Balancing creativity with clarity, this team ensures Swarajya’s ideas turn into impactful realities. From budgeting and resource planning to sponsorships and strategic allocations. With transparency and responsibility at its core, they safeguard the club’s growth, making sure every rupee is invested with purpose and every initiative thrives with confidence.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Curry Rice">🥁</div>
-              <h3>Pathak and Lezim</h3>
-              <p>Beats that unite, steps that celebrate. This vibrant team brings high energy to every celebration. With dhol, tashas, and lezim performances, they make every Swarajya event unforgettable and full of spirit.</p>
+              <div className="feature-icon" role="img" aria-label="Money Bag">💰</div>
+              <h3>Finance And Outreach</h3>
+              <p>Balancing creativity with clarity, this team ensures Swarajya’s ideas turn into impactful realities. From budgeting and resource planning to sponsorships, strategic partnerships, and outreach. With transparency, responsibility, and strong connections at its core, they expand the club's reach and safeguard its growth, making sure every initiative thrives with confidence.</p>
             </div>
           </div>
         </div>

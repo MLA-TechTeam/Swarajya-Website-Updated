@@ -46,6 +46,8 @@ export default function Header() {
         return 'gallery-page';
       case '/blogs':
         return 'blog-page';
+      case '/magazine':
+        return 'magazine-page';
       default:
         return 'home-page';
     }
@@ -116,6 +118,16 @@ export default function Header() {
                 onClick={handleNavLinkClick}
               >
                 Blog
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink 
+                to="/magazine" 
+                className="nav-link" 
+                activeClassName="active"
+                onClick={handleNavLinkClick}
+              >
+                Magazine
               </NavLink>
             </li>
           </ul>

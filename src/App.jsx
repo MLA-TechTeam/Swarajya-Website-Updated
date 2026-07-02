@@ -14,6 +14,7 @@ const AboutUs = lazy(() => import('./pages/AboutUs'));
 const Events = lazy(() => import('./pages/Events'));
 const Blogs = lazy(() => import('./pages/Blogs'));
 const Gallery = lazy(() => import('./pages/Gallery'));
+const Magazine = lazy(() => import('./pages/Magazine'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/blogs/:id" element={<BlogPost posts={blogPosts} />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/magazine" element={<Magazine />} />
           </Routes>
         </Suspense>
       </main>

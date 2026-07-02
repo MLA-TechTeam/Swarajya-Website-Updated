@@ -68,12 +68,12 @@ const Events = () => {
   ];
 
   const ganapatiEvent = {
-    id: 'ganapati-2025',
-    title: "Ganpati Chaturthi 2025",
+    id: 'ganapati-2026',
+    title: "Ganpati Chaturthi 2026",
     shortDescription: "Grand celebration of Lord Ganesha with rituals and cultural programs.",
     fullDescription: "Join us for the grand celebration of Lord Ganesha...",
-    date: "2025-08-27",
-    time: "17:00",
+    date: "2026-09-14",
+    time: "10:00",
     location: "VIT Chennai",
     image: ganapati,
     category: "Festival",
@@ -96,7 +96,7 @@ const Events = () => {
 
   useEffect(() => {
     const calculateCountdown = () => {
-      const eventDate = new Date(`${ganapatiEvent.date}T${ganapatiEvent.time}:00`);
+      const eventDate = new Date(`${ganapatiEvent.date}T${ganapatiEvent.time}:00+05:30`);
       const now = new Date();
       const difference = eventDate - now;
 
