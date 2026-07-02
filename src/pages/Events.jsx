@@ -160,12 +160,12 @@ const Events = () => {
     };
   }, [showModal]);
 
-  const handleEventClick = (event) => {
+  /*const handleEventClick = (event) => {
     if (isModalTransitioning) return; // Prevent multiple clicks during transition
     
     setSelectedEvent(event);
     setShowModal(true);
-  };
+  };*/
 
   const closeModal = () => {
     if (isModalTransitioning) return; // Prevent multiple clicks during transition
