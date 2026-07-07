@@ -70,6 +70,7 @@ export default function Footer() {
                 <li><Link to="/events" className="footer-link" onClick={scrollToTop}>Events</Link></li>
                 <li><Link to="/gallery" className="footer-link" onClick={scrollToTop}>Gallery</Link></li>
                 <li><Link to="/blogs" className="footer-link" onClick={scrollToTop}>Blogs</Link></li>
+                <li><Link to="/magazine" className="footer-link" onClick={scrollToTop}>Magazine</Link></li>
               </ul>
             </div>
 

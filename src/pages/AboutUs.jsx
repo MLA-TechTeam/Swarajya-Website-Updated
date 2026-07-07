@@ -30,6 +30,7 @@ import om_d_26 from '../data/leads-images/2026-27/om_d.png';
 import vanshita_26 from '../data/leads-images/2026-27/vanshita.png';
 import sharvari_26 from '../data/leads-images/2026-27/sharvari.png';
 import om_j_26 from '../data/leads-images/2026-27/om_j.png';
+import riddhi_26 from '../data/leads-images/2026-27/riddhi.png';
 import mrun_26 from '../data/leads-images/2026-27/mrun.png';
 import naman_26 from '../data/leads-images/2026-27/naman.png';
 import ankana_26 from '../data/leads-images/2026-27/ankana.png';
@@ -43,7 +44,7 @@ import pranav_26 from '../data/leads-images/2026-27/pranav.png';
 
 
 export default function AboutUs() {
-  const [activeDropdown, setActiveDropdown] = useState('2025-26');
+  const [activeDropdown, setActiveDropdown] = useState('2026-27');
 
   const ProfilePlaceholder = () => (
     <div className="placeholder-avatar-container">
@@ -505,7 +506,7 @@ export default function AboutUs() {
                     </div>
                     <div className="member-card">
                       <div className="member-image-container">
-                        <ProfilePlaceholder />
+                        <img src={riddhi_26} alt="Riddhi Marathe" className="member-image" />
                       </div>
                       <h5 className="member-name">Riddhi Marathe</h5>
                     </div>
