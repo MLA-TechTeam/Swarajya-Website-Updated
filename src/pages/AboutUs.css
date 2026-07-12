@@ -207,6 +207,19 @@
   margin: 0;
 }
 
+.timeline-link {
+  color: #FF6B35;
+  text-decoration: underline;
+  text-decoration-color: #FF6B35;
+  font-weight: 600;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.timeline-link:hover {
+  color: #D62424;
+  text-decoration-color: #D62424;
+}
+
 /* Faculty Coordinators Section */
 .faculty-coordinators-section {
   padding: 50px 0;
@@ -379,7 +392,6 @@
   border-radius: 0.75rem;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
   width: 100%;
   max-width: 280px;
   margin: 0 auto;
@@ -390,6 +402,19 @@
   justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
+
+  /* Scroll-driven entrance states (slides from left to center) */
+  opacity: 0;
+  transform: translateX(-100px) scale(0.95);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s ease;
+}
+
+.member-card.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
 }
 
 .member-card::before {
@@ -408,9 +433,10 @@
   transform: scaleX(1);
 }
 
-.member-card:hover {
+.member-card.in-view:hover {
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-  transform: translateY(-3px);
+  transform: translateY(-5px) scale(1.02);
+  transition-delay: 0s !important;
 }
 
 /* Member Image - Fixed gap */
@@ -835,6 +861,16 @@
 .section-icon {
   font-size: 2rem;
   color: #FF6B35;
+  display: flex;
+  align-items: center;
+}
+
+.section-title-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 /* President Section - Special Styling */
@@ -904,6 +940,14 @@
 .department-icon {
   font-size: 1.5rem;
   color: #FF6B35;
+}
+
+.dept-emoticon-about {
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 /* Grid System - Improved and Responsive */
@@ -1364,3 +1408,7 @@
     height: 18px;
   }
 }
+/* Staggered delay for list items to slide in sequentially */
+.members-grid .member-card:nth-child(1) { transition-delay: 0.05s; }
+.members-grid .member-card:nth-child(2) { transition-delay: 0.15s; }
+.members-grid .member-card:nth-child(3) { transition-delay: 0.25s; }

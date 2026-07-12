@@ -24,7 +24,7 @@
   margin-bottom: 40px;
   margin-top: 15vh;
   color: #2c3e50;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #FF6B35 0%, #D62424 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -76,7 +76,7 @@
 
 .flagship-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  background: linear-gradient(135deg, #FF6B35, #D62424);
   color: white;
   padding: 8px 20px;
   border-radius: 25px;

@@ -24,14 +24,14 @@
 
 .loading-spinner {
   text-align: center;
-  color: #ff9933;
+  color: #FF6B35;
 }
 
 .spinner {
   width: 50px;
   height: 50px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #ff9933;
+  border-top: 4px solid #FF6B35;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 20px;
@@ -103,15 +103,15 @@
 }
 
 .filter-tab:hover {
-  border-color: #ff9933;
-  color: #ff9933;
+  border-color: #FF6B35;
+  color: #FF6B35;
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(255, 153, 51, 0.2);
 }
 
 .filter-tab.active {
-  background: linear-gradient(135deg, #ff9933, #ff6600);
-  border-color: #ff6600;
+  background: linear-gradient(135deg, #FF6B35, #D62424);
+  border-color: #D62424;
   color: white;
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(255, 153, 51, 0.35);
@@ -119,6 +119,14 @@
 
 .tab-icon {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
+  display: flex;
+  align-items: center;
+}
+
+.gallery-emoticon {
+  width: clamp(1.2rem, 3vw, 1.5rem);
+  height: clamp(1.2rem, 3vw, 1.5rem);
+  object-fit: contain;
 }
 
 .tab-name {
@@ -436,7 +444,7 @@
 
 .category-tag1 {
   display: inline-block;
-  background: #ff9933;
+  background: #FF6B35;
   color: white;
   padding: 8px 16px;
   border-radius: 20px;
@@ -868,7 +876,7 @@
 .view-button:focus,
 .lightbox-close:focus,
 .lightbox-nav:focus {
-  outline: 2px solid #ff9933;
+  outline: 2px solid #FF6B35;
   outline-offset: 2px;
 }
 
@@ -904,12 +912,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ff9933;
+  background: #FF6B35;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff6600;
+  background: #D62424;
 }
 
 /* Print styles */

@@ -176,7 +176,7 @@
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: #333;
+  background: #FF6B35;
   transition: width 0.3s ease;
 }
 
@@ -185,11 +185,11 @@
 }
 
 .nav-link:hover {
-  color: #333;
+  color: #FF6B35;
 }
 
 .nav-link.active {
-  color: #333;
+  color: #FF6B35;
   font-weight: 700;
 }
 
@@ -206,12 +206,19 @@
   color: white;
 }
 
-.header.home-page .nav-link:hover, .header.about-page .nav-link:hover, .header.blog-page .nav-link:hover {
-  color: white;
+.header.home-page .nav-link:hover, 
+.header.about-page .nav-link:hover, 
+.header.blog-page .nav-link:hover,
+.header.home-page .nav-link.active, 
+.header.about-page .nav-link.active, 
+.header.blog-page .nav-link.active {
+  color: #FF6B35;
 }
 
-.header.home-page .nav-link::after,.header.blog-page .nav-link::after,.header.about-page .nav-link::after {
-  background: white;
+.header.home-page .nav-link::after,
+.header.blog-page .nav-link::after,
+.header.about-page .nav-link::after {
+  background: #FF6B35;
 }
 
 .header.home-page .nav-menu {

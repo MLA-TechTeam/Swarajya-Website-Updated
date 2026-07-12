@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Gallery.css';
+import allImagesIcon from '../data/gallery section emoticons/all images.png';
+import festivalsIcon from '../data/gallery section emoticons/festivals.png';
+import culturalEventsIcon from '../data/dept logo emoticons/culture.png';
+import workshopsIcon from '../data/gallery section emoticons/workshop.png';
+import foodCultureIcon from '../data/gallery section emoticons/food culture.png';
 
 export default function Gallery() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -10,11 +15,11 @@ export default function Gallery() {
 
   // Category configuration - FIXED: Updated IDs to match processed folder names
   const categories = [
-    { id: 'all', name: 'All Photos', icon: '🖼️', folder: null },
-    { id: 'festivals', name: 'Festivals', icon: '🎊', folder: 'festivals' },
-    { id: 'culturalevents', name: 'Cultural Events', icon: '🎭', folder: 'cultural events' }, // Fixed ID
-    { id: 'workshops', name: 'Workshops', icon: '🎨', folder: 'workshops' },
-    { id: 'foodculture', name: 'Food Culture', icon: '🍛', folder: 'food culture' } // Fixed ID
+    { id: 'all', name: 'All Photos', icon: allImagesIcon, folder: null },
+    { id: 'festivals', name: 'Festivals', icon: festivalsIcon, folder: 'festivals' },
+    { id: 'culturalevents', name: 'Cultural Events', icon: culturalEventsIcon, folder: 'cultural events' },
+    { id: 'workshops', name: 'Workshops', icon: workshopsIcon, folder: 'workshops' },
+    { id: 'foodculture', name: 'Food Culture', icon: foodCultureIcon, folder: 'food culture' }
   ];
 
   // Function to dynamically import images from folders (Create React App - Webpack)
@@ -143,7 +148,7 @@ export default function Gallery() {
                 className={`filter-tab ${selectedCategory === category.id ? 'active' : ''}`}
                 onClick={() => setSelectedCategory(category.id)}
               >
-                <span className="tab-icon">{category.icon}</span>
+                <span className="tab-icon"><img src={category.icon} alt={category.name} className="gallery-emoticon" /></span>
                 <span className="tab-name">{category.name}</span>
                 <span className="tab-count">
                   ({category.id === 'all' ? galleryItems.length : galleryItems.filter(item => item.category === category.id).length})

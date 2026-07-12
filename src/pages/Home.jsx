@@ -8,6 +8,13 @@ import { VscMute } from "react-icons/vsc";
 import {ChevronDown } from "lucide-react";
 
 import certificate from '../assets/certificate.jpg';
+import designIcon from '../data/dept logo emoticons/design.png';
+import socialMediaIcon from '../data/dept logo emoticons/social-media.png';
+import technicalIcon from '../data/dept logo emoticons/technical.png';
+import culturalIcon from '../data/dept logo emoticons/culture.png';
+import operationsIcon from '../data/dept logo emoticons/operations.png';
+import financeIcon from '../data/dept logo emoticons/finance.png';
+import literatureIcon from '../data/extra/literature.png';
 
 export default function Home() {
   // const upcomingEvents = getUpcomingEvents().slice(0, 2);
@@ -89,32 +96,32 @@ export default function Home() {
           <h2 className="section-title3">Departments That Drive The Vision</h2>
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Palette">🎨</div>
+              <div className="feature-icon"><img src={designIcon} alt="Design" className="dept-emoticon" /></div>
               <h3>Design And Content</h3>
               <p>Bringing stories to life. From posters and creatives to scripts and poetry, this team crafts the visual and verbal identity of Swarajya. Every color, every word, every detail reflects our cultural pride.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Globe">🌐</div>
+              <div className="feature-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon" /></div>
               <h3>Social Media & Photography</h3>
               <p>Capturing moments, connecting people. This team handles all our social platforms, ensuring the energy of each event reaches every follower. From stunning event photos to interactive reels, they keep Swarajya alive online.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Laptop">💻</div>
+              <div className="feature-icon"><img src={technicalIcon} alt="Technical" className="dept-emoticon" /></div>
               <h3>Technical</h3>
               <p>Powering the digital backbone. Behind every seamless registration form, event live stream, or website feature is our Technical Team. They bring innovation, efficiency, and functionality to the club’s operations.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Theater">🎭</div>
+              <div className="feature-icon"><img src={culturalIcon} alt="Cultural" className="dept-emoticon" /></div>
               <h3>Cultural</h3>
               <p>Preserving tradition, inspiring performance. This team curates and leads all cultural events, be it dance, drama, or traditional ceremonies keeping the rich essence of Marathi heritage alive at VIT Chennai.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Gear">⚙️</div>
+              <div className="feature-icon"><img src={operationsIcon} alt="Operations" className="dept-emoticon" /></div>
               <h3>Operations</h3>
               <p>Managing chaos with calm. From logistics to execution, this team ensures every Swarajya event runs like clockwork. They’re the behind-the-scenes heroes who turn plans into action.</p>
             </div>
             <div className="feature-card">
-              <div className="feature-icon" role="img" aria-label="Money Bag">💰</div>
+              <div className="feature-icon"><img src={financeIcon} alt="Finance" className="dept-emoticon" /></div>
               <h3>Finance And Outreach</h3>
               <p>Balancing creativity with clarity, this team ensures Swarajya’s ideas turn into impactful realities. From budgeting and resource planning to sponsorships, strategic partnerships, and outreach. With transparency, responsibility, and strong connections at its core, they expand the club's reach and safeguard its growth, making sure every initiative thrives with confidence.</p>
             </div>
@@ -124,7 +131,7 @@ export default function Home() {
 
       <section className="mvv-section-last">
         <div className="container5">
-          <h2 className="section-title3">Marathi Literature</h2>
+          <h2 className="section-title3"><img src={literatureIcon} alt="Literature" className="literature-emoticon" /> Marathi Literature</h2>
           <div className="mvv-grid">
             <div className="mvv-card mission-card">
               <p>
