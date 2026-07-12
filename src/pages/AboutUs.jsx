@@ -434,7 +434,7 @@ export default function AboutUs() {
                     <div className="member-image-container">
                       <img src={sai_26} alt="Sai Kadam" className="member-image" />
                     </div>
-                    <h5 className="member-name">Sai Kadam</h5>
+                    <h5 className="member-name">Sairaj Kadam</h5>
                   </div>
                   <div className="member-card">
                     <div className="member-image-container">
