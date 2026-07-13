@@ -10,6 +10,8 @@ import operationsIcon from '../data/dept logo emoticons/operations.png';
 import financeIcon from '../data/dept logo emoticons/finance.png';
 import executiveIcon from '../data/extra/executive.png';
 import departmentIcon from '../data/extra/department.png';
+import committee25_26Icon from '../data/extra/25-26.png';
+import committee26_27Icon from '../data/extra/26-27.png';
 
 import ganesh from '../data/leads-images/2025-26/ganesh.jpg'
 import sanjit from '../data/leads-images/2025-26/sanjit.jpg'
@@ -244,7 +246,7 @@ export default function AboutUs() {
                   className={`committee-dropdown-btn ${activeDropdown === '2025-26' ? 'active' : ''}`}
                   onClick={() => setActiveDropdown(activeDropdown === '2025-26' ? null : '2025-26')}
                 >
-                  <span className="btn-icon">📅</span>
+                  <span className="btn-icon"><img src={committee25_26Icon} alt="2025-26" className="btn-icon-img" /></span>
                   <span className="btn-text">Core Committee 2025-26</span>
                   <span className="btn-arrow">{activeDropdown === '2025-26' ? '▲' : '▼'}</span>
                 </button>
@@ -255,7 +257,7 @@ export default function AboutUs() {
                   className={`committee-dropdown-btn ${activeDropdown === '2026-27' ? 'active' : ''}`}
                   onClick={() => setActiveDropdown(activeDropdown === '2026-27' ? null : '2026-27')}
                 >
-                  <span className="btn-icon">📅</span>
+                  <span className="btn-icon"><img src={committee26_27Icon} alt="2026-27" className="btn-icon-img" /></span>
                   <span className="btn-text">Core Committee 2026-27</span>
                   <span className="btn-arrow">{activeDropdown === '2026-27' ? '▲' : '▼'}</span>
                 </button>

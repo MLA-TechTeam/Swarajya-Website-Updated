@@ -755,6 +755,18 @@
   transition: transform 0.3s ease;
 }
 
+.committee-dropdown-btn .btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.committee-dropdown-btn .btn-icon-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
 /* Animations */
 .slide-down {
   animation: slideDownFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
