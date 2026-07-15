@@ -391,9 +391,9 @@
 }
 
 .btn-mute-toggle {
-  position: fixed !important;
-  top: 2rem !important;
-  right: 2rem !important;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
   z-index: 9999;
   width: 45px;
   height: 40px;
@@ -407,7 +407,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .btn-mute-toggle:hover {
