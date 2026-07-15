@@ -19,7 +19,7 @@ export default function Footer() {
     { icon: FaInstagram, href: "https://instagram.com/swarajya_vitc?igshid=MmJiY2I4NDBkZg==", label: "Instagram", color: "#E4405F" },
     // { icon: FaTwitter, href: "https://twitter.com/swarajya_vitc", label: "Twitter", color: "#1DA1F2" },
     { icon: FaYoutube, href: "https://www.youtube.com/@Swarajyamla_vitc", label: "YouTube", color: "#FF0000" },
-     {icon: FaWhatsapp,href: "https://chat.whatsapp.com/HNsHA2gmXlCFhIF76gKKQT",label: "WhatsApp",color: "#25D366"  },
+     {icon: FaWhatsapp,href: "https://chat.whatsapp.com/JHFS77ESaFLLWokYFHucld",label: "WhatsApp",color: "#25D366"  },
     { icon: FaLinkedin, href: "https://www.linkedin.com/company/swarajya-vit-chennai/", label: "LinkedIn", color: "#0077B5" },
     { icon: FaFacebookF, href: "https://www.facebook.com/profile.php?id=100092189738798", label: "Facebook", color: "#1877F2" },
   ];
