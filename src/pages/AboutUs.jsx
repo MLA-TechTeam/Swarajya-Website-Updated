@@ -467,48 +467,30 @@ export default function AboutUs() {
                   <span className="section-icon"><img src={executiveIcon} alt="Executive Board" className="section-title-icon" /></span> Executive Board
                 </h3>
                 
-                {/* President */}
-                <div className="vice-presidents-section">
-                  <h4 className="department-title">President</h4>
-                  <div className="members-grid single-member">
-                    <div className="member-card">
-                      <div className="member-image-container">
-                        <img loading="lazy" src={sai_26} alt="Sai Kadam" className="member-image" />
-                      </div>
-                      <h5 className="member-name">Sai Kadam</h5>
+                <div className="members-grid four-members">
+                  <div className="member-card">
+                    <div className="member-image-container">
+                      <img loading="lazy" src={sai_26} alt="Sai Kadam" className="member-image" />
                     </div>
+                    <h5 className="member-name">Sai Kadam</h5>
                   </div>
-                </div>
-
-                {/* Vice President */}
-                <div className="vice-presidents-section">
-                  <h4 className="department-title">Vice President</h4>
-                  <div className="members-grid single-member">
-                    <div className="member-card">
-                      <div className="member-image-container">
-                        <img loading="lazy" src={sharanya_26} alt="Sharanya Ahire" className="member-image" />
-                      </div>
-                      <h5 className="member-name">Sharanya Ahire</h5>
+                  <div className="member-card">
+                    <div className="member-image-container">
+                      <img loading="lazy" src={sharanya_26} alt="Sharanya Ahire" className="member-image" />
                     </div>
+                    <h5 className="member-name">Sharanya Ahire</h5>
                   </div>
-                </div>
-
-                {/* General Secretaries */}
-                <div className="general-secretaries-section">
-                  <h4 className="department-title">General Secretaries</h4>
-                  <div className="members-grid two-members">
-                    <div className="member-card">
-                      <div className="member-image-container">
-                        <img loading="lazy" src={rashi_26} alt="Rashi Palod" className="member-image" />
-                      </div>
-                      <h5 className="member-name">Rashi Palod</h5>
+                  <div className="member-card">
+                    <div className="member-image-container">
+                      <img loading="lazy" src={rashi_26} alt="Rashi Palod" className="member-image" />
                     </div>
-                    <div className="member-card">
-                      <div className="member-image-container">
-                        <img loading="lazy" src={om_d_26} alt="Om Deshmukh" className="member-image" />
-                      </div>
-                      <h5 className="member-name">Om Deshmukh</h5>
+                    <h5 className="member-name">Rashi Palod</h5>
+                  </div>
+                  <div className="member-card">
+                    <div className="member-image-container">
+                      <img loading="lazy" src={om_d_26} alt="Om Deshmukh" className="member-image" />
                     </div>
+                    <h5 className="member-name">Om Deshmukh</h5>
                   </div>
                 </div>
               </div>
