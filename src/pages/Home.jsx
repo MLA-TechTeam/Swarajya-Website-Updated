@@ -81,9 +81,9 @@ export default function Home() {
           <div className="mvv-grid">
             <div className="mvv-card mission-card">
               <p>
-                "सेवेचे ठायी तत्पर" (Always Ready for Service) is more than just a phrase, it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries. 
+                "सेवेचे ठाई तत्पर" (Always Ready for Service) is more than just a phrase, it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries. 
                 Historically, these very words were engraved by Hiroji Indulkar, the chief architect of Raigad Fort, who devoted himself wholeheartedly to the service of Swarajya and Chhatrapati Shivaji Maharaj. When asked to choose a reward for his efforts, he humbly requested to inscribe his name along with this phrase on the steps of the Jagadishwar Temple, declaring his eternal commitment to service.
-                Inspired by this legacy and blessed by Ganpati Bappa, we carry forward the spirit of "सेवेचे ठायी तत्पर" in all that we do - striving to serve, protect, and promote Marathi literature, culture, and community with pride and purpose.
+                Inspired by this legacy and blessed by Ganpati Bappa, we carry forward the spirit of "सेवेचे ठाई तत्पर" in all that we do - striving to serve, protect, and promote Marathi literature, culture, and community with pride and purpose.
               </p>
             </div>
           </div>
