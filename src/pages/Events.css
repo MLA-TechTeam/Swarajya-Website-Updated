@@ -1,10 +1,9 @@
- /* Events Container */
 .events-container {
   max-width: 100%;
   margin: 0 auto;
   padding: 30px 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #f8f6f0;
   min-height: 100vh;
 }
 
@@ -35,7 +34,8 @@
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: #fff;
+  background: #ffffff;
+  border: 1px solid #e7e2d7;
   cursor: pointer;
 }
 
@@ -435,128 +435,104 @@
 }
 
 
-/* Event Card - Professional Layout */
+/* Event Card - 9:16 Aspect Ratio Container */
 .event-card {
-  background: white;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #ffffff;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid #e9ecef;
-  height: fit-content;
-}
-
-.event-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-}
-
-/* Events Grid - Equal Height Cards */
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-top: 25px;
-  align-items: stretch; /* Ensure all cards stretch to same height */
-}
-
-/* Event Card - Fixed Height Structure */
-.event-card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 1px solid #e9ecef;
-  height: 550px; /* Fixed height for all cards */
+  border: 1px solid #e7e2d7;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .event-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
 }
 
-/* Event Image - Fixed dimensions */
+/* Events Grid - 9:16 Responsive Grid */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 25px;
+  align-items: stretch;
+}
+
+/* Event Image - Fits poster inside 9:16 container */
 .event-image {
   width: 100%;
-  height: auto;
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain; /* Show full image without cropping */
-  object-position: center;
-  display: block;
+  height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #f8f9fa;
-  flex-shrink: 0; /* Prevent shrinking */
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .event-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Use cover for better poster display */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Fits full poster image inside 9:16 container without cropping */
   object-position: center;
   display: block;
   transition: transform 0.3s ease;
 }
 
 .event-card:hover .event-image img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-/* Event Content - Flexible height */
-.event-content {
-  padding: 25px;
-  flex: 1; /* Take remaining space */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.event-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 12px;
-  line-height: 1.4;
-  height: 3.5rem; /* Fixed height for 2-3 lines */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.event-description {
-  font-size: 0.95rem;
-  color: #6c757d;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  height: 4.8rem; /* Fixed height for 3 lines */
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  flex: 1; /* Take available space */
-}
-
-.event-meta {
+/* Footer overlay directly on poster image with high legibility gradient scrim */
+.event-image-overlay-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 22px 22px 22px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.65) 60%, rgba(0, 0, 0, 0) 100%);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: auto; /* Push to bottom */
+  z-index: 2;
+  pointer-events: none;
 }
 
-.event-date,
-.event-location {
+.event-title-on-image {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.35;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+.event-meta-on-image {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #f8fafc;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.event-date-on-image,
+.event-location-on-image {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.9rem;
-  color: #495057;
 }
 
 .meta-icon {
@@ -961,9 +937,9 @@
 /* --- Responsive Event Posters --- */
 .event-image img {
   width: 100%;
-  height: auto;
-  max-height: 220px;
-  object-fit: cover;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
 }
 
@@ -982,53 +958,27 @@
 @media (max-width: 768px) {
   .events-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 25px;
   }
   
   .event-card {
-    height: 480px; /* Adjusted height for mobile */
+    aspect-ratio: 9 / 16;
+    height: auto;
   }
   
   .event-image {
-    height: 240px; /* Adjusted image height for mobile */
-  }
-  
-  .event-content {
-    padding: 20px;
-  }
-  
-  .event-title {
-    font-size: 1.2rem;
-    height: 3rem; /* Adjusted for mobile */
-  }
-  
-  .event-description {
-    font-size: 0.9rem;
-    height: 4.2rem; /* Adjusted for mobile */
+    height: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .event-card {
-    height: 450px; /* Further adjusted for small screens */
+    aspect-ratio: 9 / 16;
+    height: auto;
   }
   
   .event-image {
-    height: 220px;
-  }
-  
-  .event-content {
-    padding: 15px;
-  }
-  
-  .event-title {
-    font-size: 1.1rem;
-    height: 2.8rem;
-  }
-  
-  .event-description {
-    font-size: 0.85rem;
-    height: 4rem;
+    height: 100%;
   }
 }
 /* Modal Overlay */

@@ -44,13 +44,11 @@
 
 /* Enhanced Filter Section */
 .filter-section {
-  padding: 60px 0;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  padding: 60px 0 20px;
+  background: transparent;
   position: relative;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(255,153,51,0.1);
 }
 
 .filter-header {
@@ -90,8 +88,8 @@
   align-items: center;
   gap: 12px;
   padding: 16px 24px;
-  border: 2px solid #e8e8e8;
-  background: white;
+  border: 1px solid #e7e2d7;
+  background: #f8f6f0;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -100,6 +98,7 @@
   min-height: 56px;
   white-space: nowrap;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
 }
 
 .filter-tab:hover {

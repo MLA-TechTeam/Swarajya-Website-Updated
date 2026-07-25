@@ -1,7 +1,8 @@
 .event-card {
-  background: #fff;
+  background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid #e7e2d7;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;

@@ -164,13 +164,9 @@
 }
 
 /* Sections */
-.features-section{
-  padding: 25px 0;
-  background: #f8f9fa;
-}
-
-.features-section{
-  padding-bottom: 45px;
+.features-section {
+  padding: 45px 0;
+  background: #f8f6f0;
 }
 
 .section-title3 {
@@ -200,13 +196,13 @@
 }
 
 .feature-card {
-  background: white;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e7e2d7;
   overflow: hidden;
 }
 
@@ -392,26 +388,28 @@
 
 .btn-mute-toggle {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
-  z-index: 9999;
-  width: 45px;
-  height: 40px;
-  background-color: transparent;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(0, 0, 0, 0.3);
   color: #fff;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .btn-mute-toggle:hover {
-  background-color: transparent;
-  transform: scale(1.05);
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(1.08);
 }
 
 .btn-mute-toggle:active {
@@ -420,19 +418,23 @@
 
 /* Icon styling */
 .mute-icon {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive Design for zoomed & smaller screens */
+@media (max-width: 1024px) {
   .btn-mute-toggle {
     top: 1rem;
-    right: 1rem;
-    width: 70px;
+    right: 4.5rem; /* Position to the left of the mobile menu toggle button */
+    width: 40px;
     height: 40px;
+    font-size: 1.2rem;
+  }
+  .mute-icon {
+    font-size: 1.2rem;
   }
 }
 
@@ -677,13 +679,13 @@
 
 .mvv-section {
   padding: 25px 0;
-  background: white;
+  background: #f8f6f0;
   padding-bottom: 45px;
 }
 
 .mvv-section-last {
   padding: 25px 0;
-  background: white;
+  background: #f8f6f0;
   padding-bottom: 70px;
 }
 
@@ -694,11 +696,11 @@
 }
 
 .mvv-card {
-  background: #f8f9fa;
+  background: #ffffff;
   padding: 2.5rem;
   border-radius: 15px;
   text-align: center;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e7e2d7;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -717,8 +719,268 @@
 }
 
 .container5 {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
+}
+
+/* Motto & Blog Showcase Split 2-Column Layout (Wider Motto Tab Left, Gallery Right) */
+.motto-blog-wrapper {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .motto-blog-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Left Half: Auto-scrolling Blog Showcase (Matches Motto Tab Height & Preserves Whitespace) */
+.home-blog-showcase {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.6rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #e7e2d7;
+  box-sizing: border-box;
+}
+
+.showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.showcase-title {
+  color: #2c2416;
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4cebe;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  width: 22px;
+  border-radius: 10px;
+  background: #FF6B35;
+}
+
+.single-blog-gallery-container {
+  overflow: hidden;
+  width: 100%;
+  flex: 1;
+  min-height: 280px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eae5db;
+}
+
+.blog-slide-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1.03);
+  text-decoration: none;
+  cursor: pointer;
+  background: #ebe6dc;
+}
+
+.blog-slide-card.active-slide {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.blog-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.blog-slide-card:hover .blog-showcase-img {
+  transform: scale(1.08);
+}
+
+/* Hover Overlay for Blog Title, Date, Author */
+.blog-showcase-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  box-sizing: border-box;
+}
+
+.blog-slide-card:hover .blog-showcase-overlay {
+  opacity: 1;
+}
+
+.blog-showcase-date {
+  font-size: 0.8rem;
+  color: #FF6B35;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.8px;
+}
+
+.blog-showcase-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.35;
+  color: #ffffff;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-showcase-author {
+  font-size: 0.88rem;
+  color: #e2e8f0;
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+.read-more-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: #FF6B35;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.blog-slide-card:hover .read-more-badge {
+  background: #D62424;
+  transform: translateY(-2px);
+}
+
+/* Right Half: Redesigned Motto Tile */
+.motto-container-right {
+  height: 100%;
+  display: flex;
+}
+
+.motto-tile-redesigned {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2.2rem 2.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e7e2d7;
+  text-align: left;
+}
+
+.motto-main-heading {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  border-bottom: 2px solid #FF6B35;
+  padding-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.motto-marathi-font {
+  font-family: 'Yatra One', 'Kalam', 'Noto Sans Devanagari', sans-serif;
+  font-size: 1.8rem;
+  font-weight: normal;
+  color: #D62424;
+  background: linear-gradient(135deg, #D62424 0%, #ea580c 50%, #b91c1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* Motto Formatted Text Content */
+.motto-text-content p {
+  color: #4a5568;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  margin: 0 0 1rem 0;
+  text-align: justify;
+}
+
+.motto-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+.motto-intro {
+  font-size: 1.08rem;
+  color: #2d3748;
+}
+
+.motto-highlight {
+  color: #D62424;
+  font-weight: 700;
+}
+
+.motto-text-content strong {
+  color: #1a202c;
+  font-weight: 600;
+}
+
+.motto-text-content em {
+  color: #718096;
 }

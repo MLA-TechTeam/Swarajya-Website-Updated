@@ -282,8 +282,28 @@
   background: white;
 }
 
+/* Responsive Scaling for Intermediate Viewports / Page Zoom (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav-list {
+    gap: 0.75rem;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .nav-menu {
+    padding: 6px 14px;
+  }
+  .logo-marathi {
+    font-size: 1.5rem;
+  }
+  .logo-english {
+    font-size: 1.1rem;
+  }
+}
+
 /* Mobile Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-container {
     padding: 0 16px;
     height: 70px;
@@ -535,7 +555,7 @@ body.mobile-menu-open {
 }
 
 /* Enhanced mobile menu animations */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-menu-toggle.active {
     position: fixed;
     z-index: 1001;

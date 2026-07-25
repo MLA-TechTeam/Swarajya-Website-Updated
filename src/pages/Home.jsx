@@ -1,11 +1,13 @@
 // import EventCard from '../components/EventCard';
 // import { getUpcomingEvents } from './EventsData';
+import { Link } from 'react-router-dom';
+import { blogPosts } from '../data/blogdata';
 import './Home.css';
 import heroVideo from '../assets/home-page-bg.mp4';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { VscUnmute } from "react-icons/vsc";
 import { VscMute } from "react-icons/vsc";
-import {ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import certificate from '../assets/certificate.jpg';
 import designIcon from '../data/dept logo emoticons/design.png';
@@ -17,10 +19,51 @@ import financeIcon from '../data/dept logo emoticons/finance.png';
 import literatureIcon from '../data/extra/literature.png';
 
 export default function Home() {
-  // const upcomingEvents = getUpcomingEvents().slice(0, 2);
-
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [currentBlogIndex, setCurrentBlogIndex] = useState(0);
+  const [isBlogPaused, setIsBlogPaused] = useState(false);
+
+  // Load gallery images dynamically for gallery showcase
+  const galleryImages = useRef([]);
+  if (galleryImages.current.length === 0) {
+    try {
+      const context = require.context('../data/gallery', true, /\.(png|jpe?g|svg|gif|webp)$/);
+      galleryImages.current = context.keys().map((key, idx) => {
+        const parts = key.split('/');
+        const folder = parts[1] || 'Swarajya';
+        return {
+          id: idx,
+          src: context(key),
+          category: folder.replace(/[-_]/g, ' ').toUpperCase(),
+          title: key.split('/').pop().replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ')
+        };
+      });
+    } catch (e) {
+      galleryImages.current = [];
+    }
+  }
+
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [isGalleryPaused, setIsGalleryPaused] = useState(false);
+
+  useEffect(() => {
+    if (isBlogPaused || !blogPosts || blogPosts.length === 0) return;
+    const timer = setInterval(() => {
+      setCurrentBlogIndex((prevIndex) => (prevIndex + 1) % blogPosts.length);
+    }, 3000); // Auto-slides every 3 seconds
+
+    return () => clearInterval(timer);
+  }, [isBlogPaused]);
+
+  useEffect(() => {
+    if (isGalleryPaused || !galleryImages.current || galleryImages.current.length === 0) return;
+    const galleryTimer = setInterval(() => {
+      setCurrentGalleryIndex((prevIndex) => (prevIndex + 1) % Math.min(8, galleryImages.current.length));
+    }, 3000); // Auto-slides gallery every 3 seconds
+
+    return () => clearInterval(galleryTimer);
+  }, [isGalleryPaused]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -29,10 +72,10 @@ export default function Home() {
     }
   };
 
-    const handleScroll = () => {
+  const handleScroll = () => {
     const featuresSection = document.querySelector('.mvv-section');
     if (featuresSection) {
-      featuresSection.scrollIntoView({ 
+      featuresSection.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -61,34 +104,87 @@ export default function Home() {
             <h1 className="hero-title">
               ƂВvarajyaƓ
             </h1>
-                      <div className="scroll-indicator" onClick={handleScroll} role="button" tabIndex={0}>
-            <ChevronDown className="chevron-down" size={40} />
-            <ChevronDown className="chevron-down delayed" size={40} />
-          </div>
+            <div className="scroll-indicator" onClick={handleScroll} role="button" tabIndex={0}>
+              <ChevronDown className="chevron-down" size={40} />
+              <ChevronDown className="chevron-down delayed" size={40} />
+            </div>
           </div>
         </div>
         <button onClick={toggleMute} className="btn-mute-toggle">
-                {isMuted ? 
-                  <VscMute className="mute-icon" /> : 
-                  <VscUnmute className="mute-icon" />
-                }
-              </button>
+          {isMuted ?
+            <VscMute className="mute-icon" /> :
+            <VscUnmute className="mute-icon" />
+          }
+        </button>
       </section>
 
       <section className="mvv-section">
         <div className="container5">
-          <h2 className="section-title3">Our Motto</h2>
-          <div className="mvv-grid">
-            <div className="mvv-card mission-card">
-              <p>
-                "सेवेचे ठाई तत्पर" (Always Ready for Service) is more than just a phrase, it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries. 
-                Historically, these very words were engraved by Hiroji Indulkar, the chief architect of Raigad Fort, who devoted himself wholeheartedly to the service of Swarajya and Chhatrapati Shivaji Maharaj. When asked to choose a reward for his efforts, he humbly requested to inscribe his name along with this phrase on the steps of the Jagadishwar Temple, declaring his eternal commitment to service.
-                Inspired by this legacy and blessed by Ganpati Bappa, we carry forward the spirit of "सेवेचे ठाई तत्पर" in all that we do - striving to serve, protect, and promote Marathi literature, culture, and community with pride and purpose.
-              </p>
+          <div className="motto-blog-wrapper">
+            {/* Left Half: Redesigned Motto Tile (Wider & Formatted) */}
+            <div className="motto-container-right">
+              <div className="mvv-card mission-card motto-tile-redesigned">
+                <h2 className="motto-main-heading">
+                  Our Motto - <span className="motto-marathi-font">सेवेचे ठाई तत्पर</span>
+                </h2>
+
+                <div className="motto-text-content">
+                  <p className="motto-intro">
+                    <strong className="motto-highlight">"सेवेचे ठाई तत्पर"</strong> <em>(Always Ready for Service)</em> is more than just a phrase — it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries.
+                  </p>
+
+                  <p className="motto-history">
+                    Historically, these very words were engraved by <strong>Hiroji Indulkar</strong>, the chief architect of <strong>Raigad Fort</strong>, who devoted himself wholeheartedly to the service of Swarajya and <strong>Chhatrapati Shivaji Maharaj</strong>. When asked to choose a reward for his efforts, he humbly requested to inscribe his name along with this phrase on the steps of the Jagadishwar Temple, declaring his eternal commitment to service.
+                  </p>
+
+                  <p className="motto-conclusion">
+                    Inspired by this rich legacy and blessed by <strong>Ganpati Bappa</strong>, we carry forward the spirit of <em>"सेवेचे ठाई तत्पर"</em> in all that we do — striving to serve, protect, and promote Marathi literature, culture, and community with immense pride and purpose.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Half: Auto-Scrolling Blog Showcase Gallery (Single Slide View) */}
+            <div className="home-blog-showcase">
+              <div className="showcase-header">
+                <h3 className="showcase-title">Featured Blogs</h3>
+                <div className="carousel-dots">
+                  {blogPosts.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`carousel-dot ${currentBlogIndex === idx ? 'active' : ''}`}
+                      onClick={() => setCurrentBlogIndex(idx)}
+                      title={`Go to blog ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="single-blog-gallery-container"
+                onMouseEnter={() => setIsBlogPaused(true)}
+                onMouseLeave={() => setIsBlogPaused(false)}
+              >
+                {blogPosts.map((blog, idx) => (
+                  <Link
+                    to={`/blogs/${blog.id}`}
+                    key={blog.id}
+                    className={`blog-slide-card ${idx === currentBlogIndex ? 'active-slide' : ''}`}
+                  >
+                    <img src={blog.image} alt={blog.title} className="blog-showcase-img" />
+                    <div className="blog-showcase-overlay">
+                      <span className="blog-showcase-date">{blog.date}</span>
+                      <h4 className="blog-showcase-card-title">{blog.title}</h4>
+                      <p className="blog-showcase-author">By {blog.author}</p>
+                      <span className="read-more-badge">Read Story →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </section>          
+      </section>
 
       {/* Features Section */}
       <section className="features-section">
@@ -131,16 +227,71 @@ export default function Home() {
 
       <section className="mvv-section-last">
         <div className="container5">
-          <h2 className="section-title3"><img src={literatureIcon} alt="Literature" className="literature-emoticon" /> Marathi Literature</h2>
-          <div className="mvv-grid">
-            <div className="mvv-card mission-card">
-              <p>
-                The rich dynamic history of Marathi literature reflects great cultural and intellectual might across Maharashtra. From the Bhakti poets like Sant Dnyaneshwar, Sant Tukaram and Sant Namdeo to the modern works of P.L. Deshpande and Vijay Tendulkar, it celebrates a spectrum of human emotions and societal reflections. Marathi literature is not just a collection of written words, it’s a representation of the region’s history, struggles and reforms. Each page turned is a reminder of the proud legacy of the cultural heritage of Maharashtra and India.
-              </p>
+          <div className="motto-blog-wrapper">
+            {/* Left Half: Auto-Scrolling Gallery Showcase (Single Slide View) */}
+            <div className="home-blog-showcase">
+              <div className="showcase-header">
+                <h3 className="showcase-title">Swarajya Moments</h3>
+                <div className="carousel-dots">
+                  {galleryImages.current.slice(0, 8).map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`carousel-dot ${currentGalleryIndex === idx ? 'active' : ''}`}
+                      onClick={() => setCurrentGalleryIndex(idx)}
+                      title={`Go to photo ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="single-blog-gallery-container"
+                onMouseEnter={() => setIsGalleryPaused(true)}
+                onMouseLeave={() => setIsGalleryPaused(false)}
+              >
+                {galleryImages.current.slice(0, 8).map((item, idx) => (
+                  <Link
+                    to="/gallery"
+                    key={item.id}
+                    className={`blog-slide-card ${idx === currentGalleryIndex ? 'active-slide' : ''}`}
+                  >
+                    <img src={item.src} alt={item.category} className="blog-showcase-img" />
+                    <div className="blog-showcase-overlay">
+                      <span className="blog-showcase-date">{item.category}</span>
+                      <h4 className="blog-showcase-card-title">Glimpses of Swarajya</h4>
+                      <p className="blog-showcase-author">Events & Cultural Highlights</p>
+                      <span className="read-more-badge">View Full Gallery →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Half: Formatted Marathi Literature Tile */}
+            <div className="motto-container-right">
+              <div className="mvv-card mission-card motto-tile-redesigned">
+                <h2 className="motto-main-heading">
+                  <img src={literatureIcon} alt="Literature" className="literature-emoticon" /> Marathi Literature
+                </h2>
+
+                <div className="motto-text-content">
+                  <p className="motto-intro">
+                    The rich dynamic history of <strong className="motto-highlight">Marathi literature</strong> reflects the great cultural and intellectual might across Maharashtra.
+                  </p>
+
+                  <p className="motto-history">
+                    From timeless Bhakti poets like <strong>Sant Dnyaneshwar</strong>, <strong>Sant Tukaram</strong>, and <strong>Sant Namdeo</strong> to modern literary masters like <strong>P.L. Deshpande</strong> and <strong>Vijay Tendulkar</strong>, it celebrates a vibrant spectrum of human emotions and societal reflections.
+                  </p>
+
+                  <p className="motto-conclusion">
+                    Marathi literature is not just a collection of written words — it is a true representation of the region’s history, struggles, and reforms. Each page turned is a salute to the proud legacy of Maharashtra and India.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>  
+      </section>
 
 
       {/* Upcoming Events */}
@@ -156,7 +307,7 @@ export default function Home() {
       </section> */}
 
 
-       <section className="achievements-section">
+      <section className="achievements-section">
         <div className="container">
           <h2 className="section-title3">Our Achievements</h2>
           <div className="achievement-highlight">
@@ -164,8 +315,8 @@ export default function Home() {
               <div className="achievement-text">
                 <h3 className="achievement-title">Best Literary Club Award</h3>
                 <p className="achievement-description">
-                  We are proud to announce that our Marathi Literary Club has been honored with the 
-                  prestigious "Best Literary Club Award" for our outstanding contribution to 
+                  We are proud to announce that our Marathi Literary Club has been honored with the
+                  prestigious "Best Literary Club Award" for our outstanding contribution to
                   preserving and promoting Marathi literature and culture.
                 </p>
                 <div className="achievement-details">
@@ -185,8 +336,8 @@ export default function Home() {
               </div>
               <div className="achievement-images">
                 <div className="award-image-container">
-                  <img 
-                    src={certificate} 
+                  <img
+                    src={certificate}
                     alt="Best Literary Club Award"
                     className="award-image"
                   />

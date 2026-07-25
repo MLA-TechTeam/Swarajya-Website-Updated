@@ -51,7 +51,7 @@
 /* Introduction Section */
 .intro-section {
   padding: 80px 0;
-  background: #f8f9fa;
+  background: #f8f6f0;
 }
 
 .intro-grid {
@@ -134,7 +134,7 @@
 .history-section {
   padding: 80px 0;
   padding-top: 40px;
-  background: #f8f9fa;
+  background: #f8f6f0;
 }
 
 .timeline {
@@ -185,10 +185,11 @@
 }
 
 .timeline-content {
-  background: white;
+  background: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e7e2d7;
   flex: 1;
   margin: 0 2rem;
 }
@@ -223,7 +224,7 @@
 /* Faculty Coordinators Section */
 .faculty-coordinators-section {
   padding: 50px 0;
-  background: linear-gradient(135deg, #fff8f3, #fef7f0);
+  background: #f8f6f0;
   position: relative;
 }
 
@@ -387,7 +388,7 @@
 
 /* Member Card - Fixed dimensions and spacing */
 .member-card {
-  background: #f9fafb;
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 0.75rem;
   padding: 1.5rem;
@@ -668,7 +669,7 @@
 /* Core Committee Section - Fixed and Improved */
 .core-committee-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #fff8f3, #fef7f0);
+  background: #f8f6f0;
   position: relative;
 }
 
@@ -830,11 +831,12 @@
 }
 
 .committee-badge {
-  background: white;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   padding: 1rem 1.5rem;
   display: inline-block;
+  border: 1px solid #e7e2d7;
   border-left: 4px solid #FF6B35;
 }
 

@@ -206,13 +206,12 @@ const Events = () => {
     >
       <div className="event-image">
         <img src={event.image} alt={event.title} loading="lazy" />
-      </div>
-      <div className="event-content">
-        <h3 className="event-title">{event.title}</h3>
-        <p className="event-description">{event.shortDescription}</p>
-        <div className="event-meta">
-          <div className="event-date"><span className="meta-icon">📅</span>{formatDate(event.date)}</div>
-          <div className="event-location"><span className="meta-icon">📍</span>{event.location}</div>
+        <div className="event-image-overlay-footer">
+          <h3 className="event-title-on-image">{event.title}</h3>
+          <div className="event-meta-on-image">
+            <div className="event-date-on-image"><span className="meta-icon">📅</span>{formatDate(event.date)}</div>
+            <div className="event-location-on-image"><span className="meta-icon">📍</span>{event.location}</div>
+          </div>
         </div>
       </div>
     </div>
