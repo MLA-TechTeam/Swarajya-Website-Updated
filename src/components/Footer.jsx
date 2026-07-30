@@ -82,7 +82,7 @@ export default function Footer() {
                   <MapPin size={18} className="contact-icon" />
                   <div className="contact-details">
                     <a 
-                      href="https://www.google.com/maps?q=VIT+Chennai" 
+                      href="https://maps.app.goo.gl/mewyjWV41iUqU4c39" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="contact-address-link"
