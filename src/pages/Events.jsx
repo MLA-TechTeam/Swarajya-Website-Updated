@@ -5,7 +5,7 @@ import event2 from '../assets/events/event2.jpg';
 import event3 from '../assets/events/event3.jpg';
 import event4 from '../assets/events/event4.jpg';
 import event5 from '../assets/events/event5.jpg';
-import ganapati from '../assets/events/ganapati.jpg';
+import ganapati from '../assets/events/ganpati.png';
 
 const Events = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -125,7 +125,7 @@ const Events = () => {
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       document.body.style.height = '100%';
-      
+
       const eventsContainer = document.querySelector('.events-container');
       if (eventsContainer) {
         eventsContainer.classList.add('modal-open');
@@ -135,12 +135,12 @@ const Events = () => {
       document.body.style.position = '';
       document.body.style.width = '';
       document.body.style.height = '';
-      
+
       const eventsContainer = document.querySelector('.events-container');
       if (eventsContainer) {
         eventsContainer.classList.remove('modal-open');
       }
-      
+
       // Add a small delay before allowing modal transitions again
       setTimeout(() => {
         setIsModalTransitioning(false);
@@ -152,7 +152,7 @@ const Events = () => {
       document.body.style.position = '';
       document.body.style.width = '';
       document.body.style.height = '';
-      
+
       const eventsContainer = document.querySelector('.events-container');
       if (eventsContainer) {
         eventsContainer.classList.remove('modal-open');
@@ -169,7 +169,7 @@ const Events = () => {
 
   const closeModal = () => {
     if (isModalTransitioning) return; // Prevent multiple clicks during transition
-    
+
     setShowModal(false);
     // Delay clearing selected event to allow animation to complete
     setTimeout(() => {
@@ -196,10 +196,10 @@ const Events = () => {
   };
 
   const EventCard = ({ event }) => (
-    <div 
+    <div
       className={`event-card ${showModal ? 'modal-open-card' : ''}`}
       // onClick={() => handleEventClick(event)}
-      style={{ 
+      style={{
         cursor: isModalTransitioning ? 'default' : 'pointer',
         pointerEvents: isModalTransitioning ? 'none' : 'auto'
       }}
@@ -245,8 +245,8 @@ const Events = () => {
     return (
       <div className="modal-overlay" onClick={handleOverlayClick}>
         <div className="modal-content" onClick={handleContentClick}>
-          <button 
-            className="modal-close" 
+          <button
+            className="modal-close"
             onClick={onClose}
             disabled={isModalTransitioning}
             style={{ cursor: isModalTransitioning ? 'default' : 'pointer' }}
@@ -318,10 +318,10 @@ const Events = () => {
         <section className="flagship-section">
           <div className="flagship-container">
             <h2 className="flagship-title">Flagship Event</h2>
-            <div 
+            <div
               className={`flagship-event-card ${showModal ? 'modal-open-card' : ''}`}
               // onClick={() => handleEventClick(ganapatiEvent)}
-              style={{ 
+              style={{
                 cursor: isModalTransitioning ? 'default' : 'pointer',
                 pointerEvents: isModalTransitioning ? 'none' : 'auto'
               }}

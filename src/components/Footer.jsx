@@ -81,8 +81,15 @@ export default function Footer() {
                 <div className="contact-item">
                   <MapPin size={18} className="contact-icon" />
                   <div className="contact-details">
-                    <p>Marathi Literary Association</p>
-                    <p>VIT, Chennai</p>
+                    <a 
+                      href="https://www.google.com/maps?q=VIT+Chennai" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="contact-address-link"
+                    >
+                      <p>Marathi Literary Association</p>
+                      <p>VIT, Chennai</p>
+                    </a>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -96,7 +103,16 @@ export default function Footer() {
                 <div className="contact-item">
                   <Mail size={18} className="contact-icon" />
                   <div className="contact-details">
-                    <p>mlavitc@gmail.com</p>
+                    <p>
+                      <a 
+                        href="https://mail.google.com/mail/?view=cm&to=mlavitc@gmail.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="contact-email-link"
+                      >
+                        mlavitc@gmail.com
+                      </a>
+                    </p>
                   </div>
                 </div>
               </div>

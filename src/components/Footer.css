@@ -297,6 +297,17 @@
   font-weight: 500;
 }
 
+.contact-details a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-details a:hover,
+.contact-details a:hover p {
+  color: #FF6B35;
+}
+
 /* Footer Bottom */
 .footer-bottom {
   background: #111;

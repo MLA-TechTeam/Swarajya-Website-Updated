@@ -18,11 +18,65 @@ import operationsIcon from '../data/dept logo emoticons/operations.png';
 import financeIcon from '../data/dept logo emoticons/finance.png';
 import literatureIcon from '../data/extra/literature.png';
 
+import event1 from '../assets/events/event1.jpg';
+import event2 from '../assets/events/event2.jpg';
+import event3 from '../assets/events/event3.jpg';
+import event4 from '../assets/events/event4.jpg';
+import event5 from '../assets/events/event5.jpg';
+import ganapati from '../assets/events/ganapati.jpg';
+
+const homeEventsList = [
+  {
+    id: 1,
+    title: "गंध जुन्या क्षणांचा - A Nostalgic Literary Evening",
+    date: "April 23, 2025",
+    location: "AB3-001, VIT Chennai",
+    image: event1,
+  },
+  {
+    id: 2,
+    title: "गौरव महाराष्ट्राचा – Maharashtra Day Guest Lecture",
+    date: "May 1, 2025",
+    location: "Online Session",
+    image: event2,
+  },
+  {
+    id: 3,
+    title: "दुर्गलेखन – Fort Blogging Initiative",
+    date: "May 23, 2025",
+    location: "Online Submissions",
+    image: event3,
+  },
+  {
+    id: 4,
+    title: "शिवस्मरण – Online Quiz on Chhatrapati Shivaji Maharaj",
+    date: "June 6, 2025",
+    location: "Online Platform",
+    image: event4,
+  },
+  {
+    id: 5,
+    title: "Mallataranga - Guest Lecture on Mallakhamb",
+    date: "June 21, 2025",
+    location: "Online Lecture",
+    image: event5,
+  },
+  {
+    id: 6,
+    title: "Ganpati Chaturthi Celebration 2026",
+    date: "September 14, 2026",
+    location: "VIT Chennai",
+    image: ganapati,
+  }
+];
+
 export default function Home() {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
   const [currentBlogIndex, setCurrentBlogIndex] = useState(0);
   const [isBlogPaused, setIsBlogPaused] = useState(false);
+  const [currentEventIndex, setCurrentEventIndex] = useState(0);
+  const [isEventPaused, setIsEventPaused] = useState(false);
 
   // Load gallery images dynamically for gallery showcase
   const galleryImages = useRef([]);
@@ -55,6 +109,15 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, [isBlogPaused]);
+
+  useEffect(() => {
+    if (isEventPaused || !homeEventsList || homeEventsList.length === 0) return;
+    const eventTimer = setInterval(() => {
+      setCurrentEventIndex((prevIndex) => (prevIndex + 1) % homeEventsList.length);
+    }, 3000); // Auto-slides events every 3 seconds
+
+    return () => clearInterval(eventTimer);
+  }, [isEventPaused]);
 
   useEffect(() => {
     if (isGalleryPaused || !galleryImages.current || galleryImages.current.length === 0) return;
@@ -186,40 +249,104 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Departments & Events Showcase Split Section */}
       <section className="features-section">
-        <div className="container">
-          <h2 className="section-title3">Departments That Drive The Vision</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon"><img src={designIcon} alt="Design" className="dept-emoticon" /></div>
-              <h3>Design And Content</h3>
-              <p>Bringing stories to life. From posters and creatives to scripts and poetry, this team crafts the visual and verbal identity of Swarajya. Every color, every word, every detail reflects our cultural pride.</p>
+        <div className="container5">
+          <div className="motto-blog-wrapper">
+            {/* Left Half: Auto-Scrolling Events Showcase Gallery (Single Slide View) */}
+            <div className="home-blog-showcase">
+              <div className="showcase-header">
+                <h3 className="showcase-title">Featured Events</h3>
+                <div className="carousel-dots">
+                  {homeEventsList.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`carousel-dot ${currentEventIndex === idx ? 'active' : ''}`}
+                      onClick={() => setCurrentEventIndex(idx)}
+                      title={`Go to event ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div
+                className="single-blog-gallery-container"
+                onMouseEnter={() => setIsEventPaused(true)}
+                onMouseLeave={() => setIsEventPaused(false)}
+              >
+                {homeEventsList.map((evt, idx) => (
+                  <Link
+                    to="/events"
+                    key={evt.id}
+                    className={`blog-slide-card ${idx === currentEventIndex ? 'active-slide' : ''}`}
+                  >
+                    <img src={evt.image} alt={evt.title} className="blog-showcase-img" />
+                    <div className="blog-showcase-overlay">
+                      <span className="blog-showcase-date">{evt.date}</span>
+                      <h4 className="blog-showcase-card-title">{evt.title}</h4>
+                      <p className="blog-showcase-author">📍 {evt.location}</p>
+                      <span className="read-more-badge">View Events →</span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="feature-card">
-              <div className="feature-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon" /></div>
-              <h3>Social Media & Photography</h3>
-              <p>Capturing moments, connecting people. This team handles all our social platforms, ensuring the energy of each event reaches every follower. From stunning event photos to interactive reels, they keep Swarajya alive online.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon"><img src={technicalIcon} alt="Technical" className="dept-emoticon" /></div>
-              <h3>Technical</h3>
-              <p>Powering the digital backbone. Behind every seamless registration form, event live stream, or website feature is our Technical Team. They bring innovation, efficiency, and functionality to the club’s operations.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon"><img src={culturalIcon} alt="Cultural" className="dept-emoticon" /></div>
-              <h3>Cultural</h3>
-              <p>Preserving tradition, inspiring performance. This team curates and leads all cultural events, be it dance, drama, or traditional ceremonies keeping the rich essence of Marathi heritage alive at VIT Chennai.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon"><img src={operationsIcon} alt="Operations" className="dept-emoticon" /></div>
-              <h3>Operations</h3>
-              <p>Managing chaos with calm. From logistics to execution, this team ensures every Swarajya event runs like clockwork. They’re the behind-the-scenes heroes who turn plans into action.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon"><img src={financeIcon} alt="Finance" className="dept-emoticon" /></div>
-              <h3>Finance And Outreach</h3>
-              <p>Balancing creativity with clarity, this team ensures Swarajya’s ideas turn into impactful realities. From budgeting and resource planning to sponsorships, strategic partnerships, and outreach. With transparency, responsibility, and strong connections at its core, they expand the club's reach and safeguard its growth, making sure every initiative thrives with confidence.</p>
+
+            {/* Right Half: Single Container for Departments with Subtle 2x3 Grid */}
+            <div className="motto-container-right">
+              <div className="departments-single-container">
+                <h2 className="departments-main-heading">Departments That Drive The Vision</h2>
+
+                <div className="departments-subtle-grid">
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={designIcon} alt="Design" className="dept-emoticon" />
+                      <h3>Design And Content</h3>
+                    </div>
+                    <p>Bringing stories to life. From posters and creatives to scripts and poetry, this team crafts the visual and verbal identity of Swarajya.</p>
+                  </div>
+
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={socialMediaIcon} alt="Social Media" className="dept-emoticon" />
+                      <h3>Social Media & Photography</h3>
+                    </div>
+                    <p>Capturing moments, connecting people. Handles all social platforms, keeping Swarajya alive online with reels and photos.</p>
+                  </div>
+
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={technicalIcon} alt="Technical" className="dept-emoticon" />
+                      <h3>Technical</h3>
+                    </div>
+                    <p>Powering the digital backbone. Brings innovation, efficiency, and seamless web/stream features to club operations.</p>
+                  </div>
+
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={culturalIcon} alt="Cultural" className="dept-emoticon" />
+                      <h3>Cultural</h3>
+                    </div>
+                    <p>Preserving tradition, inspiring performance. Curates and leads all cultural dance, drama, and heritage ceremonies.</p>
+                  </div>
+
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={operationsIcon} alt="Operations" className="dept-emoticon" />
+                      <h3>Operations</h3>
+                    </div>
+                    <p>Managing chaos with calm. Ensures every Swarajya event runs like clockwork from logistics to execution.</p>
+                  </div>
+
+                  <div className="dept-grid-cell">
+                    <div className="dept-cell-header">
+                      <img src={financeIcon} alt="Finance" className="dept-emoticon" />
+                      <h3>Finance And Outreach</h3>
+                    </div>
+                    <p>Balancing creativity with clarity. Manages budgeting, sponsorships, strategic partnerships, and community outreach.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -228,7 +355,30 @@ export default function Home() {
       <section className="mvv-section-last">
         <div className="container5">
           <div className="motto-blog-wrapper">
-            {/* Left Half: Auto-Scrolling Gallery Showcase (Single Slide View) */}
+            {/* Left Half: Formatted Marathi Literature Tile */}
+            <div className="motto-container-right">
+              <div className="mvv-card mission-card motto-tile-redesigned">
+                <h2 className="motto-main-heading">
+                  <img src={literatureIcon} alt="Literature" className="literature-emoticon" /> Marathi Literature
+                </h2>
+
+                <div className="motto-text-content">
+                  <p className="motto-intro">
+                    The rich dynamic history of <strong className="motto-highlight">Marathi literature</strong> reflects the great cultural and intellectual might across Maharashtra.
+                  </p>
+
+                  <p className="motto-history">
+                    From timeless Bhakti poets like <strong>Sant Dnyaneshwar</strong>, <strong>Sant Tukaram</strong>, and <strong>Sant Namdeo</strong> to modern literary masters like <strong>P.L. Deshpande</strong> and <strong>Vijay Tendulkar</strong>, it celebrates a vibrant spectrum of human emotions and societal reflections.
+                  </p>
+
+                  <p className="motto-conclusion">
+                    Marathi literature is not just a collection of written words — it is a true representation of the region’s history, struggles, and reforms. Each page turned is a salute to the proud legacy of Maharashtra and India.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Half: Auto-Scrolling Gallery Showcase (Single Slide View) */}
             <div className="home-blog-showcase">
               <div className="showcase-header">
                 <h3 className="showcase-title">Swarajya Moments</h3>
@@ -264,29 +414,6 @@ export default function Home() {
                     </div>
                   </Link>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Half: Formatted Marathi Literature Tile */}
-            <div className="motto-container-right">
-              <div className="mvv-card mission-card motto-tile-redesigned">
-                <h2 className="motto-main-heading">
-                  <img src={literatureIcon} alt="Literature" className="literature-emoticon" /> Marathi Literature
-                </h2>
-
-                <div className="motto-text-content">
-                  <p className="motto-intro">
-                    The rich dynamic history of <strong className="motto-highlight">Marathi literature</strong> reflects the great cultural and intellectual might across Maharashtra.
-                  </p>
-
-                  <p className="motto-history">
-                    From timeless Bhakti poets like <strong>Sant Dnyaneshwar</strong>, <strong>Sant Tukaram</strong>, and <strong>Sant Namdeo</strong> to modern literary masters like <strong>P.L. Deshpande</strong> and <strong>Vijay Tendulkar</strong>, it celebrates a vibrant spectrum of human emotions and societal reflections.
-                  </p>
-
-                  <p className="motto-conclusion">
-                    Marathi literature is not just a collection of written words — it is a true representation of the region’s history, struggles, and reforms. Each page turned is a salute to the proud legacy of Maharashtra and India.
-                  </p>
-                </div>
               </div>
             </div>
           </div>

@@ -127,10 +127,6 @@ export default function Gallery() {
     );
   }
 
-  const getItemSize = (index) => {
-    const pattern = ['medium', 'small', 'large', 'medium', 'small', 'wide', 'medium', 'tall', 'small', 'medium'];
-    return pattern[index % pattern.length];
-  };
 
   return (
     <div className="gallery-container">
@@ -163,10 +159,10 @@ export default function Gallery() {
       <section className="gallery-section">
         <div className="container3">
           <div className="masonry-grid">
-            {filteredItems.map((item, index) => (
+            {filteredItems.map((item) => (
               <div 
                 key={item.id} 
-                className={`masonry-item ${getItemSize(index)}`}
+                className="masonry-item"
                 onClick={() => openLightbox(item)}
               >
                 <div className="image-container">

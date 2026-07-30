@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 30px 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f8f6f0;
+  background: linear-gradient(135deg, #fef7e6 0%, #fff3d6 100%);
   min-height: 100vh;
 }
 
@@ -45,7 +45,9 @@
 }
 
 .flagship-event-image {
-  height: 100vh;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,10 +110,11 @@
 .countdown-container {
   margin: 30px 0;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .countdown-title {
@@ -169,24 +172,24 @@
     padding: 25px;
     margin: 25px 0;
   }
-  
+
   .countdown-title {
     font-size: 1.3rem;
   }
-  
+
   .countdown-timer {
     gap: 12px;
   }
-  
+
   .countdown-item {
     min-width: 70px;
   }
-  
+
   .countdown-number {
     font-size: 2.2rem;
     min-width: 55px;
   }
-  
+
   .countdown-separator {
     font-size: 1.8rem;
     margin: 0 8px;
@@ -199,29 +202,29 @@
     padding: 20px;
     margin: 20px 0;
   }
-  
+
   .countdown-title {
     font-size: 1.2rem;
     margin-bottom: 15px;
   }
-  
+
   .countdown-timer {
     gap: 10px;
   }
-  
+
   .countdown-item {
     min-width: 60px;
   }
-  
+
   .countdown-number {
     font-size: 1.8rem;
     min-width: 50px;
   }
-  
+
   .countdown-label {
     font-size: 0.8rem;
   }
-  
+
   .countdown-separator {
     font-size: 1.5rem;
     margin: 0 6px;
@@ -234,32 +237,32 @@
     padding: 15px;
     margin: 15px 0;
   }
-  
+
   .countdown-title {
     font-size: 1.1rem;
     margin-bottom: 12px;
   }
-  
+
   .countdown-timer {
     gap: 8px;
     justify-content: space-around;
   }
-  
+
   .countdown-item {
     min-width: 50px;
     flex: 1;
   }
-  
+
   .countdown-number {
     font-size: 1.5rem;
     min-width: 40px;
   }
-  
+
   .countdown-label {
     font-size: 0.75rem;
     margin-top: 3px;
   }
-  
+
   .countdown-separator {
     font-size: 1.2rem;
     margin: 0 4px;
@@ -272,30 +275,30 @@
     padding: 12px;
     margin: 12px 0;
   }
-  
+
   .countdown-title {
     font-size: 1rem;
     margin-bottom: 10px;
   }
-  
+
   .countdown-timer {
     gap: 6px;
   }
-  
+
   .countdown-item {
     min-width: 45px;
   }
-  
+
   .countdown-number {
     font-size: 1.3rem;
     min-width: 35px;
   }
-  
+
   .countdown-label {
     font-size: 0.7rem;
     margin-top: 2px;
   }
-  
+
   .countdown-separator {
     font-size: 1rem;
     margin: 0 3px;
@@ -304,37 +307,29 @@
 
 /* Flagship Event Responsive Adjustments */
 @media (max-width: 768px) {
-  .flagship-event-image {
-    height: 400px;
-  }
-  
   .flagship-overlay {
     padding: 20px;
   }
-  
+
   .flagship-event-title {
     font-size: 2rem;
   }
-  
+
   .flagship-event-description {
     font-size: 1.1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .flagship-event-image {
-    height: 350px;
-  }
-  
   .flagship-overlay {
     padding: 15px;
   }
-  
+
   .flagship-event-title {
     font-size: 1.5rem;
     margin-bottom: 15px;
   }
-  
+
   .flagship-event-description {
     font-size: 1rem;
     margin-bottom: 20px;
@@ -342,19 +337,15 @@
 }
 
 @media (max-width: 360px) {
-  .flagship-event-image {
-    height: 300px;
-  }
-  
   .flagship-overlay {
     padding: 12px;
   }
-  
+
   .flagship-event-title {
     font-size: 1.3rem;
     margin-bottom: 12px;
   }
-  
+
   .flagship-event-description {
     font-size: 0.9rem;
     margin-bottom: 15px;
@@ -367,22 +358,22 @@
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .countdown-separator {
     display: none;
   }
-  
+
   .countdown-item {
     min-width: 80px;
     padding: 8px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
   }
-  
+
   .countdown-number {
     font-size: 1.5rem;
   }
-  
+
   .countdown-label {
     font-size: 0.7rem;
   }
@@ -482,7 +473,8 @@
   height: 100%;
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Fits full poster image inside 9:16 container without cropping */
+  object-fit: contain;
+  /* Fits full poster image inside 9:16 container without cropping */
   object-position: center;
   display: block;
   transition: transform 0.3s ease;
@@ -608,7 +600,8 @@
   z-index: 10000;
   padding: 20px;
   backdrop-filter: blur(5px);
-  overflow-y: auto; /* Enable scroll on overlay */
+  overflow-y: auto;
+  /* Enable scroll on overlay */
 }
 
 .modal-content {
@@ -616,20 +609,25 @@
   border-radius: 20px;
   max-width: 1000px;
   width: 100%;
-  max-height: calc(100vh - 40px); /* Account for padding */
-  overflow: hidden; /* Remove overflow from modal-content */
+  max-height: calc(100vh - 40px);
+  /* Account for padding */
+  overflow: hidden;
+  /* Remove overflow from modal-content */
   position: relative;
   display: flex;
   flex-direction: row;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  margin: auto; /* Center the modal */
+  margin: auto;
+  /* Center the modal */
 }
 
 .modal-right {
   flex: 1;
   padding: 40px;
-  overflow-y: auto; /* Enable scroll only on content area */
-  max-height: calc(100vh - 40px); /* Match parent height */
+  overflow-y: auto;
+  /* Enable scroll only on content area */
+  max-height: calc(100vh - 40px);
+  /* Match parent height */
 }
 
 /* Custom scrollbar for modal */
@@ -718,11 +716,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   animation: skeleton-loading 1.5s infinite;
 }
 
@@ -730,6 +727,7 @@
   0% {
     left: -100%;
   }
+
   100% {
     left: 100%;
   }
@@ -763,11 +761,10 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, 
-    transparent, 
-    rgba(255, 255, 255, 0.4), 
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
   animation: skeleton-loading 1.5s infinite;
 }
 
@@ -807,73 +804,69 @@
   .events-container {
     padding: 20px 15px;
   }
-  
+
   .flagship-title {
-    margin-top:80px;
+    margin-top: 80px;
     font-size: 2rem;
   }
-  
+
   .flagship-event-title {
     font-size: 2rem;
   }
-  
+
   .flagship-event-description {
     font-size: 1.1rem;
   }
-  
+
   .countdown-container {
     padding: 20px;
   }
-  
+
   .countdown-number {
     font-size: 1.8rem;
   }
-  
+
   .flagship-event-details {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
-  
+
   .page-title {
     font-size: 2.2rem;
   }
-  
+
   .page-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .events-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
+
   .modal-content {
     flex-direction: column;
     max-width: 95%;
     max-height: 95vh;
   }
-  
+
   .modal-left {
     min-height: 250px;
   }
-  
+
   .modal-right {
     padding: 30px 20px;
   }
-  
+
   .modal-title {
     font-size: 1.5rem;
   }
-  
+
   .modal-description {
     font-size: 1rem;
   }
-  
-  .flagship-event-image {
-    height: 400px;
-  }
-  
+
   .flagship-overlay {
     padding: 20px;
   }
@@ -883,36 +876,33 @@
   .countdown-timer {
     gap: 5px;
   }
-  
+
   .countdown-item {
     min-width: 60px;
   }
-  
+
   .countdown-number {
     font-size: 1.5rem;
   }
-  
+
   .countdown-separator {
     font-size: 1.5rem;
     margin: 0 5px;
   }
-  
-  .flagship-event-image {
-    height: 300px;
-  }
-  
+
   .flagship-event-title {
     font-size: 1.5rem;
   }
-  
+
   .flagship-event-description {
     font-size: 1rem;
   }
-  
+
   .modal-right {
     padding: 20px 15px;
   }
 }
+
 /* --- Modal Scroll Fix --- */
 .modal-content {
   background: white;
@@ -920,7 +910,8 @@
   max-width: 1000px;
   width: 100%;
   max-height: 90vh;
-  overflow-y: auto; /* Enable vertical scroll */
+  overflow-y: auto;
+  /* Enable vertical scroll */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -944,11 +935,12 @@
 }
 
 .modal-image {
-   width: 100%;
+  width: 100%;
   height: auto;
   max-height: 100%;
   max-width: 100%;
-  object-fit: contain; /* Show full image without cropping */
+  object-fit: contain;
+  /* Show full image without cropping */
   object-position: center;
   display: block;
   border-radius: 15px;
@@ -960,12 +952,12 @@
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  
+
   .event-card {
     aspect-ratio: 9 / 16;
     height: auto;
   }
-  
+
   .event-image {
     height: 100%;
   }
@@ -976,11 +968,12 @@
     aspect-ratio: 9 / 16;
     height: auto;
   }
-  
+
   .event-image {
     height: 100%;
   }
 }
+
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
@@ -1004,7 +997,8 @@
   max-width: 1000px;
   width: 100%;
   max-height: 90vh;
-  overflow: hidden; /* Remove overflow-y: auto */
+  overflow: hidden;
+  /* Remove overflow-y: auto */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -1027,8 +1021,10 @@
 .modal-right {
   flex: 1;
   padding: 40px;
-  overflow-y: auto; /* Keep this as the only scroll container */
-  max-height: 90vh; /* Match parent height */
+  overflow-y: auto;
+  /* Keep this as the only scroll container */
+  max-height: 90vh;
+  /* Match parent height */
 }
 
 /* Custom scrollbar styling */
@@ -1058,19 +1054,21 @@
     max-height: 95vh;
     margin: 10px;
   }
-  
+
   .modal-left {
     flex: none;
     height: 300px;
     padding: 15px;
   }
-  
+
   .modal-right {
     flex: 1;
     padding: 20px;
-    max-height: calc(95vh - 300px); /* Subtract image container height */
+    max-height: calc(95vh - 300px);
+    /* Subtract image container height */
   }
 }
+
 @media (max-width: 768px) {
   .modal-content {
     flex-direction: column;
@@ -1078,48 +1076,51 @@
     max-height: 95vh;
     margin: 10px;
   }
-  
+
   .modal-left {
     flex: none;
     height: 300px;
     padding: 15px;
-    overflow-y: auto; /* Add scroll for image container */
+    overflow-y: auto;
+    /* Add scroll for image container */
   }
-  
+
   .modal-right {
     flex: 1;
     padding: 20px;
-    max-height: calc(95vh - 300px); /* Subtract image container height */
+    max-height: calc(95vh - 300px);
+    /* Subtract image container height */
   }
-  
+
   /* Make sure image can expand beyond container */
   .modal-image {
     width: 100%;
     height: auto;
-    max-height: none; /* Remove max-height restriction */
+    max-height: none;
+    /* Remove max-height restriction */
     max-width: 100%;
     object-fit: contain;
     object-position: center;
     display: block;
     border-radius: 15px;
   }
-  
+
   /* Custom scrollbar for modal image container */
   .modal-left::-webkit-scrollbar {
     width: 6px;
   }
-  
+
   .modal-left::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
   }
-  
+
   .modal-left::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
   }
-  
+
   .modal-left::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-} 
+}
