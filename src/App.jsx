@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -22,12 +22,7 @@ function App() {
 
   const isBlogPostPage = /^\/blogs\/\d+$/.test(location.pathname);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) return <SplashScreen />;
+  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
 
   return (
     <>

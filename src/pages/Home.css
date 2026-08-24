@@ -987,8 +987,8 @@
   font-family: 'Yatra One', 'Kalam', 'Noto Sans Devanagari', sans-serif;
   font-size: 1.8rem;
   font-weight: normal;
-  color: #D62424;
-  background: linear-gradient(135deg, #D62424 0%, #ea580c 50%, #b91c1c 100%);
+  color: #b91c1c;
+  background: linear-gradient(135deg, #c21c1c 0%, #b91c1c 50%, #991b1b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -999,7 +999,7 @@
 
 /* Motto Formatted Text Content */
 .motto-text-content p {
-  color: #4a5568;
+  color: #374151;
   line-height: 1.75;
   font-size: 1.05rem;
   margin: 0 0 1rem 0;
@@ -1012,19 +1012,19 @@
 
 .motto-intro {
   font-size: 1.08rem;
-  color: #2d3748;
+  color: #1f2937;
 }
 
 .motto-highlight {
-  color: #D62424;
+  color: #c5221f;
   font-weight: 700;
 }
 
 .motto-text-content strong {
-  color: #1a202c;
+  color: #111827;
   font-weight: 600;
 }
 
 .motto-text-content em {
-  color: #718096;
+  color: #475569;
 }

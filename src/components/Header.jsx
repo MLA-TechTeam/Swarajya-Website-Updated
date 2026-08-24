@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Header.css';
 import logo from '../assets/logo.png';
+import logoWebp from '../assets/logo-240.webp';
 import { Link, NavLink,useLocation } from 'react-router-dom';
 
 export default function Header() {
@@ -59,7 +60,17 @@ export default function Header() {
         {/* Logo Section - Left Side */}
         <div className="logo-section">
           <Link to="/" className="logo" onClick={handleNavLinkClick}>
-            <img src={logo} alt="Club Logo" className="logo-icon" />
+            <picture>
+              <source srcSet={logoWebp} type="image/webp" />
+              <img 
+                src={logo} 
+                alt="Club Logo" 
+                className="logo-icon" 
+                width="240" 
+                height="314" 
+                fetchpriority="high" 
+              />
+            </picture>
             <div className="logo-text">
               <span className="logo-marathi">स्वराज्य</span>
               <span className="logo-english">SWARAJYA</span>

@@ -10,10 +10,28 @@
       name="description"
       content="Swarajya-MLA is the Marathi Literary Association of VIT Chennai, dedicated to promoting literary, cultural, and traditional values through inclusive and impactful student-led initiatives."
     />
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Asynchronous Google Fonts Loading -->
     <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
-    rel="stylesheet"
-  />
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      />
+    </noscript>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Swarajya-MLA</title>

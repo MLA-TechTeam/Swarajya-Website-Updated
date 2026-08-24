@@ -156,6 +156,7 @@ export default function Home() {
           loop
           muted={isMuted}
           playsInline
+          aria-hidden="true"
         >
           <source src={heroVideo} type="video/mp4" />
           Your browser does not support the video tag.
@@ -167,13 +168,24 @@ export default function Home() {
             <h1 className="hero-title">
               ƂВvarajyaƓ
             </h1>
-            <div className="scroll-indicator" onClick={handleScroll} role="button" tabIndex={0}>
+            <div 
+              className="scroll-indicator" 
+              onClick={handleScroll} 
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleScroll(); }}
+              role="button" 
+              tabIndex={0}
+              aria-label="Scroll to next section"
+            >
               <ChevronDown className="chevron-down" size={40} />
               <ChevronDown className="chevron-down delayed" size={40} />
             </div>
           </div>
         </div>
-        <button onClick={toggleMute} className="btn-mute-toggle">
+        <button 
+          onClick={toggleMute} 
+          className="btn-mute-toggle"
+          aria-label={isMuted ? "Unmute video sound" : "Mute video sound"}
+        >
           {isMuted ?
             <VscMute className="mute-icon" /> :
             <VscUnmute className="mute-icon" />
@@ -467,6 +479,9 @@ export default function Home() {
                     src={certificate}
                     alt="Best Literary Club Award"
                     className="award-image"
+                    width="868"
+                    height="1259"
+                    loading="lazy"
                   />
                   <div className="image-overlay">
                     <span className="overlay-text">Certificate</span>

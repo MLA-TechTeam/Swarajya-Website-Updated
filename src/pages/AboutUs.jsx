@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './AboutUs.css';
 import logo from '../assets/logo.png';
+import logoWebp from '../assets/logo-240.webp';
 import designIcon from '../data/dept logo emoticons/design.png';
 import socialMediaIcon from '../data/dept logo emoticons/social-media.png';
 import technicalIcon from '../data/dept logo emoticons/technical.png';
@@ -106,7 +107,10 @@ export default function AboutUs() {
             </div>
             <div className="intro-image">
               <div className="image-placeholder">
-                <img src={logo} alt="Club Logo" className="logo-icon3" />
+                <picture>
+                  <source srcSet={logoWebp} type="image/webp" />
+                  <img src={logo} alt="Club Logo" className="logo-icon3" width="200" height="200" loading="lazy" />
+                </picture>
               </div>
             </div>
           </div>

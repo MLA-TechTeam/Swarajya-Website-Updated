@@ -1,0 +1,27 @@
+# Swarajya MLA Club
+
+> Swarajya - The Marathi Literary Association of VIT Chennai is dedicated to promoting and preserving the rich cultural, literary, and historical heritage of Maharashtra through inclusive, student-led initiatives, cultural festivals, and community leadership.
+
+## Overview
+Founded initially as Bappa Ganesh Mandal (BGM) in 2017 and evolving into Swarajya Marathi Literary Association in 2022, Swarajya is the official Marathi Literary Club of Vellore Institute of Technology (VIT) Chennai. Awarded the prestigious **Best Literary Club Award** (2024-25), the club serves as a cultural haven organizing flagship university celebrations, literary seminars, quizzes, magazines, and social initiatives.
+
+- **Motto**: "सेवेचे ठाई तत्पर" *(Always Ready for Service)* - inspired by Hiroji Indulkar, chief architect of Raigad Fort.
+- **Institution**: VIT Chennai, Tamil Nadu, India.
+- **Contact Email**: mlavitc@gmail.com
+- **Official Website**: https://www.swarajya-mla.club/
+
+## Key Pages & Sections
+- [Home](https://www.swarajya-mla.club/): Main landing page featuring the club motto, featured blogs, event highlights, and department overviews.
+- [About Us](https://www.swarajya-mla.club/about): Club history from 2017 to present, faculty coordinators, and Core Committee leadership for 2025-26 and 2026-27.
+- [Events](https://www.swarajya-mla.club/events): Details of flagship events including Ganesh Utsav, Shivrajyabhishek Sohala, Maharashtra Day, and guest lectures.
+- [Gallery](https://www.swarajya-mla.club/gallery): Visual archive and photographic moments from cultural events, performances, and campus activities.
+- [Blogs](https://www.swarajya-mla.club/blogs): Student-written blogs exploring Maratha history, Marathi literature, poetry, and cultural articles.
+- [Magazine](https://www.swarajya-mla.club/magazine): "Antarang", the official annual literary magazine showcasing member talents and literary compositions.
+
+## Organizational Departments
+- **Design & Content**: Visual identity, promotional creatives, scripts, and literary writing.
+- **Social Media & Photography**: Social platform outreach, photography, and digital engagement.
+- **Technical**: Web development, platform performance, and digital tools.
+- **Cultural**: Traditional dance, theatrical drama, music, and festival ceremonies.
+- **Operations**: Logistics, event management, and campus coordination.
+- **Finance & Outreach**: Sponsorships, budgeting, external associations, and public relations.

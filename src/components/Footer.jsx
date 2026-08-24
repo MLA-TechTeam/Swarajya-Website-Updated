@@ -3,6 +3,7 @@ import { FaInstagram, FaYoutube, FaWhatsapp, FaLinkedin, FaFacebookF} from 'reac
 import { MapPin, Phone, Mail} from 'lucide-react';
 import './Footer.css';
 import logo from '../assets/logo.png';
+import logoWebp from '../assets/logo-240.webp';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -34,7 +35,10 @@ export default function Footer() {
             {/* About Section */}
             <div className="footer-section">
                <div className="footer-logo">
-                <img src={logo} alt="Club Logo" className="logo-icon" />
+                <picture>
+                  <source srcSet={logoWebp} type="image/webp" />
+                  <img src={logo} alt="Club Logo" className="logo-icon" width="100" height="100" loading="lazy" />
+                </picture>
                 <div className="footer-logo-text">
                   <span className="footer-logo-marathi">स्वराज्य</span>
                   <span className="footer-logo-english">SWARAJYA</span>

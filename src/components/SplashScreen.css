@@ -1,141 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;700&family=Shrikhand&family=Kalam:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Yatra+One&display=swap');
 
-.splash-screen {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #fff7ed, #fed7aa);
+/* ==========================================================================
+   Splash Screen Root & Container
+   ========================================================================== */
+.splash-container {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffcf5 24%, #fff1df 54%, #fed7aa 100%);
   overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  transition: 
+    opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
-.background-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.05;
-  background-image: 
-    radial-gradient(circle at 25% 25%, #f97316 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, #ea580c 2px, transparent 2px);
-  background-size: 50px 50px;
-}
-
-.splash-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.logo-container {
-  margin-bottom: 32px;
-}
-
-.logo-image {
-  width: 60%;
-  height: 60%;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  border-radius: 50%;
-  padding: 12px;
-}
-
-.title-section {
-  margin-bottom: 24px;
-}
-
-.devanagari-title {
-  font-family: 'Kalam', 'Noto Sans Devanagari', sans-serif;
-  font-size: 45px;
-  font-weight: 700;
-  color: #9a3412;
-  margin: 0 0 8px 0;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 4px rgba(154, 52, 18, 0.2);
-}
-
-.english-title {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #34495e;
-  padding-bottom: 6px;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #ea580c;
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: 1px;
-}
-
-.loading-section {
-  margin-bottom: 32px;
-}
-
-.progress-container {
-  width: 192px;
-  margin: 0 auto 16px auto;
-}
-
-.progress-bar {
-  height: 4px;
-  background-color: #fed7aa;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(to right, #f97316, #dc2626);
-  border-radius: 2px;
-  transition: width 2s ease-out;
-}
-
-.loading-text {
-  color: rgba(234, 88, 12, 0.7);
-  font-size: 12px;
-  font-weight: 500;
-  margin: 0;
-}
-
-/* Blast Effect Styles */
-.blast-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+/* Apple-style Fluid Material Exit Transition */
+.splash-container.splash-exiting {
+  opacity: 0;
+  transform: scale(1.04);
+  filter: blur(14px);
   pointer-events: none;
-  z-index: 1000;
 }
 
+/* ==========================================================================
+   Ambient Background Canvas
+   ========================================================================== */
+.ambient-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
 
+.ambient-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.38;
+  will-change: transform, opacity;
+  animation: ambientFloat 8s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
 
-/* Confetti Styles */
+.glow-primary {
+  width: 520px;
+  height: 520px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, rgba(234, 88, 12, 0.04) 55%, transparent 75%);
+}
+
+.glow-secondary {
+  width: 380px;
+  height: 380px;
+  bottom: 12%;
+  left: 25%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.16) 0%, rgba(249, 115, 22, 0.02) 65%, transparent 80%);
+  animation-delay: -3s;
+}
+
+.ambient-mesh-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #ea580c 1.5px, transparent 1.5px),
+    radial-gradient(circle at 75% 75%, #c2410c 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+}
+
+@keyframes ambientFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.32;
+  }
+  50% {
+    transform: translate(-48%, -52%) scale(1.08);
+    opacity: 0.52;
+  }
+  100% {
+    transform: translate(-52%, -48%) scale(0.96);
+    opacity: 0.38;
+  }
+}
+
+/* ==========================================================================
+   Light Confetti Shower (Extended Duration & Smooth Drift)
+   ========================================================================== */
 .confetti-container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   overflow: hidden;
+  pointer-events: none;
+  z-index: 4;
 }
 
 .confetti-piece {
   position: absolute;
-  top: -20px;
-  opacity: 0.8;
-  animation: confettiFall linear forwards;
+  top: -24px;
+  will-change: transform, opacity;
+  animation: confettiFall linear infinite;
 }
 
 .confetti-piece.circle {
@@ -143,156 +119,203 @@
 }
 
 .confetti-piece.square {
-  border-radius: 2px;
+  border-radius: 1.5px;
 }
 
 @keyframes confettiFall {
   0% {
-    transform: translateY(-20px) rotate(0deg);
-    opacity: 1;
+    transform: translateY(-24px) rotate(0deg) translateX(0);
+    opacity: 0;
   }
-  10% {
-    opacity: 1;
+  8% {
+    opacity: 0.85;
   }
-  90% {
-    opacity: 0.8;
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(14px);
+  }
+  88% {
+    opacity: 0.75;
   }
   100% {
-    transform: translateY(100vh) rotate(360deg);
+    transform: translateY(105vh) rotate(360deg) translateX(-14px);
     opacity: 0;
   }
 }
 
-/* Floating elements */
-.floating-element {
-  position: absolute;
-  font-size: 18px;
-  color: rgba(251, 191, 36, 0.3);
-  animation: pulse 2s infinite;
+/* ==========================================================================
+   Seamless Floating Stage & Motto Typography
+   ========================================================================== */
+.splash-stage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: stageMaterialize 900ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.bottom-text {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(251, 146, 60, 0.5);
-  font-size: 12px;
-  font-weight: 300;
-}
-
-@keyframes shimmer {
+@keyframes stageMaterialize {
   0% {
-    background-position: 0% 50%;
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
-  }
-  50% {
-    background-position: 100% 50%;
-    box-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+    filter: blur(8px);
   }
   100% {
-    background-position: 0% 50%;
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
+/* Uncontained Motto Title directly above the animation */
+.landing-motto-title {
+  font-family: 'Yatra One', 'Kalam', 'Noto Sans Devanagari', sans-serif;
+  font-size: clamp(1.6rem, 3.8vw, 2.25rem);
+  font-weight: normal;
+  margin: 0 0 8px 0;
+  padding: 0;
+  background: linear-gradient(135deg, #D62424 0%, #ea580c 50%, #b91c1c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 5px rgba(214, 36, 36, 0.22));
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  text-align: center;
+  display: block;
+}
+
+.video-blend-wrapper {
+  position: relative;
+  width: min(84vmin, 490px);
+  height: min(84vmin, 490px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Radiant underglow behind the video */
+.video-ambient-glow {
+  position: absolute;
+  inset: -10%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.16) 0%, rgba(251, 191, 36, 0.06) 45%, transparent 68%);
+  filter: blur(48px);
+  z-index: 1;
+  pointer-events: none;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.96);
   }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.1);
+  100% {
+    opacity: 0.9;
+    transform: scale(1.05);
   }
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .splash-content {
-    padding: 0 16px;
-  }
-  
-  .devanagari-title {
-    font-size: 48px;
-    letter-spacing: 2px;
-  }
-  
-  .english-title {
-    font-size: 36px;
-    letter-spacing: 4px;
-  }
-  
-  .subtitle {
-    font-size: 24px;
-  }
-  
-  .progress-container {
-    width: 160px;
-  }
-  
-  .blast-circle {
-    width: 80px;
-    height: 80px;
-  }
-  
-  @keyframes blastExplosion {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(6);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(12);
-      opacity: 0;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .devanagari-title {
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
-  
-  .english-title {
-    font-size: 28px;
-    letter-spacing: 2px;
-  }
-  
-  .progress-container {
-    width: 140px;
-  }
-  
-  .blast-circle {
-    width: 60px;
-    height: 60px;
-  }
-  
-  @keyframes blastExplosion {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 1;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(5);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(10);
-      opacity: 0;
-    }
-  }
-  
-  .confetti-piece {
-    width: 8px !important;
-    height: 8px !important;
-  }
-}
-.splash-screen.fade-out {
+/* Directly Blended Video: Multiply Mode + Luminance Tuning + Tighter Radial Feather Mask */
+.splash-blended-video {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+  filter: brightness(1.08) contrast(1.04) saturate(1.03);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, rgba(0, 0, 0, 0.94) 54%, rgba(0, 0, 0, 0.25) 68%, transparent 80%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 40%, rgba(0, 0, 0, 0.94) 54%, rgba(0, 0, 0, 0.25) 68%, transparent 80%);
   opacity: 0;
-  transition: opacity 1s ease-out;
+  transform: scale(0.98);
+  transition: 
+    opacity 400ms ease,
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.splash-blended-video.loaded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   Real-Time Playback Progress Bar Directly Below Logo
+   ========================================================================== */
+.progress-bar-wrapper {
+  margin-top: 8px;
+  width: 180px;
+  max-width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.progress-track {
+  width: 100%;
+  height: 3.5px;
+  background: rgba(234, 88, 12, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ea580c 0%, #f97316 60%, #fbbf24 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.55);
+  transition: width 100ms linear;
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion / Transparency
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .splash-container {
+    transition: opacity 250ms ease !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .splash-container.splash-exiting {
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .splash-stage {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .ambient-glow-orb,
+  .video-ambient-glow {
+    animation: none !important;
+  }
+
+  .confetti-container {
+    display: none;
+  }
+
+  .splash-blended-video {
+    transition: opacity 200ms ease !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .splash-container {
+    background: #fff7ed;
+  }
+
+  .ambient-canvas {
+    display: none;
+  }
 }
