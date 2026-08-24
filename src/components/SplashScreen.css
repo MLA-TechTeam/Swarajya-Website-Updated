@@ -97,47 +97,156 @@
 }
 
 /* ==========================================================================
-   Light Confetti Shower (Extended Duration & Smooth Drift)
+   Falling Flower Blossoms & Petals Shower (पुष्पवृष्टी)
    ========================================================================== */
-.confetti-container {
+.flower-shower-container {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 4;
+  perspective: 900px;
+  perspective-origin: 50% 30%;
 }
 
-.confetti-piece {
+.flower-defs-svg {
   position: absolute;
-  top: -24px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.flower-petal-item {
+  position: absolute;
+  top: -45px;
   will-change: transform, opacity;
-  animation: confettiFall linear infinite;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 2.5px 6px rgba(180, 83, 9, 0.22));
 }
 
-.confetti-piece.circle {
-  border-radius: 50%;
+.flower-petal-item.sway-1 {
+  animation: flowerFall1 linear infinite;
 }
 
-.confetti-piece.square {
-  border-radius: 1.5px;
+.flower-petal-item.sway-2 {
+  animation: flowerFall2 linear infinite;
 }
 
-@keyframes confettiFall {
+.flower-petal-item.sway-3 {
+  animation: flowerFall3 linear infinite;
+}
+
+.flower-petal-item.sway-4 {
+  animation: flowerFall4 linear infinite;
+}
+
+.flower-svg {
+  display: block;
+  overflow: visible;
+}
+
+/* 3D Natural Aerodynamic Fluttering & Falling Keyframes */
+@keyframes flowerFall1 {
   0% {
-    transform: translateY(-24px) rotate(0deg) translateX(0);
+    transform: translateY(-45px) translateX(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
     opacity: 0;
   }
-  8% {
-    opacity: 0.85;
+  6% {
+    opacity: 0.95;
+  }
+  25% {
+    transform: translateY(26vh) translateX(30px) rotateX(85deg) rotateY(60deg) rotateZ(75deg);
   }
   50% {
-    transform: translateY(50vh) rotate(180deg) translateX(14px);
+    transform: translateY(53vh) translateX(-22px) rotateX(170deg) rotateY(140deg) rotateZ(180deg);
   }
-  88% {
-    opacity: 0.75;
+  75% {
+    transform: translateY(80vh) translateX(25px) rotateX(255deg) rotateY(210deg) rotateZ(270deg);
+  }
+  92% {
+    opacity: 0.85;
   }
   100% {
-    transform: translateY(105vh) rotate(360deg) translateX(-14px);
+    transform: translateY(106vh) translateX(-12px) rotateX(360deg) rotateY(300deg) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flowerFall2 {
+  0% {
+    transform: translateY(-45px) translateX(0) rotateX(25deg) rotateY(0deg) rotateZ(45deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.95;
+  }
+  28% {
+    transform: translateY(29vh) translateX(-34px) rotateX(100deg) rotateY(80deg) rotateZ(125deg);
+  }
+  55% {
+    transform: translateY(57vh) translateX(28px) rotateX(190deg) rotateY(160deg) rotateZ(215deg);
+  }
+  78% {
+    transform: translateY(82vh) translateX(-24px) rotateX(270deg) rotateY(230deg) rotateZ(305deg);
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(106vh) translateX(14px) rotateX(380deg) rotateY(320deg) rotateZ(405deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flowerFall3 {
+  0% {
+    transform: translateY(-45px) translateX(0) rotateX(0deg) rotateY(30deg) rotateZ(-30deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.95;
+  }
+  30% {
+    transform: translateY(32vh) translateX(38px) rotateX(110deg) rotateY(90deg) rotateZ(60deg);
+  }
+  60% {
+    transform: translateY(62vh) translateX(-30px) rotateX(210deg) rotateY(180deg) rotateZ(170deg);
+  }
+  80% {
+    transform: translateY(84vh) translateX(20px) rotateX(290deg) rotateY(260deg) rotateZ(260deg);
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(106vh) translateX(-18px) rotateX(400deg) rotateY(360deg) rotateZ(330deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flowerFall4 {
+  0% {
+    transform: translateY(-45px) translateX(0) rotateX(40deg) rotateY(10deg) rotateZ(15deg);
+    opacity: 0;
+  }
+  6% {
+    opacity: 0.95;
+  }
+  24% {
+    transform: translateY(24vh) translateX(-26px) rotateX(90deg) rotateY(70deg) rotateZ(90deg);
+  }
+  48% {
+    transform: translateY(48vh) translateX(34px) rotateX(180deg) rotateY(150deg) rotateZ(180deg);
+  }
+  72% {
+    transform: translateY(74vh) translateX(-20px) rotateX(260deg) rotateY(220deg) rotateZ(270deg);
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(106vh) translateX(22px) rotateX(360deg) rotateY(310deg) rotateZ(375deg);
     opacity: 0;
   }
 }
@@ -300,7 +409,7 @@
     animation: none !important;
   }
 
-  .confetti-container {
+  .flower-shower-container {
     display: none;
   }
 

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SplashScreen from './components/SplashScreen';
 import LoadingSkeleton from './components/LoadingSkeleton';
+import ErrorBoundary from './components/ErrorBoundary';
 import BlogPost from './pages/BlogPost';
 
 import { blogPosts } from './data/blogdata'; // ✅ Make sure this is defined
@@ -28,17 +29,19 @@ function App() {
     <>
       {!isBlogPostPage && <Header />}
       <main>
-        <Suspense fallback={<LoadingSkeleton count={6} />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs/:id" element={<BlogPost posts={blogPosts} />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/magazine" element={<Magazine />} />
-          </Routes>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSkeleton count={6} />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:id" element={<BlogPost posts={blogPosts} />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/magazine" element={<Magazine />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <Footer />
     </>

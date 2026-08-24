@@ -85,7 +85,6 @@ export default function Header() {
               <NavLink 
                 to="/" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 Home
@@ -95,7 +94,6 @@ export default function Header() {
               <NavLink 
                 to="/about" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 About Us
@@ -105,7 +103,6 @@ export default function Header() {
               <NavLink 
                 to="/events" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 Events
@@ -115,7 +112,6 @@ export default function Header() {
               <NavLink 
                 to="/gallery" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 Gallery
@@ -125,7 +121,6 @@ export default function Header() {
               <NavLink 
                 to="/blogs" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 Blog
@@ -135,7 +130,6 @@ export default function Header() {
               <NavLink 
                 to="/magazine" 
                 className="nav-link" 
-                activeClassName="active"
                 onClick={handleNavLinkClick}
               >
                 Magazine
