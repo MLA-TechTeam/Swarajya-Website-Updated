@@ -125,6 +125,7 @@ export default function SplashScreen({ onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [flowers, setFlowers] = useState([]);
+  const hasFinishedRef = useRef(false);
 
   // Generate realistic falling flower blossoms & petals (पुष्पवृष्टी)
   const generateFlowers = useCallback(() => {
@@ -157,37 +158,74 @@ export default function SplashScreen({ onComplete }) {
     setFlowers(generateFlowers());
   }, [generateFlowers]);
 
-  // Smooth finish transition
+  // Smooth finish transition - only called once animation completes
   const handleFinish = useCallback(() => {
-    if (isExiting) return;
+    if (hasFinishedRef.current) return;
+    hasFinishedRef.current = true;
     setIsExiting(true);
     setTimeout(() => {
       onComplete && onComplete();
     }, 650);
-  }, [isExiting, onComplete]);
+  }, [onComplete]);
 
-  // Real-time playback progress bar trimmed from START_OFFSET_SECONDS
-  const handleTimeUpdate = () => {
-    if (videoRef.current && videoRef.current.duration) {
-      if (videoRef.current.currentTime >= START_OFFSET_SECONDS && !isVideoLoaded) {
-        setIsVideoLoaded(true);
+  // Video complete handler: sets progress to 100% and gracefully transitions
+  const handleVideoEnded = useCallback(() => {
+    setProgress(100);
+    setTimeout(() => {
+      handleFinish();
+    }, 250);
+  }, [handleFinish]);
+
+  // Continuous high-precision 60fps progress sync locked to video playback
+  useEffect(() => {
+    let animId;
+    const updateProgress = () => {
+      const video = videoRef.current;
+      if (video && video.duration && !video.paused && !video.ended) {
+        if (video.currentTime >= START_OFFSET_SECONDS && !isVideoLoaded) {
+          setIsVideoLoaded(true);
+        }
+        const current = Math.max(0, video.currentTime - START_OFFSET_SECONDS);
+        const effectiveDuration = Math.max(0.1, video.duration - START_OFFSET_SECONDS);
+        const percentage = Math.min(Math.max((current / effectiveDuration) * 100, 0), 100);
+        setProgress(percentage);
+
+        // Natural completion trigger if reached near end
+        if (video.currentTime >= video.duration - 0.05 && percentage >= 99) {
+          handleVideoEnded();
+          return;
+        }
       }
-      const current = Math.max(0, videoRef.current.currentTime - START_OFFSET_SECONDS);
-      const effectiveDuration = Math.max(0.1, videoRef.current.duration - START_OFFSET_SECONDS);
-      const percentage = Math.min((current / effectiveDuration) * 100, 100);
-      setProgress(percentage);
+      animId = requestAnimationFrame(updateProgress);
+    };
+
+    animId = requestAnimationFrame(updateProgress);
+    return () => cancelAnimationFrame(animId);
+  }, [isVideoLoaded, handleVideoEnded]);
+
+  // Reliable video autoplay initialization
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
     }
-  };
+  }, []);
 
-  // Video loaded handler with 1.6s trim and clean reveal
-  const handleLoadedData = () => {
-    if (videoRef.current) {
-      if (videoRef.current.currentTime < START_OFFSET_SECONDS) {
-        videoRef.current.currentTime = START_OFFSET_SECONDS;
-      } else {
-        setIsVideoLoaded(true);
+  // Video loaded handler with START_OFFSET_SECONDS seek and playback
+  const handleLoadedMedia = () => {
+    const video = videoRef.current;
+    if (video) {
+      if (video.currentTime < START_OFFSET_SECONDS) {
+        video.currentTime = START_OFFSET_SECONDS;
       }
-      const playPromise = videoRef.current.play();
+      const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
       }
@@ -195,40 +233,35 @@ export default function SplashScreen({ onComplete }) {
   };
 
   const handleSeeked = () => {
-    if (videoRef.current && videoRef.current.currentTime >= START_OFFSET_SECONDS) {
+    const video = videoRef.current;
+    if (video && video.currentTime >= START_OFFSET_SECONDS) {
       setIsVideoLoaded(true);
-      const playPromise = videoRef.current.play();
+      const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
       }
     }
   };
 
-  // Fallback safety timer
+  const handlePlaying = () => {
+    const video = videoRef.current;
+    if (video && video.currentTime >= START_OFFSET_SECONDS) {
+      setIsVideoLoaded(true);
+    }
+  };
+
+  // Fallback safety timeout (30s) strictly for network disconnection / unplayable browser video
   useEffect(() => {
-    const safetyTimeout = setTimeout(() => {
+    const catastrophicTimeout = setTimeout(() => {
       handleFinish();
-    }, 8500);
+    }, 30000);
 
-    return () => clearTimeout(safetyTimeout);
-  }, [handleFinish]);
-
-  // Keyboard shortcut (Escape / Space / Enter to skip)
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleFinish();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => clearTimeout(catastrophicTimeout);
   }, [handleFinish]);
 
   return (
     <div
       className={`splash-container ${isExiting ? 'splash-exiting' : ''}`}
-      onClick={handleFinish}
       role="region"
       aria-label="Swarajya Intro"
     >
@@ -310,10 +343,12 @@ export default function SplashScreen({ onComplete }) {
             muted
             playsInline
             preload="auto"
-            onTimeUpdate={handleTimeUpdate}
-            onLoadedData={handleLoadedData}
+            onLoadedMetadata={handleLoadedMedia}
+            onLoadedData={handleLoadedMedia}
+            onCanPlay={handleLoadedMedia}
             onSeeked={handleSeeked}
-            onEnded={handleFinish}
+            onPlaying={handlePlaying}
+            onEnded={handleVideoEnded}
             onError={handleFinish}
           />
         </div>

@@ -12,7 +12,7 @@
   justify-content: center;
   background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffcf5 24%, #fff1df 54%, #fed7aa 100%);
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   user-select: none;
   -webkit-user-select: none;
   opacity: 1;
