@@ -10,27 +10,36 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffcf5 24%, #fff1df 54%, #fed7aa 100%);
   overflow: hidden;
   cursor: default;
   user-select: none;
   -webkit-user-select: none;
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
-  transition: 
-    opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 650ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 650ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+  pointer-events: auto;
 }
 
-/* Apple-style Fluid Material Exit Transition */
+/* Background Dissolve Backdrop */
+.splash-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #fffcf5 24%, #fff1df 54%, #fed7aa 100%);
+  opacity: 1;
+  filter: blur(0px);
+  transition: 
+    opacity 1200ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter;
+  z-index: 0;
+}
+
+.splash-container.splash-docking,
 .splash-container.splash-exiting {
-  opacity: 0;
-  transform: scale(1.04);
-  filter: blur(14px);
   pointer-events: none;
+}
+
+.splash-docking .splash-backdrop,
+.splash-exiting .splash-backdrop {
+  opacity: 0;
+  filter: blur(8px);
 }
 
 /* ==========================================================================
@@ -42,6 +51,13 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  opacity: 1;
+  transition: opacity 1000ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.splash-docking .ambient-canvas,
+.splash-exiting .ambient-canvas {
+  opacity: 0;
 }
 
 .ambient-glow-orb {
@@ -107,6 +123,13 @@
   z-index: 4;
   perspective: 900px;
   perspective-origin: 50% 30%;
+  opacity: 1;
+  transition: opacity 450ms ease;
+}
+
+.splash-docking .flower-shower-container,
+.splash-exiting .flower-shower-container {
+  opacity: 0;
 }
 
 .flower-defs-svg {
@@ -293,8 +316,21 @@
   line-height: 1.3;
   text-align: center;
   display: block;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 350ms ease, transform 350ms ease;
+  will-change: opacity, transform;
 }
 
+.splash-docking .landing-motto-title,
+.splash-exiting .landing-motto-title {
+  opacity: 0;
+  transform: translateY(-18px);
+}
+
+/* ==========================================================================
+   Video Blend Wrapper & Flying Logo Docking
+   ========================================================================== */
 .video-blend-wrapper {
   position: relative;
   width: min(84vmin, 490px);
@@ -302,6 +338,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transform-origin: center center;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  will-change: transform;
+}
+
+.video-blend-wrapper.docking {
+  z-index: 100000;
 }
 
 /* Radiant underglow behind the video */
@@ -314,6 +359,11 @@
   z-index: 1;
   pointer-events: none;
   animation: glowPulse 4s ease-in-out infinite alternate;
+  transition: opacity 350ms ease;
+}
+
+.video-blend-wrapper.docking .video-ambient-glow {
+  opacity: 0;
 }
 
 @keyframes glowPulse {
@@ -352,6 +402,35 @@
   transform: scale(1);
 }
 
+.splash-blended-video.docking-video {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* Crisp Transparent Logo for Seamless Docking into Header */
+.splash-docking-picture {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 250ms ease;
+}
+
+.splash-docking-picture.visible {
+  opacity: 1;
+}
+
+.splash-docking-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
 /* ==========================================================================
    Real-Time Playback Progress Bar Directly Below Logo
    ========================================================================== */
@@ -363,6 +442,16 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+  will-change: opacity, transform;
+}
+
+.splash-docking .progress-bar-wrapper,
+.splash-exiting .progress-bar-wrapper {
+  opacity: 0;
+  transform: translateY(14px);
 }
 
 .progress-track {
@@ -379,7 +468,7 @@
   background: linear-gradient(90deg, #ea580c 0%, #f97316 60%, #fbbf24 100%);
   border-radius: 9999px;
   box-shadow: 0 0 8px rgba(249, 115, 22, 0.55);
-  transition: width 100ms linear;
+  transition: width 60ms linear;
 }
 
 /* ==========================================================================
@@ -388,13 +477,10 @@
 @media (prefers-reduced-motion: reduce) {
   .splash-container {
     transition: opacity 250ms ease !important;
-    transform: none !important;
-    filter: none !important;
   }
 
-  .splash-container.splash-exiting {
-    transform: none !important;
-    filter: none !important;
+  .splash-backdrop {
+    transition: opacity 250ms ease !important;
   }
 
   .splash-stage {
@@ -413,6 +499,11 @@
     display: none;
   }
 
+  .video-blend-wrapper {
+    transition: opacity 250ms ease !important;
+    transform: none !important;
+  }
+
   .splash-blended-video {
     transition: opacity 200ms ease !important;
     transform: none !important;
@@ -420,7 +511,7 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .splash-container {
+  .splash-backdrop {
     background: #fff7ed;
   }
 

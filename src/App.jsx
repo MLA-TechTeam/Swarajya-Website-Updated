@@ -18,16 +18,15 @@ const Gallery = lazy(() => import('./pages/Gallery'));
 const Magazine = lazy(() => import('./pages/Magazine'));
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
+  const [isSplashActive, setIsSplashActive] = useState(true);
   const location = useLocation();
 
   const isBlogPostPage = /^\/blogs\/\d+$/.test(location.pathname);
 
-  if (loading) return <SplashScreen onComplete={() => setLoading(false)} />;
-
   return (
     <>
-      {!isBlogPostPage && <Header />}
+      {!isBlogPostPage && <Header isSplashActive={isSplashActive} />}
       <main>
         <ErrorBoundary>
           <Suspense fallback={<LoadingSkeleton count={6} />}>
@@ -44,6 +43,15 @@ function App() {
         </ErrorBoundary>
       </main>
       <Footer />
+      {showSplash && (
+        <SplashScreen
+          onDockingArrival={() => setIsSplashActive(false)}
+          onComplete={() => {
+            setIsSplashActive(false);
+            setShowSplash(false);
+          }}
+        />
+      )}
     </>
   );
 }

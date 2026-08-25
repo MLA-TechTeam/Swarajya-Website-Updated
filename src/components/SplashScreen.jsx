@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import swarajyaAnim from '../assets/swarajya_anim.mp4';
+import logo from '../assets/logo.png';
+import logoWebp from '../assets/logo-240.webp';
 import './SplashScreen.css';
 
 const START_OFFSET_SECONDS = 1.6;
@@ -119,10 +121,13 @@ function FlowerItem({ shape, gradientId, size, opacity }) {
   );
 }
 
-export default function SplashScreen({ onComplete }) {
+export default function SplashScreen({ onDockingArrival, onComplete }) {
   const videoRef = useRef(null);
+  const videoWrapperRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
+  const [isDocking, setIsDocking] = useState(false);
+  const [dockStyle, setDockStyle] = useState({});
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [flowers, setFlowers] = useState([]);
   const hasFinishedRef = useRef(false);
@@ -158,23 +163,75 @@ export default function SplashScreen({ onComplete }) {
     setFlowers(generateFlowers());
   }, [generateFlowers]);
 
-  // Smooth finish transition - only called once animation completes
-  const handleFinish = useCallback(() => {
+  // Smooth docking flight to the top-left header logo while background reveals home page
+  const startDockingTransition = useCallback(() => {
     if (hasFinishedRef.current) return;
     hasFinishedRef.current = true;
+
+    // Locate the header logo in the DOM
+    const targetLogo = document.querySelector('.header .logo-icon') || document.querySelector('.logo-icon');
+    const wrapper = videoWrapperRef.current;
+
+    let deltaX = 0;
+    let deltaY = 0;
+    let scale = 0.22;
+
+    if (wrapper) {
+      const currentRect = wrapper.getBoundingClientRect();
+      const currentCenterX = currentRect.left + currentRect.width / 2;
+      const currentCenterY = currentRect.top + currentRect.height / 2;
+
+      if (targetLogo) {
+        const targetRect = targetLogo.getBoundingClientRect();
+        const targetCenterX = targetRect.left + targetRect.width / 2;
+        const targetCenterY = targetRect.top + targetRect.height / 2;
+
+        deltaX = targetCenterX - currentCenterX;
+        deltaY = targetCenterY - currentCenterY;
+        scale = (targetRect.width || 100) / (currentRect.width || 490);
+      } else {
+        // Safe responsive fallback if logo not found
+        const isMobile = window.innerWidth <= 1024;
+        const targetCenterX = isMobile ? 36 : 70;
+        const targetCenterY = isMobile ? 35 : 60;
+        const targetSize = isMobile ? 40 : 100;
+
+        deltaX = targetCenterX - currentCenterX;
+        deltaY = targetCenterY - currentCenterY;
+        scale = targetSize / (currentRect.width || 490);
+      }
+    }
+
+    // Begin background transparency dissolve and mark docking state
+    setIsDocking(true);
     setIsExiting(true);
+
+    // Apply transform in next frame to guarantee CSS transition executes smoothly
+    requestAnimationFrame(() => {
+      setDockStyle({
+        transform: `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scale})`,
+        transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
+      });
+    });
+
+    // Notify header logo to bloom into place right as the flying logo reaches the destination
+    setTimeout(() => {
+      onDockingArrival && onDockingArrival();
+    }, 1050);
+
+    // Complete after fluid 1.25s flight & reveal finishes
     setTimeout(() => {
       onComplete && onComplete();
-    }, 650);
-  }, [onComplete]);
+    }, 1250);
+  }, [onDockingArrival, onComplete]);
 
-  // Video complete handler: sets progress to 100% and gracefully transitions
+  // Video complete handler: sets progress to 100%, pauses briefly for clarity, then initiates smooth flight
   const handleVideoEnded = useCallback(() => {
     setProgress(100);
     setTimeout(() => {
-      handleFinish();
-    }, 250);
-  }, [handleFinish]);
+      startDockingTransition();
+    }, 200);
+  }, [startDockingTransition]);
 
   // Continuous high-precision 60fps progress sync locked to video playback
   useEffect(() => {
@@ -253,18 +310,21 @@ export default function SplashScreen({ onComplete }) {
   // Fallback safety timeout (30s) strictly for network disconnection / unplayable browser video
   useEffect(() => {
     const catastrophicTimeout = setTimeout(() => {
-      handleFinish();
+      startDockingTransition();
     }, 30000);
 
     return () => clearTimeout(catastrophicTimeout);
-  }, [handleFinish]);
+  }, [startDockingTransition]);
 
   return (
     <div
-      className={`splash-container ${isExiting ? 'splash-exiting' : ''}`}
+      className={`splash-container ${isExiting ? 'splash-exiting' : ''} ${isDocking ? 'splash-docking' : ''}`}
       role="region"
       aria-label="Swarajya Intro"
     >
+      {/* Background Gradient Backdrop */}
+      <div className="splash-backdrop" />
+
       {/* Dynamic Ambient Background Canvas */}
       <div className="ambient-canvas">
         <div className="ambient-glow-orb glow-primary" />
@@ -332,13 +392,17 @@ export default function SplashScreen({ onComplete }) {
           सेवेचे ठाई तत्पर
         </h2>
 
-        {/* Direct Hardware-Accelerated Blended Video */}
-        <div className="video-blend-wrapper">
+        {/* Flying / Docking Video & Logo Container */}
+        <div
+          ref={videoWrapperRef}
+          className={`video-blend-wrapper ${isDocking ? 'docking' : ''}`}
+          style={dockStyle}
+        >
           <div className="video-ambient-glow" />
           <video
             ref={videoRef}
             src={swarajyaAnim}
-            className={`splash-blended-video ${isVideoLoaded ? 'loaded' : ''}`}
+            className={`splash-blended-video ${isVideoLoaded ? 'loaded' : ''} ${isDocking ? 'docking-video' : ''}`}
             autoPlay
             muted
             playsInline
@@ -349,8 +413,17 @@ export default function SplashScreen({ onComplete }) {
             onSeeked={handleSeeked}
             onPlaying={handlePlaying}
             onEnded={handleVideoEnded}
-            onError={handleFinish}
+            onError={startDockingTransition}
           />
+          {/* Crisp Transparent Logo for Seamless Docking into Header */}
+          <picture className={`splash-docking-picture ${isDocking ? 'visible' : ''}`}>
+            <source srcSet={logoWebp} type="image/webp" />
+            <img
+              src={logo}
+              alt="Swarajya Logo"
+              className="splash-docking-image"
+            />
+          </picture>
         </div>
 
         {/* Real-time playback progress bar directly below the logo */}

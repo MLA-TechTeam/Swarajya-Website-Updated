@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 import logoWebp from '../assets/logo-240.webp';
 import { Link, NavLink,useLocation } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({ isSplashActive = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -55,7 +55,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''} ${getPageClass()}`}>
+    <header className={`header ${isScrolled ? 'scrolled' : ''} ${getPageClass()} ${isSplashActive ? 'splash-active' : 'splash-docked'}`}>
       <div className="header-container">
         {/* Logo Section - Left Side */}
         <div className="logo-section">
