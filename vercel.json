@@ -10,6 +10,26 @@
     {
       "source": "/(.*)",
       "destination": "/index.html"
+    },
+    {
+      "source": "/attendant",
+      "destination": "https://mla-food-token.vercel.app/"
+    },
+    {
+      "source": "/attendant/:path*",
+      "destination": "https://mla-food-token.vercel.app/:path*"
+    },
+    {
+      "source": "/participant",
+      "destination": "https://mla-participant-app.vercel.app/"
+    },
+    {
+      "source": "/participant/:path*",
+      "destination": "https://mla-participant-app.vercel.app/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
