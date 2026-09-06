@@ -24,6 +24,22 @@
       "destination": "https://mla-participant-app.vercel.app/:path*"
     },
     {
+      "source": "/ffcs-member",
+      "destination": "https://ffcs-student-portal.vercel.app/"
+    },
+    {
+      "source": "/ffcs-member/:path*",
+      "destination": "https://ffcs-student-portal.vercel.app/:path*"
+    },
+    {
+      "source": "/ffcs-admin",
+      "destination": "https://ffcs-admin-portal.vercel.app/"
+    },
+    {
+      "source": "/ffcs-admin/:path*",
+      "destination": "https://ffcs-admin-portal.vercel.app/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
