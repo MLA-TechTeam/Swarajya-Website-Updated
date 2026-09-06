@@ -8,10 +8,6 @@
   ],
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    },
-    {
       "source": "/attendant",
       "destination": "https://mla-food-token.vercel.app/"
     },
