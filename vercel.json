@@ -40,6 +40,14 @@
       "destination": "https://ffcs-admin-portal.vercel.app/:path*"
     },
     {
+      "source": "/marketing/:path*",
+      "destination": "https://marketing-dashboard-weld-alpha.vercel.app/:path*"
+    },
+    {
+      "source": "/marketing",
+      "destination": "https://marketing-dashboard-weld-alpha.vercel.app"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
