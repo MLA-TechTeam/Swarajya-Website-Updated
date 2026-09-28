@@ -40,7 +40,6 @@ import sharanya_26 from '../data/leads-images/2026-27/sharanya.png';
 import rashi_26 from '../data/leads-images/2026-27/rashi.png';
 import om_d_26 from '../data/leads-images/2026-27/om_d.png';
 import vanshita_26 from '../data/leads-images/2026-27/vanshita.png';
-import sharvari_26 from '../data/leads-images/2026-27/sharvari.png';
 import om_j_26 from '../data/leads-images/2026-27/om_j.png';
 import riddhi_26 from '../data/leads-images/2026-27/riddhi.png';
 import mrun_26 from '../data/leads-images/2026-27/mrun.png';
@@ -510,18 +509,12 @@ export default function AboutUs() {
                   <h4 className="department-title">
                     <span className="department-icon"><img src={designIcon} alt="Design" className="dept-emoticon-about" /></span> Design And Content
                   </h4>
-                  <div className="members-grid two-members">
+                  <div className="members-grid single-member">
                     <div className="member-card">
                       <div className="member-image-container">
                         <img loading="lazy" src={vanshita_26} alt="Vanshita Patil" className="member-image" />
                       </div>
                       <h5 className="member-name">Vanshita Patil</h5>
-                    </div>
-                    <div className="member-card">
-                      <div className="member-image-container">
-                        <img loading="lazy" src={sharvari_26} alt="Sharvari Mahurkar" className="member-image" />
-                      </div>
-                      <h5 className="member-name">Sharvari Mahurkar</h5>
                     </div>
                   </div>
                 </div>

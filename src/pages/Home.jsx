@@ -18,12 +18,12 @@ import operationsIcon from '../data/dept logo emoticons/operations.png';
 import financeIcon from '../data/dept logo emoticons/finance.png';
 import literatureIcon from '../data/extra/literature.png';
 
-import event1 from '../assets/events/event1.jpg';
-import event2 from '../assets/events/event2.jpg';
-import event3 from '../assets/events/event3.jpg';
-import event4 from '../assets/events/event4.jpg';
-import event5 from '../assets/events/event5.jpg';
-import ganapati from '../assets/events/ganapati.jpg';
+import event1 from '../assets/events/Older/event1.jpg';
+import event2 from '../assets/events/Older/event2.jpg';
+import event3 from '../assets/events/Older/event3.jpg';
+import event4 from '../assets/events/Older/event4.jpg';
+import event5 from '../assets/events/Older/event5.jpg';
+import ganapati from '../assets/events/event5.png';
 
 const homeEventsList = [
   {
@@ -168,11 +168,11 @@ export default function Home() {
             <h1 className="hero-title">
               ƂВvarajyaƓ
             </h1>
-            <div 
-              className="scroll-indicator" 
-              onClick={handleScroll} 
+            <div
+              className="scroll-indicator"
+              onClick={handleScroll}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleScroll(); }}
-              role="button" 
+              role="button"
               tabIndex={0}
               aria-label="Scroll to next section"
             >
@@ -181,8 +181,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <button 
-          onClick={toggleMute} 
+        <button
+          onClick={toggleMute}
           className="btn-mute-toggle"
           aria-label={isMuted ? "Unmute video sound" : "Mute video sound"}
         >
@@ -205,7 +205,7 @@ export default function Home() {
 
                 <div className="motto-text-content">
                   <p className="motto-intro">
-                    <strong className="motto-highlight">"सेवेचे ठाई तत्पर"</strong> <em>(Always Ready for Service)</em> is more than just a phrase — it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries.
+                    <strong className="motto-highlight">"सेवेचे ठाई तत्पर"</strong> <em>(Always Ready for Service)</em> it is the guiding principle of our club. This timeless expression reflects the deep-rooted values of dedication, loyalty, and selfless service that have shaped our culture for centuries.
                   </p>
 
                   <p className="motto-history">
