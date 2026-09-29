@@ -317,13 +317,48 @@
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
-  .header-container {
-    padding: 0 16px;
-    height: 70px;
+  .header.scrolled {
+    transform: translateY(0);
+    pointer-events: auto;
+    background: rgba(18, 18, 18, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 
   .header.scrolled .header-container {
     height: 55px;
+  }
+
+  .header.scrolled .logo-section {
+    opacity: 1;
+    transform: translateY(-50%);
+    pointer-events: auto;
+  }
+
+  .header.scrolled .logo-marathi {
+    color: #FF6B35;
+  }
+
+  .header.scrolled .logo-english {
+    color: #f1f1f1;
+  }
+
+  .header.scrolled .mobile-menu-toggle {
+    opacity: 1;
+    transform: translateY(-50%);
+    pointer-events: auto;
+  }
+
+  .header.scrolled .hamburger-line {
+    background: #ffffff;
+  }
+
+  .header-container {
+    padding: 0 16px;
+    height: 70px;
   }
 
   .logo-section {

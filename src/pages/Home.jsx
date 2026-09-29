@@ -18,55 +18,71 @@ import operationsIcon from '../data/dept logo emoticons/operations.png';
 import financeIcon from '../data/dept logo emoticons/finance.png';
 import literatureIcon from '../data/extra/literature.png';
 
-import event1 from '../assets/events/Older/event1.jpg';
-import event2 from '../assets/events/Older/event2.jpg';
-import event3 from '../assets/events/Older/event3.jpg';
-import event4 from '../assets/events/Older/event4.jpg';
-import event5 from '../assets/events/Older/event5.jpg';
-import ganapati from '../assets/events/event5.png';
+import event1 from '../assets/events/event1.jpg';
+import event2 from '../assets/events/event2.png';
+import event3 from '../assets/events/event3.png';
+import event4 from '../assets/events/event4.png';
+import event5 from '../assets/events/event5.png';
+import event6 from '../assets/events/event6.png';
+import event7 from '../assets/events/event7.png';
+import event8 from '../assets/events/event8.png';
 
-const homeEventsList = [
+const homeEvents2026 = [
   {
-    id: 1,
-    title: "गंध जुन्या क्षणांचा - A Nostalgic Literary Evening",
-    date: "April 23, 2025",
-    location: "AB3-001, VIT Chennai",
+    id: '2026-1',
+    title: "गावाकडच्या गोष्टी",
+    date: "June 18, 2026",
+    location: "Online Submissions",
     image: event1,
   },
   {
-    id: 2,
-    title: "गौरव महाराष्ट्राचा – Maharashtra Day Guest Lecture",
-    date: "May 1, 2025",
-    location: "Online Session",
+    id: '2026-2',
+    title: "क्षणचित्र",
+    date: "July 2, 2026",
+    location: "Online Submissions",
     image: event2,
   },
   {
-    id: 3,
-    title: "दुर्गलेखन – Fort Blogging Initiative",
-    date: "May 23, 2025",
-    location: "Online Submissions",
+    id: '2026-3',
+    title: "Ink For The Brave",
+    date: "July 26, 2026",
+    location: "Flag Post Area",
     image: event3,
   },
   {
-    id: 4,
-    title: "शिवस्मरण – Online Quiz on Chhatrapati Shivaji Maharaj",
-    date: "June 6, 2025",
-    location: "Online Platform",
+    id: '2026-4',
+    title: "झिंगाट - Zingaat Jamming Session",
+    date: "August 1, 2026",
+    location: "MBA Amphi",
     image: event4,
   },
   {
-    id: 5,
-    title: "Mallataranga - Guest Lecture on Mallakhamb",
-    date: "June 21, 2025",
-    location: "Online Lecture",
+    id: '2026-5',
+    title: "Ganpati Aagman",
+    date: "September 14, 2026",
+    location: "AB1 Portico",
     image: event5,
   },
   {
-    id: 6,
-    title: "Ganpati Chaturthi Celebration 2026",
-    date: "September 14, 2026",
-    location: "VIT Chennai",
-    image: ganapati,
+    id: '2026-6',
+    title: "Rangoli Competition",
+    date: "September 17, 2026",
+    location: "AB1 Portico",
+    image: event6,
+  },
+  {
+    id: '2026-7',
+    title: "अनंत - Ganesh Utsav Culturals & Visarjan",
+    date: "September 19, 2026",
+    location: "MGR Circle / MG Auditorium",
+    image: event7,
+  },
+  {
+    id: '2026-8',
+    title: "Ganesh Utsav Lunch",
+    date: "September 20, 2026",
+    location: "AB1 Portico",
+    image: event8,
   }
 ];
 
@@ -77,6 +93,14 @@ export default function Home() {
   const [isBlogPaused, setIsBlogPaused] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(0);
   const [isEventPaused, setIsEventPaused] = useState(false);
+  const [shuffledEvents] = useState(() => {
+    const list = [...homeEvents2026];
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
+  });
 
   // Load gallery images dynamically for gallery showcase
   const galleryImages = useRef([]);
@@ -111,13 +135,13 @@ export default function Home() {
   }, [isBlogPaused]);
 
   useEffect(() => {
-    if (isEventPaused || !homeEventsList || homeEventsList.length === 0) return;
+    if (isEventPaused || !shuffledEvents || shuffledEvents.length === 0) return;
     const eventTimer = setInterval(() => {
-      setCurrentEventIndex((prevIndex) => (prevIndex + 1) % homeEventsList.length);
+      setCurrentEventIndex((prevIndex) => (prevIndex + 1) % shuffledEvents.length);
     }, 3000); // Auto-slides events every 3 seconds
 
     return () => clearInterval(eventTimer);
-  }, [isEventPaused]);
+  }, [isEventPaused, shuffledEvents]);
 
   useEffect(() => {
     if (isGalleryPaused || !galleryImages.current || galleryImages.current.length === 0) return;
@@ -213,7 +237,7 @@ export default function Home() {
                   </p>
 
                   <p className="motto-conclusion">
-                    Inspired by this rich legacy and blessed by <strong>Ganpati Bappa</strong>, we carry forward the spirit of <em>"सेवेचे ठाई तत्पर"</em> in all that we do — striving to serve, protect, and promote Marathi literature, culture, and community with immense pride and purpose.
+                    Inspired by this rich legacy and blessed by <strong>Ganpati Bappa</strong>, we carry forward the spirit of <em>"सेवेचे ठाई तत्पर"</em> in all that we do striving to serve, protect, and promote Marathi literature, culture, and community with immense pride and purpose.
                   </p>
                 </div>
               </div>
@@ -270,7 +294,7 @@ export default function Home() {
               <div className="showcase-header">
                 <h3 className="showcase-title">Featured Events</h3>
                 <div className="carousel-dots">
-                  {homeEventsList.map((_, idx) => (
+                  {shuffledEvents.map((_, idx) => (
                     <span
                       key={idx}
                       className={`carousel-dot ${currentEventIndex === idx ? 'active' : ''}`}
@@ -286,7 +310,7 @@ export default function Home() {
                 onMouseEnter={() => setIsEventPaused(true)}
                 onMouseLeave={() => setIsEventPaused(false)}
               >
-                {homeEventsList.map((evt, idx) => (
+                {shuffledEvents.map((evt, idx) => (
                   <Link
                     to="/events"
                     key={evt.id}
@@ -384,7 +408,7 @@ export default function Home() {
                   </p>
 
                   <p className="motto-conclusion">
-                    Marathi literature is not just a collection of written words — it is a true representation of the region’s history, struggles, and reforms. Each page turned is a salute to the proud legacy of Maharashtra and India.
+                    Marathi literature is not just a collection of written words it is a true representation of the region’s history, struggles, and reforms. Each page turned is a salute to the proud legacy of Maharashtra and India.
                   </p>
                 </div>
               </div>

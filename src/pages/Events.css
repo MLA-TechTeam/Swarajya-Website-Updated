@@ -208,190 +208,180 @@
   }
 }
 
-/* Mobile Landscape (768px) */
+/* Mobile Devices (max-width: 768px): Robust layout preventing unreadable squished timer & banner */
 @media (max-width: 768px) {
-  .countdown-container {
-    padding: 10px 18px;
-    margin: 0 auto;
+  .flagship-event-image {
+    aspect-ratio: unset;
+    min-height: 520px;
+    height: auto;
   }
 
-  .countdown-title {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-  }
-
-  .countdown-timer {
-    gap: 10px;
-  }
-
-  .countdown-item {
-    min-width: 55px;
-  }
-
-  .countdown-number {
-    font-size: 1.4rem;
-    min-width: 40px;
-  }
-
-  .countdown-label {
-    font-size: 0.7rem;
-  }
-
-  .countdown-separator {
-    font-size: 1.3rem;
-    margin: 0 5px;
-  }
-}
-
-/* Mobile Portrait (480px) */
-@media (max-width: 480px) {
-  .countdown-container {
-    padding: 8px 12px;
-    margin: 0 auto;
-  }
-
-  .countdown-title {
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-  }
-
-  .countdown-timer {
-    gap: 6px;
-    justify-content: space-around;
-  }
-
-  .countdown-item {
-    min-width: 45px;
-    flex: 1;
-  }
-
-  .countdown-number {
-    font-size: 1.2rem;
-    min-width: 32px;
-  }
-
-  .countdown-label {
-    font-size: 0.65rem;
-    margin-top: 2px;
-  }
-
-  .countdown-separator {
-    font-size: 1rem;
-    margin: 0 3px;
-  }
-}
-
-/* Small Mobile (360px and below) */
-@media (max-width: 360px) {
-  .countdown-container {
-    padding: 6px 10px;
-    margin: 0 auto;
-  }
-
-  .countdown-title {
-    font-size: 0.75rem;
-    margin-bottom: 4px;
-  }
-
-  .countdown-timer {
-    gap: 4px;
-  }
-
-  .countdown-item {
-    min-width: 38px;
-  }
-
-  .countdown-number {
-    font-size: 1rem;
-    min-width: 26px;
-  }
-
-  .countdown-label {
-    font-size: 0.6rem;
-    margin-top: 2px;
-  }
-
-  .countdown-separator {
-    font-size: 0.9rem;
-    margin: 0 2px;
-  }
-}
-
-/* Flagship Event Responsive Adjustments */
-@media (max-width: 768px) {
   .flagship-overlay {
-    padding: 16px 20px 95px;
+    position: relative;
+    min-height: 520px;
+    height: auto;
+    padding: 70px 16px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(20, 10, 10, 0.15) 0%, rgba(20, 10, 10, 0.5) 30%, rgba(10, 4, 4, 0.92) 75%, rgba(10, 4, 4, 0.98) 100%);
+  }
+
+  .flagship-content {
+    width: 100%;
+    max-width: 520px;
   }
 
   .flagship-event-title {
     font-size: 1.7rem;
-    margin-bottom: 6px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.25;
   }
 
   .flagship-event-description {
     font-size: 0.95rem;
-    margin-bottom: 10px;
-    line-height: 1.35;
-  }
-}
-
-@media (max-width: 480px) {
-  .flagship-overlay {
-    padding: 12px 14px 65px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    max-width: 100%;
+    opacity: 0.95;
+    padding: 0 6px;
   }
 
-  .flagship-event-title {
-    font-size: 1.25rem;
-    margin-bottom: 4px;
+  .countdown-container {
+    width: 100%;
+    max-width: 380px;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    margin: 0 auto;
   }
 
-  .flagship-event-description {
-    font-size: 0.8rem;
+  .countdown-title {
+    font-size: 0.95rem;
     margin-bottom: 8px;
-    line-height: 1.25;
-  }
-}
-
-@media (max-width: 360px) {
-  .flagship-overlay {
-    padding: 8px 10px 40px;
   }
 
-  .flagship-event-title {
-    font-size: 1.1rem;
-    margin-bottom: 3px;
-  }
-
-  .flagship-event-description {
-    font-size: 0.72rem;
-    margin-bottom: 6px;
-  }
-}
-
-/* Vertical Layout for Very Small Screens */
-@media (max-width: 320px) {
   .countdown-timer {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .countdown-separator {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: nowrap;
   }
 
   .countdown-item {
-    min-width: 80px;
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    min-width: 48px;
+    flex: 1;
+    text-align: center;
   }
 
   .countdown-number {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
+    min-width: 32px;
+    line-height: 1.1;
   }
 
   .countdown-label {
     font-size: 0.7rem;
+    margin-top: 3px;
+    letter-spacing: 0.3px;
+  }
+
+  .countdown-separator {
+    font-size: 1.25rem;
+    margin: 0 2px;
+    align-self: center;
+    padding-bottom: 12px;
+  }
+}
+
+/* Mobile Portrait (max-width: 480px) */
+@media (max-width: 480px) {
+  .flagship-event-image {
+    min-height: 490px;
+  }
+
+  .flagship-overlay {
+    min-height: 490px;
+    padding: 60px 12px 24px;
+  }
+
+  .flagship-event-title {
+    font-size: 1.45rem;
+    margin-bottom: 6px;
+  }
+
+  .flagship-event-description {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+
+  .countdown-container {
+    padding: 10px 8px;
+    max-width: 350px;
+  }
+
+  .countdown-timer {
+    gap: 2px;
+    flex-wrap: nowrap;
+  }
+
+  .countdown-item {
+    min-width: 42px;
+  }
+
+  .countdown-number {
+    font-size: 1.3rem;
+  }
+
+  .countdown-label {
+    font-size: 0.65rem;
+  }
+
+  .countdown-separator {
+    font-size: 1.1rem;
+    margin: 0 1px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+  .flagship-event-title {
+    font-size: 1.3rem;
+  }
+
+  .flagship-event-description {
+    font-size: 0.82rem;
+  }
+
+  .countdown-container {
+    padding: 8px 6px;
+  }
+
+  .countdown-timer {
+    gap: 1px;
+    flex-wrap: nowrap;
+  }
+
+  .countdown-item {
+    min-width: 36px;
+  }
+
+  .countdown-number {
+    font-size: 1.15rem;
+  }
+
+  .countdown-label {
+    font-size: 0.58rem;
+  }
+
+  .countdown-separator {
+    font-size: 0.95rem;
+    margin: 0;
+    padding-bottom: 8px;
   }
 }
 
