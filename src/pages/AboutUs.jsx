@@ -343,10 +343,10 @@ export default function AboutUs() {
                   </div>
                 </div>
 
-                {/* Social Media and Photography */}
+                {/* Social Media */}
                 <div className="department-section">
                   <h4 className="department-title">
-                    <span className="department-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon-about" /></span> Social Media & Photography
+                    <span className="department-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon-about" /></span> Social Media
                   </h4>
                   <div className="members-grid two-members">
                     <div className="member-card">
@@ -519,10 +519,10 @@ export default function AboutUs() {
                   </div>
                 </div>
 
-                {/* Social Media and Photography */}
+                {/* Social Media */}
                 <div className="department-section">
                   <h4 className="department-title">
-                    <span className="department-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon-about" /></span> Social Media & Photography
+                    <span className="department-icon"><img src={socialMediaIcon} alt="Social Media" className="dept-emoticon-about" /></span> Social Media
                   </h4>
                   <div className="members-grid two-members">
                     <div className="member-card">

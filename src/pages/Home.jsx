@@ -321,7 +321,7 @@ export default function Home() {
                   <div className="dept-grid-cell">
                     <div className="dept-cell-header">
                       <img src={socialMediaIcon} alt="Social Media" className="dept-emoticon" />
-                      <h3>Social Media & Photography</h3>
+                      <h3>Social Media</h3>
                     </div>
                     <p>Capturing moments, connecting people. Handles all social platforms, keeping Swarajya alive online with reels and photos.</p>
                   </div>

@@ -20,7 +20,7 @@ Founded initially as Bappa Ganesh Mandal (BGM) in 2017 and evolving into Swarajy
 
 ## Organizational Departments
 - **Design & Content**: Visual identity, promotional creatives, scripts, and literary writing.
-- **Social Media & Photography**: Social platform outreach, photography, and digital engagement.
+- **Social Media**: Social platform outreach and digital engagement.
 - **Technical**: Web development, platform performance, and digital tools.
 - **Cultural**: Traditional dance, theatrical drama, music, and festival ceremonies.
 - **Operations**: Logistics, event management, and campus coordination.

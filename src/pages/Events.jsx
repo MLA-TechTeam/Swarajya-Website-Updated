@@ -112,7 +112,7 @@ const Events = () => {
       fullDescription: "Join us for an authentic Maharashtrian feast at AB-1 Portico. Enjoy Modak, Rabdi Malpua, Chole Puri, Batata Wada, Masala Pulao, Raita, and much more!",
       date: "2026-09-20",
       time: "12:00 PM",
-      location: "AB-1 Portico",
+      location: "AB1 Portico",
       image: newEvent8,
     }
   ];
