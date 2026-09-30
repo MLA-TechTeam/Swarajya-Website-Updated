@@ -132,14 +132,17 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [flowers, setFlowers] = useState([]);
   const hasFinishedRef = useRef(false);
+  const hasSeekedRef = useRef(false);
 
   // Generate realistic falling flower blossoms & petals (पुष्पवृष्टी)
   const generateFlowers = useCallback(() => {
     const items = [];
     const gradientIds = ['fl-marigold', 'fl-saffron', 'fl-rose', 'fl-gold', 'fl-cream'];
     const shapes = ['petal-marigold', 'petal-rose', 'flower-blossom', 'petal-curve', 'flower-jasmine'];
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const count = isMobile ? 22 : 44;
 
-    for (let i = 0; i < 48; i++) {
+    for (let i = 0; i < count; i++) {
       const shape = shapes[Math.floor(Math.random() * shapes.length)];
       const gradientId = gradientIds[Math.floor(Math.random() * gradientIds.length)];
       const isBlossom = shape.startsWith('flower-');
@@ -285,11 +288,12 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
     }
   }, []);
 
-  // Video loaded handler with START_OFFSET_SECONDS seek and playback
-  const handleLoadedMedia = () => {
+  // Video loaded handler with START_OFFSET_SECONDS one-time seek and playback
+  const handleLoadedMedia = useCallback(() => {
     const video = videoRef.current;
     if (video) {
-      if (video.currentTime < START_OFFSET_SECONDS) {
+      if (!hasSeekedRef.current && video.currentTime < START_OFFSET_SECONDS) {
+        hasSeekedRef.current = true;
         try {
           video.currentTime = START_OFFSET_SECONDS;
         } catch (e) {}
@@ -299,25 +303,22 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
         playPromise.catch(() => {});
       }
     }
-  };
+  }, []);
 
-  const handleSeeked = () => {
+  const handleSeeked = useCallback(() => {
+    setIsVideoLoaded(true);
     const video = videoRef.current;
-    if (video && video.currentTime >= START_OFFSET_SECONDS) {
-      setIsVideoLoaded(true);
+    if (video) {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});
       }
     }
-  };
+  }, []);
 
-  const handlePlaying = () => {
-    const video = videoRef.current;
-    if (video && video.currentTime >= START_OFFSET_SECONDS) {
-      setIsVideoLoaded(true);
-    }
-  };
+  const handlePlaying = useCallback(() => {
+    setIsVideoLoaded(true);
+  }, []);
 
   // Fallback safety timeout strictly for extreme network disconnection
   useEffect(() => {

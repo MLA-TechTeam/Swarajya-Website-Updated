@@ -197,7 +197,7 @@ export default function Home() {
         {/* Overlay & Content */}
         <div className="hero-overlay">
           <div className="hero-content">
-            <h1 className="hero-title">
+            <h1 className="hero-title" aria-label="स्वराज्य (Swarajya)">
               ƂВvarajyaƓ
             </h1>
             <div

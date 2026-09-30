@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Yatra+One&display=swap');
+@import url('../assets/infinity_font_b64.css');
 
-@font-face {
-  font-family: 'Infinity';
-  src: url('../../public/Infinity-05.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
 
 .home-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -78,13 +72,14 @@
 .hero-title {
   /* font-family: 'Yatra One', 'Infinity', 'Noto Sans Devanagari', sans-serif; */
   font-family: 'Infinity', 'Yatra One', 'Noto Sans Devanagari', sans-serif;
-  font-size: 150px;
+  font-size: clamp(3.5rem, 12vw, 150px);
   /* font-weight: 700; */
   color: #ffffff;
   margin: 0 0 8px 0;
   text-decoration: border solid red;
   letter-spacing: 3px;
   text-shadow: 2px 2px 4px rgba(154, 52, 18, 0.2);
+  white-space: nowrap;
 }
 
 .hero-subtitle {
@@ -392,7 +387,8 @@
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+    letter-spacing: 2px;
   }
   
   .hero-subtitle {
@@ -431,7 +427,8 @@
     padding: 0 15px;
   }
   .hero-title {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 9.5vw, 3rem);
+    letter-spacing: 1px;
   }
   
   .hero-subtitle {
@@ -449,7 +446,8 @@
 
 @media (max-width: 360px) {
   .hero-title {
-    font-size: 1.85rem;
+    font-size: clamp(1.7rem, 8.5vw, 2.2rem);
+    letter-spacing: 0.5px;
   }
 }
 
