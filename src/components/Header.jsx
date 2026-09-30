@@ -12,10 +12,10 @@ export default function Header({ isSplashActive = false }) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      // Hide elements when scrolled down more than 100px
-      setIsScrolled(scrollPosition > 100);
+      setIsScrolled(scrollPosition > 20);
     };
 
+    handleScroll();
     // Add scroll event listener
     window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -24,6 +24,34 @@ export default function Header({ isSplashActive = false }) {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      document.body.classList.remove('mobile-menu-open');
+    }
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [isMenuOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -79,7 +107,14 @@ export default function Header({ isSplashActive = false }) {
         </div>
 
         {/* Navigation Menu - Right Side */}
-        <nav className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}>
+        <nav 
+          className={`nav-menu ${isMenuOpen ? 'nav-menu-open' : ''}`}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setIsMenuOpen(false);
+            }
+          }}
+        >
           <ul className="nav-list">
             <li className="nav-item">
               <NavLink 
@@ -143,6 +178,7 @@ export default function Header({ isSplashActive = false }) {
           className={`mobile-menu-toggle ${isMenuOpen ? 'active' : ''}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
         >
           <span className="hamburger-line"></span>
           <span className="hamburger-line"></span>
