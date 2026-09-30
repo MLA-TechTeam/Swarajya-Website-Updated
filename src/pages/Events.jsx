@@ -10,6 +10,7 @@ import newEvent5 from '../assets/events/event5.png';
 import newEvent6 from '../assets/events/event6.png';
 import newEvent7 from '../assets/events/event7.png';
 import newEvent8 from '../assets/events/event8.png';
+import newEvent9 from '../assets/events/event9.png';
 
 // Flagship Event Background
 import gudiPadwaImage from '../assets/events/Gudi_Padwa.png';
@@ -84,6 +85,16 @@ const Events = () => {
       time: "2:30 PM",
       location: "AB1 Portico",
       image: newEvent5,
+    },
+    {
+      id: '2026-9',
+      title: "Dhammal Mini Games",
+      shortDescription: "Relive the joy of traditional games with Musical Chairs, Lemon and Spoon, and Three Leg Race.",
+      fullDescription: "Relive the joy of traditional games! Bappa Ganesh Mandal presents Dhammal Mini Games featuring classic fun activities including Musical Chairs, Lemon and Spoon race, and Three Leg Race at AB1 Portico.",
+      date: "2026-09-16",
+      time: "5:30 PM",
+      location: "AB1 Portico",
+      image: newEvent9,
     },
     {
       id: '2026-6',

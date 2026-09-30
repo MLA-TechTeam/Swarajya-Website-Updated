@@ -26,6 +26,7 @@ import event5 from '../assets/events/event5.png';
 import event6 from '../assets/events/event6.png';
 import event7 from '../assets/events/event7.png';
 import event8 from '../assets/events/event8.png';
+import event9 from '../assets/events/event9.png';
 
 const homeEvents2026 = [
   {
@@ -62,6 +63,13 @@ const homeEvents2026 = [
     date: "September 14, 2026",
     location: "AB1 Portico",
     image: event5,
+  },
+  {
+    id: '2026-9',
+    title: "Dhammal Mini Games",
+    date: "September 16, 2026",
+    location: "AB1 Portico",
+    image: event9,
   },
   {
     id: '2026-6',
