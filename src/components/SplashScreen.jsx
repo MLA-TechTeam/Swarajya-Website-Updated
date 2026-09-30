@@ -5,6 +5,8 @@ import logoWebp from '../assets/logo-240.webp';
 import './SplashScreen.css';
 
 
+const START_OFFSET_SECONDS = 1.6;
+
 function FlowerItem({ shape, gradientId, size, opacity }) {
   if (shape === 'flower-blossom') {
     return (
@@ -127,7 +129,7 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
   const [isDocking, setIsDocking] = useState(false);
   const [dockStyle, setDockStyle] = useState({});
-  const [useFallbackLogo, setUseFallbackLogo] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [flowers, setFlowers] = useState([]);
   const hasFinishedRef = useRef(false);
 
@@ -209,52 +211,56 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
     requestAnimationFrame(() => {
       setDockStyle({
         transform: `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scale})`,
-        transition: 'transform 700ms cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'transform 800ms cubic-bezier(0.16, 1, 0.3, 1)',
       });
     });
 
     // Notify header logo to bloom into place right as the flying logo reaches the destination
     setTimeout(() => {
       onDockingArrival && onDockingArrival();
-    }, 550);
+    }, 650);
 
-    // Complete after fluid 0.7s flight & reveal finishes
+    // Complete after fluid flight & reveal finishes
     setTimeout(() => {
       onComplete && onComplete();
-    }, 700);
+    }, 850);
   }, [onDockingArrival, onComplete]);
 
-  // Video complete handler: sets progress to 100%, then initiates smooth flight
+  // Video complete handler: sets progress to 100%, pauses briefly for clarity, then initiates smooth flight
   const handleVideoEnded = useCallback(() => {
     setProgress(100);
     setTimeout(() => {
       startDockingTransition();
-    }, 80);
+    }, 150);
   }, [startDockingTransition]);
 
   // Continuous high-precision 60fps progress sync locked to video playback + responsive progression
   useEffect(() => {
     let animId;
     const startTime = performance.now();
-    const EXPECTED_DURATION = 3600; // ms
+    const EXPECTED_DURATION = 6000; // ms
 
     const updateProgress = (timestamp) => {
       const video = videoRef.current;
       const elapsed = timestamp - startTime;
 
       if (video && video.duration && !video.paused && !video.ended) {
-        const effectiveDuration = video.duration || 3.6;
-        const videoPercentage = (video.currentTime / effectiveDuration) * 100;
-        setProgress((prev) => Math.min(100, Math.max(prev, videoPercentage)));
+        if (!isVideoLoaded && video.currentTime >= START_OFFSET_SECONDS) {
+          setIsVideoLoaded(true);
+        }
+        const current = Math.max(0, video.currentTime - START_OFFSET_SECONDS);
+        const effectiveDuration = Math.max(0.1, video.duration - START_OFFSET_SECONDS);
+        const percentage = Math.min(100, Math.max(0, (current / effectiveDuration) * 100));
+        setProgress((prev) => Math.max(prev, percentage));
 
         // Natural completion trigger if reached near end
-        if (video.currentTime >= video.duration - 0.08 || videoPercentage >= 99) {
+        if (video.currentTime >= video.duration - 0.08 || percentage >= 99) {
           handleVideoEnded();
           return;
         }
       } else {
-        // Continuous, smooth progression before video plays or during buffering so bar never stalls!
-        const fallbackPercentage = Math.min((elapsed / EXPECTED_DURATION) * 100, 95);
+        // Continuous, smooth gentle baseline progress while buffering/seeking so bar never freezes
+        const fallbackPercentage = Math.min((elapsed / EXPECTED_DURATION) * 100, 25);
         setProgress((prev) => Math.max(prev, fallbackPercentage));
       }
       animId = requestAnimationFrame(updateProgress);
@@ -262,9 +268,9 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
 
     animId = requestAnimationFrame(updateProgress);
     return () => cancelAnimationFrame(animId);
-  }, [handleVideoEnded]);
+  }, [isVideoLoaded, handleVideoEnded]);
 
-  // Reliable video autoplay initialization with fallback detection
+  // Reliable video autoplay initialization
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -273,53 +279,51 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
     video.muted = true;
     video.playsInline = true;
 
-    const tryPlay = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // If browser policy blocks video autoplay, reveal fallback logo immediately
-          setUseFallbackLogo(true);
-        });
-      }
-    };
-
-    tryPlay();
-
-    // Check after 350ms: if video is paused (e.g. mobile battery saver mode), show fallback logo
-    const checkTimer = setTimeout(() => {
-      if (video.paused && !video.ended) {
-        setUseFallbackLogo(true);
-      }
-    }, 350);
-
-    return () => clearTimeout(checkTimer);
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
   }, []);
 
-  // Video loaded handler - immediate playback from 0.0s without stalling
+  // Video loaded handler with START_OFFSET_SECONDS seek and playback
   const handleLoadedMedia = () => {
     const video = videoRef.current;
     if (video) {
-      video.defaultMuted = true;
-      video.muted = true;
-      video.playsInline = true;
+      if (video.currentTime < START_OFFSET_SECONDS) {
+        try {
+          video.currentTime = START_OFFSET_SECONDS;
+        } catch (e) {}
+      }
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          setUseFallbackLogo(true);
-        });
+        playPromise.catch(() => {});
+      }
+    }
+  };
+
+  const handleSeeked = () => {
+    const video = videoRef.current;
+    if (video && video.currentTime >= START_OFFSET_SECONDS) {
+      setIsVideoLoaded(true);
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
       }
     }
   };
 
   const handlePlaying = () => {
-    setUseFallbackLogo(false);
+    const video = videoRef.current;
+    if (video && video.currentTime >= START_OFFSET_SECONDS) {
+      setIsVideoLoaded(true);
+    }
   };
 
-  // Fallback safety timeout (4.2s) to guarantee prompt transition even on extreme connection drops
+  // Fallback safety timeout strictly for extreme network disconnection
   useEffect(() => {
     const safetyTimeout = setTimeout(() => {
       startDockingTransition();
-    }, 4200);
+    }, 8500);
 
     return () => clearTimeout(safetyTimeout);
   }, [startDockingTransition]);
@@ -420,7 +424,7 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
               }
             }}
             src={swarajyaAnim}
-            className={`splash-blended-video ${isDocking || useFallbackLogo ? 'docking-video' : ''}`}
+            className={`splash-blended-video ${isVideoLoaded ? 'loaded' : ''} ${isDocking ? 'docking-video' : ''}`}
             autoPlay
             muted
             playsInline
@@ -429,14 +433,13 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
             onLoadedData={handleLoadedMedia}
             onCanPlay={handleLoadedMedia}
             onCanPlayThrough={handleLoadedMedia}
+            onSeeked={handleSeeked}
             onPlaying={handlePlaying}
             onEnded={handleVideoEnded}
-            onError={() => {
-              setUseFallbackLogo(true);
-            }}
+            onError={startDockingTransition}
           />
-          {/* Crisp Transparent Logo for Seamless Docking into Header or Autoplay Fallback */}
-          <picture className={`splash-docking-picture ${isDocking || useFallbackLogo ? 'visible' : ''}`}>
+          {/* Crisp Transparent Logo for Seamless Docking into Header */}
+          <picture className={`splash-docking-picture ${isDocking ? 'visible' : ''}`}>
             <source srcSet={logoWebp} type="image/webp" />
             <img
               src={logo}
