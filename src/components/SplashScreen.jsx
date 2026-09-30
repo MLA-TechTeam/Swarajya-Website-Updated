@@ -4,7 +4,6 @@ import logo from '../assets/logo.png';
 import logoWebp from '../assets/logo-240.webp';
 import './SplashScreen.css';
 
-const START_OFFSET_SECONDS = 1.6;
 
 function FlowerItem({ shape, gradientId, size, opacity }) {
   if (shape === 'flower-blossom') {
@@ -210,48 +209,56 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
     requestAnimationFrame(() => {
       setDockStyle({
         transform: `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scale})`,
-        transition: 'transform 1200ms cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'transform 700ms cubic-bezier(0.16, 1, 0.3, 1)',
       });
     });
 
     // Notify header logo to bloom into place right as the flying logo reaches the destination
     setTimeout(() => {
       onDockingArrival && onDockingArrival();
-    }, 1050);
+    }, 550);
 
-    // Complete after fluid 1.25s flight & reveal finishes
+    // Complete after fluid 0.7s flight & reveal finishes
     setTimeout(() => {
       onComplete && onComplete();
-    }, 1250);
+    }, 700);
   }, [onDockingArrival, onComplete]);
 
-  // Video complete handler: sets progress to 100%, pauses briefly for clarity, then initiates smooth flight
+  // Video complete handler: sets progress to 100%, then initiates smooth flight
   const handleVideoEnded = useCallback(() => {
     setProgress(100);
     setTimeout(() => {
       startDockingTransition();
-    }, 200);
+    }, 80);
   }, [startDockingTransition]);
 
-  // Continuous high-precision 60fps progress sync locked to video playback
+  // Continuous high-precision 60fps progress sync locked to video playback + responsive progression
   useEffect(() => {
     let animId;
-    const updateProgress = () => {
+    const startTime = performance.now();
+    const EXPECTED_DURATION = 3900; // ms
+
+    const updateProgress = (timestamp) => {
       const video = videoRef.current;
+      const elapsed = timestamp - startTime;
+
       if (video && video.duration && !video.paused && !video.ended) {
-        if (video.currentTime >= START_OFFSET_SECONDS && !isVideoLoaded) {
+        if (!isVideoLoaded) {
           setIsVideoLoaded(true);
         }
-        const current = Math.max(0, video.currentTime - START_OFFSET_SECONDS);
-        const effectiveDuration = Math.max(0.1, video.duration - START_OFFSET_SECONDS);
-        const percentage = Math.min(Math.max((current / effectiveDuration) * 100, 0), 100);
-        setProgress(percentage);
+        const effectiveDuration = video.duration || 3.9;
+        const videoPercentage = (video.currentTime / effectiveDuration) * 100;
+        setProgress((prev) => Math.min(100, Math.max(prev, videoPercentage)));
 
         // Natural completion trigger if reached near end
-        if (video.currentTime >= video.duration - 0.05 && percentage >= 99) {
+        if (video.currentTime >= video.duration - 0.08 || videoPercentage >= 99) {
           handleVideoEnded();
           return;
         }
+      } else {
+        // Continuous, smooth progression before video plays or during buffering so bar never stalls!
+        const fallbackPercentage = Math.min((elapsed / EXPECTED_DURATION) * 100, 95);
+        setProgress((prev) => Math.max(prev, fallbackPercentage));
       }
       animId = requestAnimationFrame(updateProgress);
     };
@@ -271,27 +278,16 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
 
     const playPromise = video.play();
     if (playPromise !== undefined) {
-      playPromise.catch(() => {});
+      playPromise.then(() => {
+        setIsVideoLoaded(true);
+      }).catch(() => {});
     }
   }, []);
 
-  // Video loaded handler with START_OFFSET_SECONDS seek and playback
+  // Video loaded handler - immediate playback from 0.0s without stalling
   const handleLoadedMedia = () => {
     const video = videoRef.current;
     if (video) {
-      if (video.currentTime < START_OFFSET_SECONDS) {
-        video.currentTime = START_OFFSET_SECONDS;
-      }
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    }
-  };
-
-  const handleSeeked = () => {
-    const video = videoRef.current;
-    if (video && video.currentTime >= START_OFFSET_SECONDS) {
       setIsVideoLoaded(true);
       const playPromise = video.play();
       if (playPromise !== undefined) {
@@ -301,19 +297,16 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
   };
 
   const handlePlaying = () => {
-    const video = videoRef.current;
-    if (video && video.currentTime >= START_OFFSET_SECONDS) {
-      setIsVideoLoaded(true);
-    }
+    setIsVideoLoaded(true);
   };
 
-  // Fallback safety timeout (30s) strictly for network disconnection / unplayable browser video
+  // Fallback safety timeout (4.5s) to guarantee prompt transition even on extreme connection drops
   useEffect(() => {
-    const catastrophicTimeout = setTimeout(() => {
+    const safetyTimeout = setTimeout(() => {
       startDockingTransition();
-    }, 30000);
+    }, 4500);
 
-    return () => clearTimeout(catastrophicTimeout);
+    return () => clearTimeout(safetyTimeout);
   }, [startDockingTransition]);
 
   return (
@@ -410,7 +403,7 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
             onLoadedMetadata={handleLoadedMedia}
             onLoadedData={handleLoadedMedia}
             onCanPlay={handleLoadedMedia}
-            onSeeked={handleSeeked}
+            onCanPlayThrough={handleLoadedMedia}
             onPlaying={handlePlaying}
             onEnded={handleVideoEnded}
             onError={startDockingTransition}
