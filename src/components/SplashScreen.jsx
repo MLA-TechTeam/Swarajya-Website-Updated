@@ -127,7 +127,7 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
   const [isExiting, setIsExiting] = useState(false);
   const [isDocking, setIsDocking] = useState(false);
   const [dockStyle, setDockStyle] = useState({});
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [useFallbackLogo, setUseFallbackLogo] = useState(false);
   const [flowers, setFlowers] = useState([]);
   const hasFinishedRef = useRef(false);
 
@@ -236,17 +236,14 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
   useEffect(() => {
     let animId;
     const startTime = performance.now();
-    const EXPECTED_DURATION = 3900; // ms
+    const EXPECTED_DURATION = 3600; // ms
 
     const updateProgress = (timestamp) => {
       const video = videoRef.current;
       const elapsed = timestamp - startTime;
 
       if (video && video.duration && !video.paused && !video.ended) {
-        if (!isVideoLoaded) {
-          setIsVideoLoaded(true);
-        }
-        const effectiveDuration = video.duration || 3.9;
+        const effectiveDuration = video.duration || 3.6;
         const videoPercentage = (video.currentTime / effectiveDuration) * 100;
         setProgress((prev) => Math.min(100, Math.max(prev, videoPercentage)));
 
@@ -265,46 +262,64 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
 
     animId = requestAnimationFrame(updateProgress);
     return () => cancelAnimationFrame(animId);
-  }, [isVideoLoaded, handleVideoEnded]);
+  }, [handleVideoEnded]);
 
-  // Reliable video autoplay initialization
+  // Reliable video autoplay initialization with fallback detection
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = true;
     video.defaultMuted = true;
+    video.muted = true;
     video.playsInline = true;
 
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        setIsVideoLoaded(true);
-      }).catch(() => {});
-    }
+    const tryPlay = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // If browser policy blocks video autoplay, reveal fallback logo immediately
+          setUseFallbackLogo(true);
+        });
+      }
+    };
+
+    tryPlay();
+
+    // Check after 350ms: if video is paused (e.g. mobile battery saver mode), show fallback logo
+    const checkTimer = setTimeout(() => {
+      if (video.paused && !video.ended) {
+        setUseFallbackLogo(true);
+      }
+    }, 350);
+
+    return () => clearTimeout(checkTimer);
   }, []);
 
   // Video loaded handler - immediate playback from 0.0s without stalling
   const handleLoadedMedia = () => {
     const video = videoRef.current;
     if (video) {
-      setIsVideoLoaded(true);
+      video.defaultMuted = true;
+      video.muted = true;
+      video.playsInline = true;
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {});
+        playPromise.catch(() => {
+          setUseFallbackLogo(true);
+        });
       }
     }
   };
 
   const handlePlaying = () => {
-    setIsVideoLoaded(true);
+    setUseFallbackLogo(false);
   };
 
-  // Fallback safety timeout (4.5s) to guarantee prompt transition even on extreme connection drops
+  // Fallback safety timeout (4.2s) to guarantee prompt transition even on extreme connection drops
   useEffect(() => {
     const safetyTimeout = setTimeout(() => {
       startDockingTransition();
-    }, 4500);
+    }, 4200);
 
     return () => clearTimeout(safetyTimeout);
   }, [startDockingTransition]);
@@ -393,9 +408,19 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
         >
           <div className="video-ambient-glow" />
           <video
-            ref={videoRef}
+            ref={(el) => {
+              videoRef.current = el;
+              if (el) {
+                el.defaultMuted = true;
+                el.muted = true;
+                el.playsInline = true;
+                el.setAttribute('muted', '');
+                el.setAttribute('playsinline', '');
+                el.setAttribute('autoplay', '');
+              }
+            }}
             src={swarajyaAnim}
-            className={`splash-blended-video ${isVideoLoaded ? 'loaded' : ''} ${isDocking ? 'docking-video' : ''}`}
+            className={`splash-blended-video ${isDocking || useFallbackLogo ? 'docking-video' : ''}`}
             autoPlay
             muted
             playsInline
@@ -406,10 +431,12 @@ export default function SplashScreen({ onDockingArrival, onComplete }) {
             onCanPlayThrough={handleLoadedMedia}
             onPlaying={handlePlaying}
             onEnded={handleVideoEnded}
-            onError={startDockingTransition}
+            onError={() => {
+              setUseFallbackLogo(true);
+            }}
           />
-          {/* Crisp Transparent Logo for Seamless Docking into Header */}
-          <picture className={`splash-docking-picture ${isDocking ? 'visible' : ''}`}>
+          {/* Crisp Transparent Logo for Seamless Docking into Header or Autoplay Fallback */}
+          <picture className={`splash-docking-picture ${isDocking || useFallbackLogo ? 'visible' : ''}`}>
             <source srcSet={logoWebp} type="image/webp" />
             <img
               src={logo}
