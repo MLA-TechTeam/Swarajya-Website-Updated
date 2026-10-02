@@ -48,6 +48,14 @@
       "destination": "https://marketing-dashboard-weld-alpha.vercel.app"
     },
     {
+      "source": "/recruitment/:path*",
+      "destination": "https://recruitment-dashboard-orpin.vercel.app/:path*"
+    },
+    {
+      "source": "/recruitment",
+      "destination": "https://recruitment-dashboard-orpin.vercel.app"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
